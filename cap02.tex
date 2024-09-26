@@ -1,0 +1,1172 @@
+\chapter{Transformaciones Lineales}
+
+\section{Definición y Ejemplos}
+
+\begin{definition}[Transformación lineal] \label{def211}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales. Una transformación lineal (funcional lineal) es una función $T: V \to W$ que satisface
+    \begin{align*}
+        T(\vec{u}+\vec{v}) = T(\vec{u}) + T(\vec{v}) && \text{ y } && T(\lambda \cdot \vec{u}) = \lambda \cdot T(\vec{u})
+    \end{align*}
+\end{definition}
+
+\begin{theorem} \label{theom211}
+    Si $T : V \to W$ es lineal $\Rightarrow T(\vec{0}_V) = \vec{0}_W$ 
+\end{theorem}
+
+\begin{proof}
+
+    Para algún $\vec{u} \in V$
+    $$ \vec{0}_V = 0 \cdot \vec{u} \Rightarrow T(\vec{0}_V) = T(0 \cdot \vec{u}) = 0 \cdot T(\vec{u}) = \vec{0}_W$$
+\end{proof}
+
+\begin{theorem} \label{theom212}
+    Si $T : V \to W$ es lineal $\Rightarrow T$ es lineal $\iff T(\lambda \cdot \vec{u} + \vec{v}) = \lambda \cdot T(\vec{u}) + T(\vec{v})$ 
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ Supongamos que $T$ es lineal
+
+    $$T(\lambda \cdot \vec{u} + \vec{v}) = T(\lambda \cdot \vec{u}) + T(\vec{v}) =  \lambda \cdot T(\vec{u}) + T(\vec{v})$$
+
+    $\Leftarrow$ Supongamos que $T$ satisface $T(\lambda \cdot \vec{u} + \vec{v}) = \lambda \cdot T(\vec{u}) + T(\vec{v})$
+
+    Notemos que, tomando $\lambda = 1$
+
+    $$ T(1 \cdot \vec{u} + \vec{v}) = T(\vec{u} + \vec{v}) = 1 \cdot T(\vec{u}) + T(\vec{v}) = T(\vec{u}) + T(\vec{v})$$
+
+    Esto satisface el primer inciso de la \Cref{def211}. Ahora, note que
+
+    $$T(\lambda \cdot \vec{u}) = T(\lambda \cdot \vec{u}+ \vec{0}_V) = \lambda \cdot T(\vec{u}) + T(\vec{0}_V)$$
+
+    Note que, no podemos usar el \Cref{theom211}, porque no sabemos si $T$ es lineal
+
+    $$T(\vec{0}_V) = T(-\vec{u}+\vec{u}) = T(-1 \cdot \vec{u} + \vec{u}) = -1 \cdot T(\vec{u} + T(\vec{u}) = \vec{0}_W$$
+
+    Es por ello que 
+
+    $$\lambda \cdot T(\vec{u}) + T(\vec{0}_V) = \lambda \cdot T(\vec{u}) + \vec{0}_W = \lambda \cdot T(\vec{u}) $$
+
+    $\therefore$ es cierto el \Cref{theom212}
+\end{proof}
+
+\begin{theorem} \label{theom213}
+     Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos espacios vectoriales sobre un campo $\K$, se dice entonces que $T : V \to W$ es una transformación lineal, $\Leftrightarrow$
+
+    $$T \left( \sum_{i=1}^{n} \lambda_i {\vec{v}}_{i} \right) =  \sum_{i=1}^{n}\lambda_i  T\left( {\vec{v}}_{i} \right)$$
+
+    con $\lambda_1, ..., \lambda_n \in \K$ y ${\vec{v}}_{1}, ..., {\vec{v}}_{n} \in V$
+\end{theorem}
+
+\begin{proof}
+$\Rightarrow$
+
+Supongamos que $T$ es lineal, por lo que abre sumas y saca escalares. 
+
+Si $n=1$, por las dos propiedades de la definición de transformación lineal:
+
+$$T(\lambda_1 {\vec{v}}_{i} ) = \lambda_1 \cdot T({\vec{v}}_{i})$$
+
+Supongamos el resultado cierto para $n=k$
+
+Ahora, veamos que es cierto para $n = k + 1$
+
+$$T \left( \sum_{i=1}^{n} \lambda_i {\vec{v}}_{i} \right) = T \left( \lambda_1 {\vec{v}}_{1} \right) + ... + T\left( \lambda_k {\vec{v}}_{k} \right) + T\left( \lambda_{k+1} {\vec{v}}_{k+1} \right) $$
+
+Como estamos suponiendo el resultado cierto para $k$, se tiene que,
+
+$$ \sum_{i=1}^{k}\lambda_i  T\left( {\vec{v}}_{i} \right)  + T\left( \lambda_{k+1} {\vec{v}}_{k+1} \right) = \sum_{i=1}^{k}\lambda_i  T\left( {\vec{v}}_{i} \right) + \lambda_{k+1}  \cdot T\left( {\vec{v}}_{k+1}  \right) = \sum_{i=1}^{n}\lambda_i  T\left( {\vec{v}}_{i} \right)$$
+
+$\Leftarrow$
+
+Suponga que $T \left( \sum\limits_{i=1}^{n} \lambda_i {\vec{v}}_{i} \right) =  \sum\limits_{i=1}^{n}\lambda_i  T\left( {\vec{v}}_{i} \right)$. Veamos que $T$ es transformación lineal. Es evidente ver que abre sumas y saca escalares. Pero esta es la definición de transformación lineal. 
+
+$\therefore$ es verdadero el \Cref{theom213}
+\end{proof}
+
+\begin{definition}[Núcleo]
+     Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, y $T : V \to W$ una transformación lineal. El núcleo o kernel de $T$ está dado por 
+
+     $$\ker(T) = \{ \vec{u} \in V \mid T(\vec{u}) = \vec{0}_W \} \subseteq V$$
+\end{definition}
+
+\begin{definition}[Imágen]
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, y $T : V \to W$ una transformación lineal. La imagen de $T$ está dada por 
+
+    $$\Im(T) = \{ \vec{w} \in W \mid \: \exists \: \vec{u} \in V \Rightarrow T(\vec{u}) = \vec{w} \} \subseteq W$$
+\end{definition}
+
+\begin{theorem}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, y $T : V \to W$ una transformación lineal $\Rightarrow$ se cumple lo siguiente
+
+    \begin{enumerate}
+        \item $\ker(T)$ es un subespacio de $V$
+        \item $\Im(T)$ es un subespaco de $W$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}    
+    \begin{enumerate}
+        \item \begin{enumerate}
+            \item Como $T$ es lineal
+
+            $$T(\vec{0}_V) = \vec{0}_W \Rightarrow \vec{0}_V \in \ker(T)$$
+            \item Sean $\vec{u}, \vec{v} \in \ker(T)$. Veamos que $\vec{u} + \vec{v} \in \ker(T)$
+
+            Como $\vec{u}, \vec{v} \in \ker(T)$
+
+            $$T(\vec{u}) = \vec{0}_W = T(\vec{v}) \Rightarrow T(\vec{u} + \vec{v}) = T(\vec{u}) + T(\vec{v}) = \vec{0}_W + \vec{0}_W  = \vec{0}_W $$
+
+            $\therefore \vec{u} + \vec{v} \in \ker(T)$
+
+            \item Sean $\vec{u} \in \ker(T)$ y $\lambda \in \K$. Veamos que $\lambda \cdot \vec{u} \in \ker(T)$
+
+            $$T(\lambda \cdot \vec{u}) = \lambda \cdot T(\vec{u}) = \lambda \cdot \vec{0}_W = \vec{0}_W$$
+
+            $\therefore \lambda \cdot \vec{u} \in \ker(T)$
+        \end{enumerate}
+        \item \begin{enumerate}
+            \item Como $T$ es lineal 
+
+            $$T(\vec{0}_V) = \vec{0}_W \Rightarrow \vec{0}_V \in \Im(T)$$
+            \item Sean $\vec{z}, \vec{w} \in  \Im(T)$. Veamos que $\vec{z} + \vec{w} \in \Im(T)$
+
+            Como $\vec{z}, \vec{w} \in \Im(T) \: \exists \: \vec{u}, \vec{v} \in V$ tal que
+
+            \begin{align*}
+                T(\vec{u}) = \vec{z} && \text{ y } && T(\vec{v}) = \vec{w}
+            \end{align*}
+            
+            Note que
+
+            $$T(\vec{u}+\vec{v}) = T(\vec{u})+T(\vec{v}) = \vec{z} + \vec{w} $$
+
+            $\therefore \vec{z} + \vec{w} \in \Im(T)$
+            
+            \item Sean $\vec{z} \in \Im(T)$ y $\lambda \in \K$. Veamos que $\lambda \cdot \vec{z} \in \Im(T)$
+
+            Como $\vec{z} \in \Im(T) \: \exists \: \vec{u} \in V$ tal que $T(\vec{u}) = \vec{z}$
+
+            Note que
+            $$T(\lambda \cdot \vec{v}) = \lambda \cdot T(\vec{v}) = \lambda \cdot \vec{z}$$
+        \end{enumerate}
+    \end{enumerate}
+    $\therefore \lambda \cdot \vec{z} \in \Im(T)$
+\end{proof}
+
+\begin{theorem} \label{theomonline2}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, $T : V \to W$ una transformación lineal, y $\beta \subseteq V$ una base de $V \Rightarrow T(\beta) = \{ T(\vec{v}) \mid \vec{v} \in \beta \}$ genera a $\Im(T)$
+\end{theorem}
+
+\begin{proof}
+    Sea $\vec{w} \in \Im(T) \Rightarrow \: \exists \: \vec{v} \in V$ tal que $T(\vec{v}) = \vec{w}$
+
+    Como $\vec{v} \in V$ y $\beta$ es base de $V \Rightarrow \: \exists \: \vec{v}_{1}, ..., \vec{v}_{k} \in \beta$ y $\lambda, ..., \lambda_k \in \K$ tal que 
+
+    $$\vec{v} = \sum_{i=1}^{k} \lambda_i \cdot \vec{v}_i$$
+
+    $$\Rightarrow \vec{w} = T(\vec{v}) = T\left(  \sum_{i=1}^{k} \lambda_i \cdot \vec{v}_i \right) =  \sum_{i=1}^{k} \lambda_i \cdot T(\vec{v}_i) $$
+
+    Pero entonces $\vec{w}$ es una combinación lineal de elementos de $T(\beta)$
+
+    $\therefore T(\beta)$ genera a $\Im(T)$
+\end{proof}
+
+\begin{theorem} [Teorema de la Dimensión] \label{theom216}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, $T : V \to W$ una transformación lineal $\Rightarrow$
+
+     $${\dim}_{\K}(V) = {\dim}_{\K}(\ker(T)) + {\dim}_{\K}(\Im(T))$$
+\end{theorem}
+
+\begin{proof}
+    Sea $\gamma = \{ \vec{v}_{1}, ..., \vec{v}_{k} \}$ una base de $\ker(T)$, extendamos $\gamma$ a $\beta = \{ \vec{v}_{1}, ..., \vec{v}_{k}, \vec{v}_{k+1}, ..., \vec{v}_{n} \} $ una base de $V$, esto por el \Cref{theomtarea5}. Veamos que $T(\beta \setminus \gamma) = \{T(\vec{v}_{k+1}), ..., T(\vec{v}_{n}) \}$ es base de $\Im(T)$.
+
+    Si $\vec{w} \in \Im(TI \Rightarrow \: \exists \: \vec{v} \in V$ tal que $T(\vec{v}) = \vec{w}$ Note ahora que podemos expresar a $\vec{v}$ como
+
+    $$\vec{v} = \sum_{i=1}^{n} \lambda_i \cdot \vec{v}_i = \sum_{i=1}^{k} \lambda_i \cdot \vec{v}_i + \sum_{i=k+1}^{n} \lambda_i \cdot \vec{v}_i$$
+    $$\Rightarrow T (\vec{v}) = T \left( \sum_{i=1}^{k} \lambda_i \cdot \vec{v}_i + \sum_{i=k+1}^{n} \lambda_i \cdot \vec{v}_i \right) = \sum_{i=1}^{k} \lambda_i \cdot T(\vec{v}_i) + \sum_{i=k+1}^{n} \lambda_i \cdot T(\vec{v}_i)$$
+    $$= \vec{0}_W + \sum_{i=k+1}^{n} \lambda_i \cdot T(\vec{v}_i)$$
+
+    $\therefore T(\beta \setminus \gamma)$ genera a $\Im(T)$
+
+    Ahora veamos que $T(\beta \setminus \gamma)$ es l.i.
+
+    Sea ${\eta}_{k+1}, ..., {\eta}_{n} \in \K$ tal que 
+    
+    $$\vec{0}_W = \sum_{j=k+1}^{n} \eta_j \cdot T(\vec{v}_{j}) \Rightarrow \vec{0}_W = T \left( \sum_{j=k+1}^{n} \eta_j \cdot \vec{v}_{j} \right)$$
+
+    Notemos que $ \sum_{j=k+1}^{n} \eta_j \cdot \vec{v}_{j} \in \ker(T) \Rightarrow$  es una combinación lineal de elementos de $\gamma$
+
+    $\Rightarrow \: \exists \: \alpha_1, ..., \alpha_k \in \K$ tal que 
+
+    $$ \sum_{j=k+1}^{n} \eta_j \cdot \vec{v}_{j} =  \sum_{j=1}^{k} \alpha_j \cdot \vec{v}_{j} \Rightarrow -  \sum_{j=1}^{k} \alpha_j \cdot \vec{v}_{j} + \sum_{j=k+1}^{n} \eta_j \cdot \vec{v}_{j} =  \vec{0}_V$$
+
+    Notemos ahora, que esta es una combinación lineal de elementos de $\beta$ que es igual a $\vec{0}_v$. Como $\beta$ es base $\forall \: j \in \{1, ..., n \}$ s.t.q. $\eta_j = \alpha_j = 0 $
+
+    $\therefore T(\beta \setminus \gamma)$ es l.i. y por ello es base de  $\Im(T)$
+
+    Se sigue entonces que ${\dim}_{\K}(V) = n $, $ {\dim}_{\K}(\ker(T)) = k $, y ${\dim}_{\K}(\Im(T)) = n-k$
+
+    $\therefore n = k + (n-k) \Rightarrow {\dim}_{\K}(V) = {\dim}_{\K}(\ker(T)) + {\dim}_{\K}(\Im(T))$
+\end{proof}
+
+\begin{theorem}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, $T : V \to W$ una transformación lineal $\Rightarrow T$ es inyectiva $\iff \ker(T) =  \{ \vec{0}_V \}$
+\end{theorem}
+
+\begin{proof}
+    $\Leftarrow$ Supongamos que $\ker(T) =  \{ \vec{0}_V \}$. Sean $\vec{u}, \vec{v} \in V$ tales que $T(\vec{u}) = T(\vec{v})$
+
+    $$\Rightarrow T(\vec{u}) - T(\vec{v}) = \vec{0}_W \Rightarrow T(\vec{u} - \vec{v}) = \vec{0}_W$$
+
+    $\Rightarrow \vec{u} - \vec{v} \in \ker(T)$. Como supusimos que $\ker(T) =  \{ \vec{0}_V \} \Rightarrow \vec{u} - \vec{v} = \vec{0}_V \Rightarrow \vec{u} = \vec{v}$ 
+
+    $\therefore T$ es inyectiva ya que $T(\vec{u}) = T(\vec{v}) \Rightarrow \vec{u} = \vec{v}$
+
+    $\Rightarrow$ Suongamos que $T$ es inyectiva. Sea $\vec{u} \in \ker(T)$
+
+    $\Rightarrow T(\vec{u}) = \vec{0}_W$ y $T(\vec{0}_V) = \vec{0}_W \Rightarrow T(\vec{u}) = T(\vec{0}_V)$ . Como $T$ es inyectiva s.t.q. $\vec{0}_V = \vec{u}$
+
+    $\therefore \ker(T) =  \{ \vec{0}_V \}$
+\end{proof}
+
+\begin{theorem} \label{theom219}
+     Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales de la misma $ {\dim}_{\K}(V) =  {\dim}_{\K}(W)$, $T : V \to W$ una transformación lineal. Entonces, se cumple lo siguiente
+
+     \begin{enumerate}
+         \item $T$ es inyectiva
+         \item $T$ es suprayectiva
+         \item $ {\dim}_{\K}(W) =  {\dim}_{\K}(\Im(T))$
+     \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    $T$ es inyectiva $\iff \ker(T) =  \{ \vec{0}_V \} \iff {\dim}_{\K}(\ker(T)) = 0 \iff  {\dim}_{\K}(V) = {\dim}_{\K}(\Im(T)) $ $\iff {\dim}_{\K}(W) = {\dim}_{\K}(V) = {\dim}_{\K}(\Im(T)) \iff \Im(T) = W \iff T$ es suprayectiva.
+
+    El penúltimo $\iff$ sucede por \Cref{theomtarea5}
+\end{proof}
+
+\begin{corollary}
+    Si dos funciones lineales $T$ y $R$ coinciden en los elementos de una base $\Rightarrow T = R$
+\end{corollary}
+
+\begin{theorem} \label{theomonline1}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales con $ {\dim}_{\K}(V) = n < \infty$, $\beta = \{ \vec{v}_{1}, ..., \vec{v}_{n} \}$ una base de $V$, y $\vec{w}_{1}, ..., \vec{w}_{n} \in W$ cualesquiera $n$ vectores en $W \Rightarrow \: \exists$ una única transformación lineal $T : V \to W$ tal que
+
+    $$T(\vec{v}_{i}) = \vec{w}_{i} \: \forall \: i \in \{1, ..., n \}$$
+\end{theorem}
+
+\begin{proof}
+    Sea $\vec{v} \in V$ y note que $\beta =  \{ \vec{v}_{1}, ..., \vec{v}_{n} \}$ es base de $V \Rightarrow \: \exists \: \lambda_1, ..., \lambda_n \in \K$ tales que
+
+    $$\vec{v} = \lambda_1 \vec{v}_{1} + ... + \lambda_n \vec{v}_{n}$$
+
+    Definimos a $T : V \to W \Rightarrow T(\vec{v}) = \lambda_1 \vec{w}_{1} + ... + \lambda_n \vec{w}_{n}$
+
+    Veamos que $T$ es lineal
+
+    Sean $\vec{u}, \vec{z} \in V$ y $\alpha \in \K \Rightarrow \exists \: \mu_1, ..., \mu_n $ y $\eta_1, ..., \eta_n \in \K$ tales que
+    \begin{align*}
+      \vec{u} = \mu_1 \vec{v}_{1} + ... + \mu_n \vec{v}_{n}  && \text{ y } && \vec{z} = \eta_1 \vec{v}_{1} + ... + \eta_n \vec{v}_{n}
+    \end{align*}
+
+    Note que 
+
+    $$\alpha \cdot \vec{u} + \vec{z} = (\alpha \cdot \mu_1 + \eta_1)\vec{v}_{1} + ... + (\alpha \cdot \mu_n + \eta_n)\vec{v}_{n}$$
+    $$\Rightarrow T (\alpha \cdot \vec{u} + \vec{z}) = (\alpha \cdot \mu_1 + \eta_1)\vec{w}_{1} + ... + (\alpha \cdot \mu_n + \eta_n)\vec{w}_{n}$$
+    $$= \alpha \cdot \mu_1 \vec{w}_{1} + ... + \alpha \cdot \mu_n \vec{w}_{n} + \eta_1 \vec{v}_{1} + ... + \eta_n \vec{w}_{n}$$
+    $$\Rightarrow \alpha (\mu_1 \vec{v}_{1} + ... + \mu_n \vec{w}_{n}) + T(\vec{z}) = \alpha \cdot T(\vec{u}) +  T(\vec{z}) =$$
+
+    $\therefore T$ es lineal
+
+    Note que es cierto que $T(\vec{v}_{i}) = \vec{w}_{i}$, ya que por como se definió $T$, tomando $\lambda = 1 \Rightarrow T(1 \cdot\vec{v}_{i}) = 1 \cdot \vec{w}_{i} \: \forall \: i \in \{1, ..., n \}$
+
+    Finalmente, veamos que $T$ es único. Supongamos, para generar una contradicción, otra transformación lineal $R : V \to W$ tal que $R(\vec{v}_{i}) = \vec{w}_{i}$. Pero por el corolario del \Cref{theom219}, $R = T$
+\end{proof}
+
+\begin{definition}[Base Ordenada]
+    Una base ordenada de un $\K$-espacio vectorial ($V, \oplus, \odot$) es una base que tiene un órden específico.
+\end{definition}
+
+\begin{eg}
+    En $V = \R^3$, podemos tener las siguientes bases ordenadas
+    \begin{align*}
+       \beta = \{ (0,1,0), (1,0,0), (0,0,1) \} && && \gamma = \{ (1,0,0), (0,1,0), (0,0,1) \}
+    \end{align*}
+
+    Cada una de ellas tiene un orden específico.
+    \begin{align*}
+       \xi = \{ (0,0,1), (1,0,0), (0,1,0) \} && && \varphi = \{ (3,0,0), (0,6,0), (0,0,4) \}
+    \end{align*}
+
+    También tienen un orden específico
+\end{eg}
+
+\begin{notation}
+    A partir de este momento en el manual, todas las bases serán bases ordenadas
+\end{notation}
+
+\section{Matriz Asociada}
+
+\begin{definition}[Vector Coordenado]
+    Sean ($V, \oplus, \odot$) un $\K$-espacio vectorial, $\beta =  \{ \vec{v}_{1}, ..., \vec{v}_{n} \}$ una base ordenada de $V$, y $\vec{v} \in V$ un elemento cualquiera.
+
+    El vector coordenado de $\vec{v}$ con respecto de la base $\beta$ se define como
+
+    $${\left[\vec{v} \right]}_{\beta} = \begin{bmatrix}
+\lambda_1 \\[2ex]
+\vdots\\[2ex]
+\lambda_n
+\end{bmatrix} \in \K^n$$
+
+donde $\lambda_1, ..., \lambda_n \in \K$ son los esclares tales que $\vec{v} = \sum_{i=1}^{n} \lambda_i \cdot \vec{v}_i $
+\end{definition}
+
+\begin{definition}[Matriz Asociada] \label{def226}
+    Sean ($V, \oplus, \odot$), ($W, \oplus, \odot$)  dos $\K$-espacios vectoriales, $\beta =  \{ \vec{v}_{1}, ..., \vec{v}_{n} \}$, $\gamma =  \{ \vec{w}_{1}, ..., \vec{w}_{n} \}$ bases ordenadas de $V$ y $W$ respectivamente, y $T : V \to W$ una transformación lineal.
+
+    La maatriz asociada a $T$ con respecto a las bases $\beta$ y $\gamma$ se define como
+
+    $${\left[ T \right]}_{\beta}^{\gamma} = \begin{bmatrix}
+    {a}_{11} & {a}_{12} & \cdots & {a}_{1j} & \cdots & {a}_{1n} \\[1ex]
+    {a}_{21} & {a}_{22} & \cdots & {a}_{2j} & \cdots & {a}_{2n} \\[1ex]
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\[1ex]
+    {a}_{m1} & {a}_{m2} & \cdots & {a}_{mj} & \cdots & {a}_{mn}
+    \end{bmatrix} \in M_{m \times n}$$
+
+    donde ${a}_{1j}, ..., {a}_{mj} \in \K$ son los únicos esclares que existen $\: \forall \: j \in \{ 1, ..., n \}$ tales que $T(\vec{v}_j) ) = \sum_{i=1}^{m}  {a}_{ij} \cdot \vec{w}_i$
+\end{definition}
+
+\begin{remark}
+    La $j$-ésima columna de ${\left[ T \right]}_{\beta}^{\gamma} $ es el vector coordenado ${\left[ T(\vec{v}_j) \right]}_{\beta}$
+\end{remark}
+
+\begin{definition}[Suma Directa]
+    Seaa ($V, \oplus, \odot$) un $\K$-espacio vectorial con $ {\dim}_{\K}(V) < \infty$ y $W_1, W_1 \leq V$. Diremos que $V$ es suma directa de $W_1$ y $W_2$ si ocurre lo siguiente
+    \begin{align*}
+        W_1 + W_2 = V && \text{ y } W_1 \cap W_2 = \vec{0}_V
+    \end{align*}
+\end{definition}
+
+\begin{notation}
+    Si $V$ es suma directa de $W_1$ y $W_2$ se denota $V = W_1 \oplus W_2$
+\end{notation}
+
+\begin{remark}
+    No hay que confundir la notación de $\oplus$ como suma directa, y como la suma definida en un espacio vectorial. Cuando se vea en operaciones se tratará de la suma directa. 
+\end{remark}
+
+\begin{corollary}
+    Todo espacio vectorial se puede escribir como la suma de dos subespacios. 
+\end{corollary}
+
+\begin{eg}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial de $ {\dim}_{\K}(V) < \infty$ y $T : V \to V$ una transformación lineal. Veamos que si $T^2 = (T \circ T) = T$ es idempotente 
+    $$\Rightarrow V = \ker(T) \oplus \Im(T)$$
+    Donde $V$ es la suma directa del nucleo e imagen de $T$
+\end{eg}
+
+\begin{proofexplanation}
+    Veamos que $\ker(T) \cap \Im(T) = \vec{0}_V$
+
+    Sea $\vec{v} \in \ker(T) \cap \Im(T) \Rightarrow \vec{v} \in \ker(T) $
+
+    $$T(\vec{v}) = \vec{0}_V \Rightarrow \: \exists \: \vec{u} \in V \backepsilon T(\vec{u} = \vec{v}$$
+    $$\Rightarrow T(T(\vec{u})) = T(\vec{v}) \Rightarrow T(\vec{u}) = T^2(\vec{u}) = \vec{0}_V = \vec{v}$$
+
+    Ahora veamos que si $\vec{u} \in \ker(T)$ y $\vec{r} \in \Im(T) \Rightarrow \: \forall \: \vec{v} \in V \Rightarrow \vec{v} = \vec{u}  + \vec{r} $
+
+    Sea $\vec{v} \in V $. Como $T : V \to V \Rightarrow T(\vec{v} ) \in \Im(T)$
+
+    Sea $\vec{w} = \vec{v} - T(\vec{v})$
+
+    $$T(\vec{w}) =  T(\vec{v} - T(\vec{v})) = T(\vec{v}) - T(\vec{v}) = \vec{0}_V$$
+
+    $\therefore \vec{w} \in \ker(T)$ Pero note que $\vec{v} = T(\vec{v}) + \vec{w} $, lo que cumple lo que queríamos probar.
+\end{proofexplanation}
+
+\begin{theorem}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) $\K$-espacios vectoriales. Si ${\dim}_{\K}(V) > {\dim}_{\K}(W) $ $\Rightarrow T$ no puede ser inyectiva.
+\end{theorem}
+
+\begin{proof}
+    Supongamos, para generar una contradicción, que ${\dim}_{\K}(V) > {\dim}_{\K}(W)$ y que $T$ es suprayectiva. Note entonces que ${\dim}_{\K}(\Im(T)) = {\dim}_{\K}(W)$. Por el \Cref{theom216} s.t.q.
+    
+    $${\dim}_{\K}(V) = {\dim}_{\K}(\Im(T)) + {\dim}_{\K}(\ker(T)) = {\dim}_{\K}(W) + {\dim}_{\K}(\ker(T)) > {\dim}_{\K}(W)$$
+
+    $\therefore T$ no puede ser suprayectiva, ni inyectiva.
+\end{proof}
+
+\begin{eg}
+    Sea $V = M_2(\R)$ el espacio de las matrices $2 \times 2$, y $W = P_2(\R)$, el espacio de los polinomios con grado $\leqslant 2$ dos $\R$-espacios vectoriales. Considere a $T : M_2(\R) \to P_2(\R)$ una transformación lineal definida por 
+
+    $$T\begin{pmatrix}
+    a & b \\
+    c & d
+    \end{pmatrix} = (a+b)x^2 + (c-d)x + (a+b+c-d)1$$
+
+    Y considere a las bases siguientes
+    \begin{align*}
+      \beta = \left\{ \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}, \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}\right\}  && \text{ y } && \gamma = \{ 1, 1+x, 1+x+x^2\}
+    \end{align*}
+
+    Veamos que $T$ es lineal, propongamos $\ker(T)$ e $\Im(T)$, y obtengamos ${\left[ T \right]}_{\beta}^{\gamma}$
+\end{eg}
+
+\begin{proofexplanation}
+    Sean $\textbf{A} = \begin{pmatrix} a_1 & b_1 \\ c_1 & d_1 \end{pmatrix}, \textbf{B} = \begin{pmatrix} a_2 & b_2 \\ c_2 & d_2 \end{pmatrix}$, y $\lambda \in \R$
+
+    $$T(\lambda \textbf{A} + \textbf{B}) = T \left( \lambda \begin{pmatrix} a_1 & b_1 \\ c_1 & d_1 \end{pmatrix} + \begin{pmatrix} a_2 & b_2 \\ c_2 & d_2 \end{pmatrix}\right) = T \begin{pmatrix} \lambda a_1 + a_2 & \lambda b_1 + b_2 \\ \lambda c_1 + c_2 & \lambda d_1 + d_2 \end{pmatrix}$$
+    $$=(\lambda a_1 + a_2 + \lambda b_1 + b_2)x^2 + (\lambda c_1 + c_2 - \lambda d_1 - d_2)x + \lambda a_1 + a_2 + \lambda b_1 + b_2 + \lambda c_1 + c_2 - \lambda d_1 - d_2$$
+    $$= \lambda \left[ (a_1+b_1)x^2 + (c_1-d_1)x +a_1+b_1 +c_1 - d_1 \right] + (a_2+b_2)x^2 + (c_2-d_2)x + a_2 + b_2 +c_2-d_2$$
+    $$\lambda \cdot T \begin{pmatrix} a_1 & b_1 \\ c_1 & d_1 \end{pmatrix} + T \begin{pmatrix} a_2 & b_2 \\ c_2 & d_2 \end{pmatrix} = \lambda \cdot T(\textbf{A}) + T(\textbf{B})$$
+
+    $\therefore T(\lambda \cdot \textbf{A} + \textbf{B}) = \lambda \cdot T(\textbf{A}) + T(\textbf{B})$
+
+    Ahora, sea $\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in M_2(\R)$. Queremos $T \begin{pmatrix} a & b \\ c & d \end{pmatrix} = 0$
+
+    $$\Rightarrow (a+b)x^2 + (c-d)x + (a+b+c-d) = 0$$
+    Por lo que se se tiene lo siguiente
+    \begin{align*}
+       a+b = 0 & & c-d = 0 & & a + b + c -d = 0 
+    \end{align*}
+    Esto implica que $b = -a$ y que $c = d$. Podemos deducir que el núcleo es
+
+    $$\ker(T) = \left\{ \begin{pmatrix} a & -a \\ c & c \end{pmatrix} \mid a,c \in \R \right\}$$
+
+    Una base de $\ker(T)$ es la siguiente, y notemos que tiene ${\dim}_{\R}(\ker(T)) = 2$
+
+    $$\beta_1 = \left\{ \begin{pmatrix} 1 & -1 \\ 0 & 0 \end{pmatrix}, \begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix} \right\}$$
+    
+    Ahora, por el \Cref{theom216} sabemos que ${\dim}_{\R}(M_2(\R)) = 4 = {\dim}_{\R}(\ker(T)) + {\dim}_{\R}(\Im(T))$. Como ${\dim}_{\R}(\ker(T)) = 2 \Rightarrow {\dim}_{\R}(\Im(T)) = 2$
+
+    Aplicando $T$ a $\beta$ la base de la imagen obtenemos lo siguiente
+    \begin{align*}
+       T \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} = x^2 + 1 && && T \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix} = 2x^2 + 2
+    \end{align*}
+    \begin{align*}
+       T \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix} = 2x^2 + x + 3 && && T \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix} = 2x^2 + 2
+    \end{align*}
+
+    $$\gamma_1 = \{ x^2 + 1, 2x^2 + x + 3\}$$
+
+    Y esta es una base de la $\Im(T)$ con ${\dim}_{\R}(\Im(T)) = 2$
+
+    $\therefore \Im(T) = \langle \gamma_1 \rangle$
+
+    Finalmente, obtengamos la matriz asociada ${\left[ T \right]}_{\beta}^{\gamma}$
+
+    Sea $f(x) = px^2 + qx + \xi$
+
+    $$px^2 + qx + \xi = \lambda(1) + \mu(1+x) +  \eta(1+x+x^2)$$
+
+    De esta ecuación es que sacaremos el vector coordenado $[px^2+qx+\xi]_\gamma$, expresaremos $\lambda, \mu, \eta$ los escalares de la combinación lineal en terminos de $p, q , \xi$
+    
+    $$\Rightarrow px^2 + qx + \xi  = \eta x^2 + (\eta + \mu)x + (\eta + \mu + \lambda)$$
+
+    Por lo que se se tiene lo siguiente
+    \begin{align*}
+       \eta = p & & q = \eta + \mu \Rightarrow \mu = q - p & &  \lambda + \eta  + \mu = \xi \Rightarrow \lambda = \xi - q
+    \end{align*}
+
+    $$[px^2+qx+\xi]_\gamma = \begin{bmatrix}
+    \lambda = \xi - q \\
+    \mu = q - p \\ 
+    \eta = p
+    \end{bmatrix}  $$
+
+    Se usan estos escalares con los polinomios obtenidos al aplicar la transformación lineal a $\beta$
+
+    $${\left[ T \right]}_{\beta}^{\gamma } = \begin{bmatrix}
+    1 &  2 & 2 & 2  \\
+    -1 &  -2 & -1 & -2  \\ 
+    1 &  2 & 2 &  2  
+    \end{bmatrix} $$
+
+\end{proofexplanation}
+
+\begin{notation}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales.
+
+    $$\mathscr{L}(V,W) = \{ T : V \to W \mid T \text{ es transformación lineal }  \}$$
+\end{notation}
+
+\begin{definition} \label{def218}
+    Sean $T, R \in \mathscr{L}(V,W) $ y $\lambda \in \K$. Definamos a
+    
+    \begin{align*}
+        (T+R) : V \to W \text{ como } (T+r)(\vec{v}) = T(\vec{v}) + R(\vec{v})
+    \end{align*}
+    \begin{align*}
+        (\lambda T) : V \to W \text{ por } (\lambda \cdot T)(\vec{v}) = \lambda \cdot T(\vec{v}) 
+    \end{align*}
+
+    a la suma de transformaciones lineales y producto por escalar de transformaciones lineales.
+\end{definition}
+
+\begin{theorem}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales $\Rightarrow$ s.t.q.
+
+    \begin{enumerate}
+        \item $\forall \: T, R \in \mathscr{L}(V,W) \Rightarrow T+ R \in \mathscr{L}(V,W) $
+        \item $\forall \: T \in \mathscr{L}(V,W)$ y $\forall \: \lambda \in \K \Rightarrow \lambda \cdot T \in \mathscr{L}(V,W) \: $
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Sean $ T, R \in \mathscr{L}$, $\eta \in \K$, y $\vec{v}, \vec{u} \in V$ elementos arbitrarios
+
+        Veamos que $(T+R)(\eta \vec{u} + \vec{v}) = \eta (T+R)(\vec{u}) + (T+R)(\vec{v})$
+
+        Por la \Cref{def218}, sabemos que 
+
+        $(T+R)(\eta \vec{u} + \vec{v}) = T(\eta \vec{u} + \vec{v}) + R(\eta \vec{u} + \vec{v})$
+
+        Y como $T, R \in \mathscr{L}(V,W)$ son lineales
+
+        $$\eta T(\vec{u}) + T(\vec{v}) + \eta R(\vec{u}) + R(\vec{v})  = \eta (T(\vec{u}) + R(\vec{u}) ) + T(\vec{v}) + R(\vec{v})$$
+
+        Una vez más, por \Cref{def218} s.t.q. que lo anterior es $\eta (T+R)(\vec{u}) + (T+R)(\vec{v})$
+
+        \item Sean $T \in \mathscr{L}(V,W)$, $\lambda, \eta \in \K$, y $\vec{v}, \vec{u} \in V$ cualesquiera
+
+        Veamos que $(\lambda \cdot T)(\eta \vec{u} + \vec{v}) = \eta (\lambda \cdot T)(\vec{u}) + (\lambda \cdot T)(\vec{v})$
+
+        $$ (\lambda \cdot T)(\eta \vec{u} + \vec{v})  = \lambda \cdot T(\eta \vec{u} + \vec{v}) $$
+        
+        Como $T \in \mathscr{L}(V,W)$ es lineal
+
+        $$ \lambda \cdot T(\eta \vec{u} + \vec{v}) = \lambda \cdot \eta \cdot T(\vec{u} ) + T(\vec{v} ) =  \eta (\lambda \cdot T)(\vec{u}) + (\lambda \cdot T)(\vec{v}) $$
+    \end{enumerate}
+
+    $\therefore$ las operaciones de la \Cref{def218} son lineales.
+\end{proof}
+
+\begin{theorem}
+     Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, $\beta = \{ \vec{v}_{1}, ..., \vec{v}_{n} \}$, y $\gamma = \{ \vec{w}_{1}, ..., \vec{w}_{n} \}$ bases de $V$ y $W$ respectivamente $\Rightarrow$
+
+     \begin{enumerate}
+         \item ${\left[ T + R\right]}_{\beta}^{\gamma} = {\left[ T \right]}_{\beta}^{\gamma} + {\left[ R \right]}_{\beta}^{\gamma}  $
+         \item ${\left[ \lambda \cdot T \right]}_{\beta}^{\gamma} = \lambda \cdot {\left[ T \right]}_{\beta}^{\gamma} $
+     \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+    \item  Sean $a_{ij}$ y $b_{ij}$ las $j$-ésimas columnas de las matrices $[T]_{\beta}^{\gamma}$ y $[R]_{\beta}^{\gamma}$, donde $i=\{1,2,...,m\}$ y $j=\{1,2,...,n\}$. Entonces $\forall \vec{v}_j \in \beta$ se tiene que  
+    
+    \begin{align*}
+        T(\vec{v}_j)=\sum_{i=1}^m a_{ij}\vec{w}_i && \text{ y } && R(\vec{v}_j)=\sum_{i=1}^m b_{ij}\vec{w}_i
+    \end{align*}
+    \[\Rightarrow (T+R)(\vec{v}_j)=\sum_{i=1}^m(a_{ij}+b_{ij})\vec{w}_i\] \[\Rightarrow ([T+R]_{\beta}^{\gamma})_{ij}=a_{ij}+b_{ij}=([T]_{\beta}^{\gamma}+[R]_{\beta}^{\gamma})_{ij}\]
+    \item Sea $([T]_{\beta}^{\gamma})_{ij}=\textbf{A}_{ij}$ \[\Rightarrow T(v_j)=\sum_{i=1}^m\textbf{A}_{ij} w_i\] \[\Rightarrow \lambda T(\vec{v}_j)=\sum_{i=1}^m \lambda \textbf{A}_{ij} w_i \ \text{donde} \ \lambda \in \K\] Esto implica que $(\lambda [T]_{\beta}^{\gamma})_{ij}=\lambda \textbf{A}_{ij} $
+\end{enumerate}
+    $\therefore [\lambda T]_{\beta}^{\gamma}=\lambda[T]_{\beta}^{\gamma}$
+\end{proof}
+
+\begin{theorem}
+    Sean ($V, \oplus, \odot$), ($W, \oplus, \odot$) y ($Z, \oplus, \odot$) tres $\K$-espacios vectoriales, y sean $T:V\to W$ y $R:W \to Z$ transformaciones lineales. Entonces $RT:V\to Z$ es lineal. 
+\end{theorem}
+
+\begin{proof}
+    Sean $\vec{v},\vec{u} \in V$ y $\lambda \in \K$. Se sigue entonces que 
+    
+    $$(RT)(\lambda \vec{v}+\vec{u}) = R(T(\lambda \vec{v}+\vec{u})) = R(\lambda T(\vec{v})+T(\vec{u}))$$
+    $$= \lambda R(T(\vec{v}))+R(T(\vec{u})) = \lambda(RT)(\vec{v})+(RT)(\vec{u})$$
+
+    $\therefore RT : V \to Z$ es lineal
+\end{proof}
+
+\begin{theorem}
+\label{teo211}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial, y $T,R,S \in \mathscr{L}(V,V) =  \mathscr{L}(V,V) \Rightarrow$ 
+    
+    \begin{enumerate}
+        \item $T(R+S)=TR+TS $ y $ (R+S)T=RT+ST$
+        \item $T(RS)=(TR)S$
+        \item $T\mathrm{I}=\mathrm{I}T=T$
+        \item $\forall \: \lambda \in \K \Rightarrow \lambda(RS)=(\lambda R)S=R(\lambda S)$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Sea $\vec{v} \in V$. 
+    
+    \begin{enumerate}
+        \item Se sigue que $[T(R+S)](\vec{v})=T[(R+S)(\vec{v})]$. Por las operaciones definidas para el espacio $\mathscr{L}(V)$, sabemos que $$T[R(\vec{v})+S(\vec{v})]=T(R(\vec{v}))+T(S(\vec{v}))=TR+TS$$ La demostración para $(R+S)T=RT+ST$ resulta ser sencilla.
+        \item Note que $$[T(RS)](\vec{v})=T[(RS)(\vec{v})]=T[R(S(\vec{v}))]=TR[S(\vec{v})]=[(TR)S](\vec{v})$$ 
+        
+        $\therefore T(RS)=(TR)S$.
+
+        \item Note que $$(T\mathrm{I})(\vec{v})=T(\mathrm{I}(\vec{v}))=T(\vec{v})=\mathrm{I}(T(\vec{v}))=(\mathrm{I}T)(\vec{v})$$ 
+
+        \item Se tiene que $$[\lambda(RS)](\vec{v})=\lambda[(RS)(\vec{v})]=\lambda[R(S(\vec{v}))]=(\lambda R)[S(\vec{v})]$$ Lo que implica que $\lambda(RS)=(\lambda R)S$, sin embargo, es evidente que $$[R(\lambda S)](\vec{v})=R[\lambda S(\vec{v})]=(\lambda R)[S(\vec{v})]$$ 
+        
+        $\therefore \lambda(RS)=(\lambda R)S=R(\lambda S)$
+    \end{enumerate}
+    $\therefore$ es verdadero el \Cref{theom211}
+\end{proof}
+
+
+\begin{definition} [Multiplicación de matrices]
+    Sean $M_{m\times n}(\K)$ y $M_{n \times p}(\K)$ los espacios vectoriales de las matrices con dimensión $m \times n$ y $n \times p$ con entradas del campo $\K$. Sea $\textbf{A} \in M_{m\times n}(\K)$ y $\textbf{B} \in M_{n\times p}(\K)$. 
+    
+    Definimos el producto de $\textbf{A}$ y $\textbf{B}$, denotado como $\textbf{AB}$, donde $\textbf{AB} \in M_{m \times p}(\K)$, como la operación
+    
+    $$(\textbf{AB})_{ij}=\sum_{k=1}^n \textbf{A}_{ik}\textbf{B}_{kj} $$ 
+
+    donde $i=\{1,2,...,m\}$ y $ p=\{1,2,...,p\}$
+    
+    Note que la entrada $(\textbf{AB})_{ij}$ es la suma de los productos de la $i$-ésima fila de la matriz $\textbf{A}$ y la $j$-ésima columna de la matriz $\textbf{B}$.
+\end{definition}
+
+\begin{notation}
+    El uso de las negritas en mayúsculas se usará para denotar matrices.
+\end{notation}
+
+\begin{theorem}
+\label{mat_asoc_comp}
+    Sean ($V, \oplus, \odot$), ($W, \oplus, \odot$) y ($Z, \oplus, \odot$) tres $\K$-espacios vectoriales, finitamente generados, con sus respectivas bases ordenadas $\alpha=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_n\}$, $\beta=\{\vec{w}_1,\vec{w}_2,...,\vec{w}_m\}$ y $\gamma=\{\vec{z}_1,\vec{z}_2,...,\vec{z}_p\}$. Sean $T:V \to W$ y $R:W \to Z$ dos transformaciones lineales $\Rightarrow$ $$[RT]_{\alpha}^{\gamma}=[R]_{\beta}^{\gamma}[T]_{\alpha}^{\beta}$$
+\end{theorem}
+
+\begin{proof}
+    Sean $\textbf{A}=[R]_{\beta}^{\gamma}$ y $\textbf{B}=[T]_{\alpha}^{\beta}$. Considere la matriz $\textbf{C}=\textbf{AB}=[RT]_{\alpha}^{\gamma}$. Entonces, para $j=\{1,2,...,n\}$ tenemos 
+
+    $$ (RT)(\vec{v})=R(T(\vec{v}_j))= R\left( \sum_{k=1}^m \textbf{B}_{kj}\vec{w}_k \right ) = \sum_{k=1}^m \textbf{B}_{kj} R(\vec{w}_k)$$
+    $$= \sum_{k=1}^m \textbf{B}_{kj} \left( \sum_{i=1}^p \textbf{A}_{ik} \vec{z}_i \right) = \sum_{i=1}^p \left(\sum_{k=1}^m \textbf{A}_{ik}\textbf{B}_{kj} \right) \vec{z}_i = \sum_{i=1}^p \textbf{C}_{ij}\vec{z}_i$$
+
+\end{proof}
+
+\begin{corollary}
+    Sea ($V, \oplus, \odot$) un $\K$-espacios vectorial, finitamente generado, sea $\beta$ una base ordenada de dicho espacio. Sean $T,R \in \mathscr{L}(V) \Rightarrow [RT]_{\alpha}^{\gamma}=[R]_{\beta}^{\gamma}[T]_{\alpha}^{\beta}$.
+\end{corollary}
+
+\begin{definition} [Delta de Kronecker]
+    Definimos a la delta de Kronecker 
+
+    $$\delta_{ij} = \begin{cases}
+        1 \text{ si } i = j \\
+        0 \text{ si } i \neq j
+    \end{cases}$$
+    
+    La matriz $\textbf{I}_{n} \in M_n(\R)$ es una matriz de con dimensión $n\times n$ cuyas entradas siguen la regla $(\textbf{I}_n)_{ij}=\delta_{ij}$.
+\end{definition}
+
+\begin{theorem}
+    \label{theom213fb}
+    Sean $\textbf{A} \in M_{m\times n}(\K)$ y $\textbf{B} \in M_{n \times p}(\K)$. $\forall \: j \in (1 \leqslant j \leqslant p)$, sean $u_j$ y $v_j$ las $j$-ésimas columnas de $\textbf{AB}$ y $\textbf{B}$, respectivamente. Entonces 
+    \begin{enumerate}
+        \item $u_j=\textbf{A}v_j$.
+        \item $v_j=\textbf{B}e_j$, donde $e_j$ es el $j$-ésimo vector estándar de $\K^p$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+
+\begin{enumerate}
+    \item Se tiene que $$u_j=\begin{bmatrix}
+        (\textbf{AB})_{1j} \\
+        (\textbf{AB})_{2j} \\
+        \vdots \\
+        (\textbf{AB})_{mj}
+    \end{bmatrix}=\begin{bmatrix}
+        \sum\limits_{k=1}^n \textbf{A}_{1k}\textbf{B}_{kj} \\
+        \sum\limits_{k=1}^n \textbf{A}_{2k}\textbf{B}_{kj} \\
+        \vdots \\
+        \sum\limits_{k=1}^n \textbf{A}_{mk}\textbf{B}_{kj}
+    \end{bmatrix}= \textbf{A } \begin{bmatrix}
+        \textbf{B}_{1j} \\
+        \textbf{B}_{2j} \\
+        \vdots \\
+        \textbf{B}_{mj}
+    \end{bmatrix}=\textbf{A}v_j $$
+    \item  Tenemos que $\textbf{B}e_j \in \K^m$, y sabemos que $(\textbf{B}e_j)_i=\sum\limits_{k=1}^n\textbf{B}_{ik}(e_j)_i=\textbf{B}_{ij}$, dado que $(e_j)_i=1$ solo cuando $i=j$, de otro modo $(e_j)_i=0$. 
+\end{enumerate}
+   $\therefore$ es verdadero el \Cref{theom213fb}
+\end{proof}
+
+\begin{theorem}
+\label{theom2014fb}
+   Sea ($V, \oplus, \odot$), ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, finitamente generados, con bases ordenadas $\beta$ y $\gamma$ respectivamente, y sea $T:V \to W$ una transformación $\Rightarrow \: \forall \: \vec{v} \in V$ s.t.q. 
+   
+   $$[T(\vec{v})]_{\gamma}=[T]_{\beta}^{\gamma}[\vec{v}]_{\beta}$$
+\end{theorem}
+
+\begin{proof}
+    Sea $\vec{v} \in V$ f.p.a, definimos $f:\K \to V$ con la regla de correspondencia $f(\lambda)=\lambda \vec{v}$ y $g:\K \to W$ con la regla de correspondencia $g(\lambda)=\lambda T(\vec{v})$, donde $\lambda \in \K$. 
+    
+    Sea $\alpha=\{1\}$ la base canónica, y ordenada, de $\K$. Note usted entonces que $g=Tf$. Usando el \Cref{mat_asoc_comp} obtenemos 
+    
+    $$[T(\vec{u})]_{\gamma}=[g(1)]_{\gamma}=[g]_{\alpha}^{\gamma}=[Tf]_{\alpha}^{\gamma}=[T]_{\beta}^{\gamma}[f]_{\alpha}^{\beta}=[T]_{\beta}^{\gamma}[f(1)]_{\beta}=[T]_{\beta}^{\gamma}[\vec{v}]_{\beta}$$
+
+    $\therefore [T(\vec{v})]_{\gamma}=[T]_{\beta}^{\gamma}[\vec{v}]_{\beta}$
+\end{proof}
+
+\begin{definition} [Multiplicación por la Izquierda]
+    Sea $\textbf{A} \in M_{m\times n}(\K)$. Definimos $L_{\textbf{A}}$ como la función $L_{\textbf{A}}:\K^n\to \K^m$ definida por $L_{\textbf{A}}(\vec{x})=\textbf{A}\vec{x} \: \forall \:\vec{x} \in \K^n$. Denotamos $L_{\textbf{A}}$ como la multiplicación por izquierda de la transformación.
+\end{definition}
+
+\begin{theorem} \label{theomlmm}
+    Sea $\textbf{A} \in M_{m\times n}(\K)$. Entonces $L_{\textbf{A}}:\K^n\to \K^m$ es una transformación lineal. Más aún, si $\textbf{B} \in M_{m \times n}(\K)$ y $\beta$ y $\gamma$ son las bases canónicas, y ordenadas, de $\K^n$ y $\K^m$, respectivamente, entonces se cumplen las siguientes propiedades:
+    \begin{enumerate}
+        \item $[L_{\textbf{A}}]_{\beta}^{\gamma}=\textbf{A}$.
+        \item $L_{\textbf{A}}=L_{\textbf{B}} \iff \textbf{A}=\textbf{B}$.
+        \item $\forall \: \lambda \in \K \Rightarrow L_{\textbf{A}+\textbf{B}}=L_{\textbf{A}}+L_{\textbf{B}}$ y $L_{\lambda \textbf{A}}=\lambda L_{\textbf{A}}$.
+        \item Si $T:\K^n \to \K^m$ es lineal $\Rightarrow \: \exists \: \textbf{C} \in M_{m\times n}(\K)$ tal que $T=L_{\textbf{C}}$, más aún $\textbf{C}=[T]^{\gamma}_{\beta}$.
+        \item Si $\textbf{E} \in M_{n \times p}(\K) \Rightarrow L_{\textbf{AE}}=L_{\textbf{A}} L_{\textbf{E}}$.
+        \item Si $m=n \Rightarrow L_{\textbf{I}_n}= \textbf{I}_{F^n}$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Veamos que se cumplen todos los incisos
+
+\begin{enumerate}
+    \item La $j$-ésima columna de la matriz $[L_{\textbf{A}}]_{\beta}^{\gamma}$ es igual a $L_{\textbf{A}}(e_j)$. Sin embargo, note  que $L_{\textbf{A}}(e_j)=Ae_j$, lo que implica que $e_j$ también es la $j$-ésima columna de $\textbf{A}$
+    
+    $\therefore [L_{\textbf{A}}]_{\beta}^{\gamma}=\textbf{A}$.
+    \item Por el inciso anterior, podemos entonces decir que $[L_{\textbf{A}}]_{\beta}^{\gamma}=\textbf{A}$ y $[L_{\textbf{B}}]_{\beta}^{\gamma}=\textbf{B} \Rightarrow \textbf{A}=\textbf{B}$. El regreso es trivial.
+    \item Ya demostramos que ${[L_{\textbf{A}}]}_{\beta}^{\gamma} = B$ y que $L_{\textbf{A}} = L_{\textbf{B}} \iff \textbf{A} = \textbf{B} \Rightarrow$, por lo primero, sabemos que
+    $$ {[L_{\lambda A + B}]}_{\beta}^{\gamma} = \lambda \textbf{A} + \textbf{B}$$
+    Además
+    $${[\lambda \textbf{A} + \textbf{B}]}_{\beta}^{\gamma} =  \lambda {[L_{\textbf{A}}]}_{\beta}^{\gamma} +  {[L_{\textbf{B}}]}_{\beta}^{\gamma} = \lambda \textbf{A} + \textbf{B}$$
+    Del segundo inciso
+    $$L_{\lambda \textbf{A} + \textbf{B}} = \lambda L_{\textbf{A}} + L_{\textbf{B}}$$
+    \item Sea $\textbf{C}=[T]_{\beta}^{\gamma}$. Por el  \Cref{theom2014fb} tenemos que $[T(\vec{v})]_{\gamma}=[T]_{\beta}^{\gamma}[\vec{v}]_{\beta}$. O también que $T(\vec{v})=\textbf{C}\vec{v}=L_{\textbf{C}}(\vec{v}) \: \forall \: \vec{v} \in \K^n$. La unicidad de $\textbf{C}$ se sigue del segundo inciso.
+    \item $\forall \: j \in {1,2,...,p}$, usamos el  \Cref{theom213} varias veces para notar que $(\textbf{AE})_{ej}$ es la j-ésima columna de $\textbf{AE}$ y que esta es igual a $\textbf{A}({\textbf{E}}_{e_j})$. Entonces $(\textbf{AE})_{e_j}=\textbf{A}({\textbf{E}}_{ej}) \Rightarrow$ 
+    
+    $$L_{\textbf{AE}}(e_j)=(\textbf{AE})_{ej}=\textbf{A}({\textbf{E}}_{e_j})=L_{\textbf{A}}({\textbf{E}}_{e_j}=L_{\textbf{A}}(L_{\textbf{E}}(e_j))$$ 
+    
+     $\therefore L_{\textbf{AE}}=L_{\textbf{A}}L_{\textbf{E}}$ por el  \Cref{theomonline1}. 
+     \item $\forall \: \vec{x} \in \K^n$ tenemos que $L_{\textbf{I}_n}(\vec{x})={\textbf{I}}_{n}(\vec{x})=\vec{x}$
+\end{enumerate}
+    $\therefore$ se cumplen todos los enunciados de \Cref{theomlmm}
+\end{proof}
+
+
+
+\section{Invertibilidad}
+
+\begin{definition} [Invertible] \label{trans_inv}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$)  dos $\K$-espacios vectoriales, y $T : V \to W$ una trasnformación lineal. Se dice que $T$ es invertible si $\exists \: {T}^{-1} : W \to V$ tal que 
+
+    \begin{align*}
+      {T}^{-1} T : V \to V  && \text{ y } && T{T}^{-1}  : W \to W
+    \end{align*}
+    \begin{align*}
+      ({T}^{-1} T ) (\vec{v}) = \vec{v} \: \forall \: \vec{v} \in V && \text{ y } && (T{T}^{-1})(\vec{w}) = \vec{w} \: \forall \: \vec{w} \in W
+    \end{align*}
+
+    Es decir que ${T}^{-1} T = \mathrm{Id}_V$ y $ T {T}^{-1}  = \mathrm{Id}_W$ 
+\end{definition}
+
+\begin{definition} [Matriz Inversa ]\label{mat_inv}
+      Sea $\textbf{A} \in M_{n}(\K) \Rightarrow \textbf{A}$ es invertible si $\exists \: \textbf{B} \in M_{n}(\K)$ tal que $\textbf{AB}=\textbf{BA}={\textbf{I}}_{n}$. La matriz $\textbf{B}$ se llama la inversa de $\textbf{A}$ y se denota como ${\textbf{A}}^{-1}$. 
+\end{definition}
+
+\begin{lemma} \label{lema211}
+    Si $T : V \to W$ es invertible $\Rightarrow V$ es de dimensión finita $\iff W$ es de dimensión finita. En este caso ${\dim}_{\K}(V) = {\dim}_{\K}(W)$
+\end{lemma}
+
+\begin{proof}
+    $\Rightarrow$ Suponga que $V$ es de dimensión finita, y sea $\beta=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_n\}$ una base ordenada de $V$. Por el \Cref{theomonline2} sabemos que $\langle T(\beta) \rangle = \Im(T)=W$, por lo tanto (por el \Cref{teo118}) $dim_{\K}(W)<\infty$. 
+    
+    $\Leftarrow$ Si $\dim_{\K}(W) < \infty$, entonces la prueba es análoga a la ida, solo que utilizando $T^{-1}$ con una base de $W$. Suponga que $V$ y $W$ son de dimensión finita, como $T$ es invertible ($T$ es inyectiva y sobreyectiva), entonces $$\dim_{\K}(\ker(T))=0 \ \text{y} \ \dim_{\K}(\Im(T))=\dim_{\K}(W)$$ Por el Teorema \ref{theom216} se sigue entonces que $\dim_{\K}(V)=\dim_{\K}(W)$. 
+\end{proof}
+
+\begin{theorem} \label{theomostro}
+    Si $T : V \to W$ es un transformación lineal, $\beta = \{ \vec{v}_{1}, ..., \vec{v}_{n} \}$, $\gamma = \{ \vec{w}_{1}, ..., \vec{w}_{n} \}$ bases de $V$ y $W$ respectivamente $\Rightarrow T$ es invertible $\iff {[T]}_{\beta}^{\gamma}$ es invertible. Más aún
+
+    $${\left( {[T]}_{\beta}^{\gamma} \right)}^{-1} = {\left[{T}^{-1} \right]}_{\gamma}^{\beta}$$
+
+    como se define en \Cref{def226}
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ Supongamos que $T$ es invertible. Por el \Cref{lema211}, tenemos que $\dim_{\K}(V)=\dim_{\K}(W)$. Sea $n=\dim_{\K}(V)=\dim_{\K}(W)$. Se sigue entonces que $[T]_{\beta}^{\gamma} \in M_{n}(\K)$. Por la \Cref{trans_inv} sabemos que $TT^{-1}=\mathrm{I}_W $ y $ T^{-1}T=\mathrm{I}_V \Rightarrow$     
+    $$ {\textbf{I}}_{n}=[\mathrm{I_V}]_{\beta}=[T^{-1}T]_{\beta}=[T^{-1}]_{\gamma}^{\beta} [T]_{\beta}^{\gamma}$$ 
+    
+    Note, también, que 
+    $${\textbf{I}}_{n}=[\mathrm{I_W}]_{\gamma}=[TT^{-1}]_{\gamma}=[T]_{\beta}^{\gamma} [T^{-1}]_{\gamma}^{\beta}$$ 
+    
+    Esto implica, por la  \Cref{mat_inv}, que $[T]_{\beta}^{\gamma}$ es invertible y que $[T^{-1}]_{\gamma}^{\beta}=([T]_{\beta}^{\gamma})^{-1}$. 
+    
+    $\Leftarrow$ Supongamos que $\textbf{A}=[T]_{\beta}^{\gamma}$ es invertible $\Rightarrow \: \exists \: \textbf{B} \in M_n(\K)$ tal que $\textbf{AB}=\textbf{BA}={\textbf{I}}_{n}$. Por el \Cref{theomonline1} $\exists \: R \in \mathscr{L}(W,V)$ tal que $\forall \:  j=\{1,2,...,n\}$
+    $$R(\vec{w}_j)=\sum_{i=1}^nB_{ij}\vec{v}_i \ $$ 
+    Donde $\gamma=\{\vec{w}_1,\vec{w}_2,...,\vec{w}_n\}$ y $\beta=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_n\}$. Esto implica que $B=[R]_{\gamma}^{\beta}$. Note usted, por el \Cref{mat_asoc_comp} que 
+    $$[RT]_{\beta}=[R]_{\gamma}^{\beta}[T]_{\beta}^{\gamma}=\textbf{BA}={\textbf{I}}_{n}=[\mathrm{I}_V]_\beta$$ 
+    y que 
+    $$[TR]_{\gamma}=[T]_{\beta}^{\gamma}[R]_{\gamma}^{\beta}=\textbf{AB}={\textbf{I}}_{n}=[\mathrm{I}_W]_\gamma$$ 
+    
+    $\therefore R=T^{-1}$, dado que se cumple $RT=\mathrm{I}_V $ y $ TR=\mathrm{I}_W$. 
+\end{proof}
+
+\begin{corollary}
+    Sea $V$ un espacio vectorial, finitamente generado, sobre un campo $\K$, con una base ordenada $\beta$, y sea $T:V\to V$ una transformación lineal. Entonces $T$ es invertible $\iff [T]_{\beta}$ es invertible. Más aún, $[T^{-1}]_{\beta}=\left([T]_{\beta}\right)^{-1}$.  
+\end{corollary}
+
+\begin{orangeproof}
+    Suponga que $V=W$ y $\beta=\gamma$, entonces la prueba es obvia dado el \Cref{theomostro}.
+\end{orangeproof}
+
+\begin{corollary}
+    Sea $B \in M_n(\K) \Rightarrow B$ es invertible $\iff {L}_{\textbf{A}}$ es invertible. Más aún, $L_{{\textbf{A}}^{-1}}=(L_{\textbf{A}})^{-1}$. 
+\end{corollary}
+
+\begin{orangeproof}
+    Dado el corolario anterior, si se toma $V=\K^n$, se sigue del \Cref{theomostro}.
+\end{orangeproof}
+
+\begin{theorem}
+    Sean $\textbf{A}, \textbf{B} \in M_n(\K)$ matrices invertibles $\Rightarrow$ $\textbf{AB}$ es invertible y $(\textbf{AB})^{-1}={\textbf{B}}^{-1}{\textbf{A}}^{-1}$.
+\end{theorem}
+
+\begin{proof}
+    Como $\textbf{A}$ y $\textbf{B}$ son invertibles $\exists \: {\textbf{A}}^{-1} $ y $ {\textbf{B}}^{-1}$ tales que 
+    \begin{align*}
+      \textbf{A}{\textbf{A}}^{-1}={\textbf{A}}^{-1}\textbf{A}={\textbf{I}}_{n}  && \text{ y } && \textbf{B}{\textbf{B}}^{-1}={\textbf{B}}^{-1}\textbf{B}={\textbf{I}}_{n}
+    \end{align*}
+     $$\Rightarrow ({\textbf{B}}^{-1}{\textbf{A}}^{-1})(\textbf{AB})={\textbf{B}}^{-1}{\textbf{A}}^{-1}\textbf{AB}={\textbf{B}}^{-1}{\textbf{I}}_{n}\textbf{B}={\textbf{B}}^{-1}\textbf{B}={\textbf{I}}_{n}$$
+    $$\Rightarrow (\textbf{AB})({\textbf{B}}^{-1}{\textbf{A}}^{-1})=\textbf{AB}{\textbf{B}}^{-1}{\textbf{A}}^{-1}={\textbf{A}}^{-1}{\textbf{I}}_{n}\textbf{A}={\textbf{A}}^{-1}\textbf{A}={\textbf{I}}_{n}$$ 
+    
+    $\therefore ({\textbf{B}}^{-1}{\textbf{A}}^{-1})(\textbf{AB})=(\textbf{AB})({\textbf{B}}^{-1}{\textbf{A}}^{-1})={\textbf{I}}_{n}$
+\end{proof}
+
+\begin{theorem} \label{theom2221}
+    Sean $\textbf{A},\textbf{B},\textbf{O} \in M_n(\K) \Rightarrow$ se cumple lo siguiente 
+    
+    \begin{enumerate}
+        \item Si ${\textbf{A}}^2=\textbf{O} \Rightarrow \textbf{A}$ no es invertible.
+        \item Si $\textbf{AB}=\textbf{O}$ y $\textbf{B}$ es una matriz con entradas distintas de cero, $\textbf{A}$ no puede ser invertible.
+    \end{enumerate} 
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+    \item Suponga que $\textbf{A}$ es invertible $\Rightarrow \: \exists \: {\textbf{A}}^{-1} $ tal que $ \textbf{A}^2{\textbf{A}}^{-1}=\textbf{O}{\textbf{A}}^{-1} \Rightarrow \textbf{A}(\textbf{A}{\textbf{A}}^{-1})=\textbf{O} \Rightarrow \textbf{A}=\textbf{O}$, lo que contradice que $\textbf{O}$ no es invertible
+    
+    $\therefore \textbf{A}$ no es invertible.
+
+    \item Suponga que $\textbf{A}$ es inveritble $\Rightarrow \: \exists\:  {\textbf{A}}^{-1}$ tal que $\textbf{B}=({\textbf{A}}^{-1}\textbf{A})\textbf{B}={\textbf{A}}^{-1}(\textbf{AB})={\textbf{A}}^{-1}\textbf{O}=\textbf{O}$, lo que contradice la hipótesis de que $\textbf{B}$ es una matriz con entradas distintas al cero
+    
+    $\therefore \textbf{A}$ no es invertible. 
+\end{enumerate}
+ $\therefore$ se cumple el \Cref{theom2221}
+\end{proof}
+
+
+\begin{eg}
+    Tomemos los espacios vectoriales
+    \begin{align*}
+      V = \R^2 && \text{ y } && W = \mathrm{P}_1 [\R] = \{ ax + b \mid a,b \in \R \}
+    \end{align*}
+    Con las bases correspondientes 
+    \begin{align*}
+     \beta = \{ (1,0), (0,1) \} && \gamma = \{ 1, x \}
+    \end{align*}
+    Tomemos la transformación lineal
+    $$T(p,q) = (p + 2q)x + 3p$$
+    Veamos que $T$ es invertible. 
+    \end{eg}
+
+\begin{proofexplanation}
+    
+Note que ${[T]}_{\beta}^{\gamma} = \begin{bmatrix}
+    3 & 0 \\
+    1 & 2
+    \end{bmatrix}$
+
+    Esto porque $T(0,1) = 2x$ y $T(1,0) = x + 3$
+    $$\left[ \begin{array}{cc|cc}
+     3 & 0 & 1 & 0  \\
+    1 & 2 & 0 & 1 
+\end{array} \right] \sim \left[ \begin{array}{cc|cc}
+    1 & 2 & 0 & 1  \\
+    3 & 0 & 1 & 0 
+\end{array} \right] \sim  \left[  \begin{array}{cc|cc}
+    1 & 2 & 0 & 1  \\
+    0 & -6 & 1 & -3 
+\end{array}\right]$$
+    $$ \sim \left[ \begin{array}{cc|cc}
+    1 & 2 & 0 & 1  \\
+    0 & 1 & - \frac{1}{6} & \frac{1}{2}
+\end{array}\right]  \sim \left[  \begin{array}{cc|cc}
+    1 & 0 & \frac{1}{3} & 0 \\
+    0 & 1 & - \frac{1}{6} & \frac{1}{2}
+\end{array} \right] $$
+    $$ {[T]}_{\beta}^{\gamma} = A =  \begin{bmatrix}
+    3 & 0   \\
+    1 & 2 
+    \end{bmatrix} \iff {A}^{-1} = \begin{bmatrix}
+    \frac{1}{3} &  0 \\
+    - \frac{1}{6} & \frac{1}{2}
+    \end{bmatrix} = {\left[{T}^{-1} \right]}_{\gamma}^{\beta} $$
+    $${\left[{T}^{-1} (1) \right]}_{\beta} = \begin{bmatrix}
+    \frac{1}{3} \\
+    - \frac{1}{6} 
+    \end{bmatrix} \Rightarrow T^{-1} (1) = \left( \frac{1}{3}, - \frac{1}{6}\right)$$
+    $${\left[{T}^{-1} (x) \right]}_{\beta} = \begin{bmatrix}
+    0 \\
+     \frac{1}{2} 
+    \end{bmatrix} \Rightarrow T^{-1} (x) = \left( 0,  \frac{1}{2}\right)$$
+    $${T}^{-1}(ax+b) = a {T}^{-1} (x) + b {T}^{-1} (1) = a  \left( 0,  \frac{1}{2}\right) + b \left( \frac{1}{3}, - \frac{1}{6}\right)$$
+    $${T}^{-1}(ax+b) = \left( \frac{b}{3} , \frac{a}{2}, - \frac{b}{6} \right) \Rightarrow T(p,q) = (p + 2q)x + 3p$$
+    $$({T}^{-1} T ) (p,q) = {T}^{-1} (T(p,q)) = {T}^{-1} ((p + 2q)x + 3p)$$
+    $$ = \left( \frac{1}{3} [3p], \frac{1}{2}[p+2q]-\frac{1}{6}[3p] \right) = (p,q)$$
+\end{proofexplanation}
+
+\section{Isomorfismos}
+
+\begin{definition} [Isomorfismo]
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$)  dos $\K$-espacios vectoriales. Decimos que $V$ es isomorfo a $W$ si existe una ytransformación lineal invertible $T : V \to W$. En este caso a $T$ se le llama isomorfismo 
+\end{definition}
+
+\begin{notation}
+    En este caso, decimos que $V$ es isomorfo a $W$, y se denota $V \approx W \Rightarrow W \approx V$
+\end{notation}
+
+\begin{theorem} \label{theomonline3}
+     Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$)  dos $\K$-espacios vectoriales de dimensión finita $\Rightarrow V \approx W \iff {\dim}_{\K}(V) = {\dim}_{\K}(W)$
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ Supongamos que $V \approx W \Rightarrow \: \exists \: T : V \to W$ invertible. Por \Cref{lema211} 
+
+    $${\dim}_{\K}(V) = {\dim}_{\K}(W)$$
+
+    $\Leftarrow$ Supongamos que ${\dim}_{\K}(V) = {\dim}_{\K}(W) \Rightarrow$ sean $\beta = \{ \vec{v}_{1}, .., \vec{v}_{n} \}$ y $\gamma = \{ \vec{w}_{1}, .., \vec{w}_{n} \}$ bases de $V$ y $W$
+
+    Por el \Cref{theomonline1} $\exists$ una única transformación lineal $T : V \to W$ tal que
+
+    $$T(\vec{v}_{i}) = \vec{w}_{i} \: \forall \: i \in \{ 1, .., n \}$$
+
+    Veamos que $T$ es un isomorfismo. Basta ver que $T$ es suprayectiva. 
+
+    Sea $\vec{w} \in W$. Como $\gamma$ es base de $W \: \exists \: \lambda_1, ..., \lambda_n \in \K$ tales que 
+
+    $$\vec{w} = {\lambda}_{1}{\vec{w}}_{1} +... + {\lambda}_{n}{\vec{w}}_{n}$$
+    $$\Rightarrow \vec{w} = {\lambda}_{1} T({\vec{v}}_{1}) + ... + {\lambda}_{n} T({\vec{v}}_{n})$$
+    $$\Rightarrow \vec{w} = T({\lambda}_{1}{\vec{v}}_{1} +... + {\lambda}_{n}{\vec{v}}_{n})$$
+
+    Así, $T$ es suprayectiva $\Rightarrow T$ es biyectiva, ya que ${\dim}_{\K}(V) = {\dim}_{\K}(W) \Rightarrow T$ es invertible $\Rightarrow T$ es un isomorfismo.
+\end{proof}
+
+\begin{corollary}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial $\Rightarrow  V \approx \K^n \iff {\dim}_{\K}(V) = n $
+\end{corollary}
+
+\begin{orangeproof}
+    Sea $W = \K^n \Rightarrow {\dim}_{\K}(W) = n$. Por el \Cref{theomonline3} ${\dim}_{\K}(V) = n$
+\end{orangeproof}
+
+\begin{theorem} \label{theom2223}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales con $ {\dim}_{\K}(V) = n$ y $ {\dim}_{\K}(W) = m$, con $\beta = \{ \vec{v}_{1}, .., \vec{v}_{n} \}$ y $\gamma = \{ \vec{w}_{1}, .., \vec{w}_{n} \}$ bases de $V$ y $W$ respectivamente $\Rightarrow$ la función $\Phi : \mathcal{L}(V,W) \to M_{m \times n} (\K)$ dada por 
+
+    $$\Phi(T) = {[T]}_{\beta}^{\gamma}$$
+
+    es un isomorfismo
+\end{theorem}
+
+\begin{proof}
+    Recordemos que $\mathcal{L}(V,W) = \{ T : V \to W \mid T \text{ es lineal } \}$ tiene definida la operación de suma y de multiplicación por escalares. 
+
+    Para ver que $\Phi$ es isomorfismo veamos
+
+    \begin{enumerate}
+        \item $\Phi$ es lineal. Sean $T, R \in \mathcal{L}(V,W)$ y $\lambda \in \K$
+
+        $$\Phi(\lambda T+R) = {[\lambda T+R]}_{\beta}^{\gamma} = \lambda {[T]}_{\beta}^{\gamma} + {[R]}_{\beta}^{\gamma} = \lambda \Phi(T)+ \Phi(R)$$
+
+        \item $\Phi$ es biyectiva. Sea $A \in M_{m \times n} (\K)$. Veamos que $\exists \: T \in \mathcal{L}(V,W)$ tal que $\Phi(T) = A$
+        
+        $$ {[T]}_{\beta}^{\gamma} = \left(  {[T(\vec{v}_{1})]}_{\gamma}  \right)$$
+
+        $$A = \begin{bmatrix}
+    {a}_{11} & {a}_{12} & \cdots & {a}_{1j} & \cdots & {a}_{1n} \\[1ex]
+    {a}_{21} & {a}_{22} & \cdots & {a}_{2j} & \cdots & {a}_{2n} \\[1ex]
+    \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\[1ex]
+    {a}_{m1} & {a}_{m2} & \cdots & {a}_{mj} & \cdots & {a}_{mn}
+    \end{bmatrix}$$
+
+    Sea ${\vec{z}}_{j} = \sum_{i=1}^{m} a_{ij}{\vec{w}}_{i} \in W$, $\forall \: j \in \{1, ..., n \}$
+
+    Por el \Cref{theomonline1} $\exists$ una única transformación lineal $T : V \to W$ tal que
+
+    $$T(\vec{v}_{j}) = \vec{z}_{j} \: \forall \: j \in \{ 1, .., n \}$$
+
+    Como ${[T]}_{\beta}^{\gamma} = A \Rightarrow \Phi(T) = {[T]}_{\beta}^{\gamma} = A $
+    \end{enumerate}
+    $\therefore \Phi$ es un isomorfismo
+\end{proof}
+
+\begin{corollary}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, finitamente generados, donde $\dim_{\K}(V)=n$ y $\dim_{\K}(W)=m \Rightarrow \dim_{\K}(\mathscr{L}(V,W))=m\cdot n < \infty$
+\end{corollary}
+
+\begin{orangeproof}
+    Se sigue del \Cref{theom2223}, al ver que $\Phi$ es un isomorfismom y del  \Cref{theomonline3}, por el hecho de que un isomorfismo implica la igualdad de dimensiones entre el dominio y codominio de la transformación. 
+\end{orangeproof}
+
+\begin{theorem}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, finitamente generados, $T: V \to W$ una transformación lineal y $\beta$ una base ordenada de $V \Rightarrow T$ es un isomorfismo $\iff  T(\beta)$ es una base de $W$.
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ Sea $\beta = \{\vec{v}_1,\vec{v}_2,...,\vec{v}_n\}$. Como $T$ es sobreyectiva, s.t.q $\langle T(\beta) \rangle = W$. Como $T$ es inyectiva $\ker(T)=\{\vec{0}_V\}$, como $\vec{0}_V \in V \Rightarrow \: \exists \: \lambda_1,\lambda_2,...,\lambda_n \in \K$ tales que
+    $$\vec{0}_V=\sum_{i=1}^n \lambda_i \vec{v}_i$$ 
+    donde $\lambda_1=\lambda_2=...=\lambda_n=0 \Rightarrow$
+
+    $$T\left(\sum_{i=1}^n \vec{v_i}\right)=\sum_{i=1}^n \lambda_i T(\vec{v}_i)=\vec{0}_W$$
+    
+    $\therefore T(\beta)$ es l.i.
+    
+    $\Leftarrow$ Sea $T(\beta)$ base de $W \Rightarrow W=\Im(T) \Rightarrow T$ es sobreyectiva $\Rightarrow T$ es inyectiva. 
+    
+    $\therefore T$ es un isomorfismo
+\end{proof}
+
+\begin{theorem} \label{tareatheom6}
+    Sean ($V, \oplus, \odot$) y ($W, \oplus, \odot$) dos $\K$-espacios vectoriales, finitamente generados, $T:V \to W$ un isomorfismo y $Z \leq V $ un subespacio $ \Rightarrow$
+    \begin{enumerate}
+        \item $T(Z) \leq W$
+        \item $\dim_{\K}(Z)=\dim_{\K}(T(Z))$
+    \end{enumerate} 
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+Veamos que se cumplen ambos inciso
+    \item Sean $\vec{w}_1,\vec{w}_2 \in T(Z) \Rightarrow \: \exists \: \vec{v}_1,\vec{v}_2 \in Z$ tales que $T(\vec{v}_1)=\vec{w}_1 $ y $ T(\vec{v}_2)=\vec{w}_2 \Rightarrow$
+    $$T(\vec{v}_1+\vec{v}_2)=T(\vec{v}_1)+T(\vec{v}_2)=\vec{w}_1+\vec{w}_2 \in T(Z)$$
+
+    Ahora, para $\lambda \in \K$, tenemos que
+
+    $$\lambda \vec{v}_1 \in Z \Rightarrow T(\lambda \vec{v}_1)=\lambda T(\vec{v}_1)=\lambda \vec{w}_1 \in T(Z)$$
+
+    Por último, como $Z \leq V \Rightarrow \vec{0}_V \in Z \Rightarrow T(\vec{0}_V)=\vec{0}_w \in T(Z) $ 
+    
+    $\therefore T(Z) \leq W$
+
+    \item Sea ${T}^{\prime}:Z \to W$ una transformación lineal definida como ${T}^{\prime}(\vec{v})=T(\vec{v}) \: \forall \: \vec{v} \in Z \Rightarrow {T}^{\prime}$ es inyectiva, dado que $\ker(T)=\{\vec{0}_V\} $ y $ \vec{0}_V=\vec{0}_{Z} \in Z \cap V \Rightarrow {T}^{\prime}$ es un isomorfismo (por Teorema de equivalencia demostrado en clase), más aún, por el \Cref{theom216} 
+    
+    $$\dim_{\K}(Z)=\dim_{\K}(\Im(T))=\dim_{\K}(T(Z))$$
+\end{enumerate}
+ $\therefore$ el \Cref{tareatheom6} es cierto.
+ \end{proof}
+
+\begin{definition} [Representación Estándar]
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial, donde $\dim_{\K}(V)=n$, y sea $\beta$ una base ordenada. Denotamos a la función $\Phi_{\beta}:V\to \K^n$ definida mediante la regla de correspondencia 
+    
+    $$\Phi_{\beta}(\vec{v})=[\vec{v}]_{\beta} $$
+    
+    $ \forall \: \vec{v} \in V$, como la representación estándar de $V$ con respecto a $\beta$
+\end{definition}
+
+\begin{theorem}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial, finitamente generado, con una base ordenada $\beta \Rightarrow \Phi_{\beta}$ es un isomorfismo. 
+\end{theorem}
+
+\begin{proof}
+    Para ver que $\Phi_{\beta}$ es isomorfismo veamos
+
+    \begin{enumerate}
+        \item $\Phi_{\beta}$ es lineal. 
+        
+        Sean $\vec{u},\vec{z} \in V$, y $\beta=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_n\} \Rightarrow \: \exists \: \lambda_1,\lambda_2,...,\lambda_n$ y $\mu_1,\mu_2,...,\mu_n \in \K$ tales que 
+        
+        \begin{align*}
+            \vec{u}=\sum_{i=1}^n\lambda_i\vec{v}_i && \text{ y } && \vec{z}=\sum_{i=1}^n\mu_i \vec{v}_i
+        \end{align*}
+        
+        Sea $\eta \in \K$, sabemos que $\vec{u}+\eta\vec{z} \in V$, lo que implica que 
+        $$\vec{u}+\eta\vec{z}=\sum_{i=1}^n\lambda_i\vec{v}_i+\eta\mu_i\vec{v}_i=(\lambda_i+\eta\mu_i)\vec{v}_i$$
+        
+        Se sigue entonces que 
+        $$\Phi_{\beta}(\vec{u}+\eta \vec{z})=\begin{bmatrix}
+        \lambda_1+\eta \mu_1 \\
+        \lambda_2+\eta \mu_2 \\
+        \vdots \\
+        \lambda_n + \eta \mu_n
+    \end{bmatrix}=\begin{bmatrix}
+        \lambda_1 \\
+        \lambda_2 \\
+        \vdots \\
+        \lambda_n
+    \end{bmatrix}+\eta \begin{bmatrix}
+        \mu_1 \\
+        \mu_2 \\
+        \vdots \\
+        \mu_n
+    \end{bmatrix}=\Phi_{\beta}(\vec{u})+\eta \Phi_{\beta}(\vec{z})$$ 
+    
+    $\therefore \Phi_{\beta}$ es una transformación lineal. 
+        \item $\Phi_{\beta}$ es biyectiva. Sea $\vec{v} \in V$. Si $$\Phi_{\beta}(\vec{v})=\begin{bmatrix}
+        0 \\
+        0 \\
+        \vdots \\
+        0
+    \end{bmatrix}$$ 
+    sabemos que 
+    
+    $$\vec{v}=\sum_{i=1}^n 0\vec{v}_i=\vec{0}_V$$, 
+    
+    $\Rightarrow \Phi_{\beta}$ es inyectiva. Además para toda $$\Phi_{\beta}(\vec{v})=\begin{bmatrix}
+        \kappa_1 \\
+        \kappa_2 \\
+        \vdots \\
+        \kappa_n
+    \end{bmatrix}+\eta$$ donde $\kappa_1,\kappa_2,...,\kappa_n \in \K$, tenemos que 
+    $$\vec{v}=\sum_{i=1}^n \kappa_i\vec{v}_i$$ 
+    está asociada a ella. 
+    \end{enumerate}
+    $\therefore  \Phi_{\beta}$ es un isomorfismo
+\end{proof}
+
+\section{Matriz de Cambio de Base}
+
+\begin{theorem} \label{theomatrizcb}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial, finitamente generado, con $\beta$ y ${\beta}^{\prime}$ dos bases ordenadas, y sea $\textbf{Q}=[\mathrm{I}_V]_{{\beta}^{\prime}}^{\beta} \Rightarrow$ se cumplen las siguientes proposiciones
+    \begin{enumerate}
+        \item $\textbf{Q}$ es invertible. 
+        \item $\forall \: \vec{v} \in V$ se tiene que $[\vec{v}]_{\beta}=\textbf{Q}[\vec{v}]_{{\beta}^{\prime}}$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Veamos que se cumplen ambas condiciones
+\begin{enumerate}
+    \item Sabemos que $\mathrm{I}_V$ es invertible, $\Rightarrow$, por el \Cref{theomostro}, sabemos que $\textbf{Q}$ es invertible. 
+    \item Sea $\vec{v} \in V$ f.p.a $\Rightarrow$ por el  \Cref{theom2014fb}
+    
+    $$[\vec{v}]_{\beta}=[\mathrm{I}_V(\vec{v})]_{\beta}=[\mathrm{I}_V]_{{\beta}^{\prime}}^{\beta}[\vec{v}]_{{\beta}^{\prime}}=\textbf{Q}[\vec{v}]_{{\beta}^{\prime}}$$ 
+\end{enumerate}
+    $\therefore$ se cumple el \Cref{theomatrizcb}
+\end{proof}
+
+\begin{notation}
+    A $\textbf{Q}$ le llamaremos matriz de cambio de base.
+\end{notation}
+
+\begin{definition} [Operador Lineal]
+    A las transformaciones lineal $T:V \to V$ se les denota como operador lineal sobre $V$.
+\end{definition}
+
+\begin{theorem}
+    Sean ($V, \oplus, \odot$) un $\K$-espacio vectorial, finitamente generado, $T$ un operador lineal sobre $V$, y $\beta$ y ${\beta}^{\prime}$ bases ordenadas de $V$. Suponga que $\textbf{Q}$ es la matriz de cambio de base de ${\beta}^{\prime}$ a $\beta$, entonces $$[T]_{{\beta}^{\prime}}={\textbf{Q}}^{-1}[T]_{\beta}\textbf{Q}$$
+\end{theorem}
+
+\begin{proof}
+    Sea $\mathrm{I}$ la transformación identidad en $V \Rightarrow T=\mathrm{I}T=T\mathrm{I}$, por el \Cref{teo211} $\Rightarrow$
+    
+    $$\textbf{Q}[T]_{\beta'}=[\mathrm{I}]_{\beta'}^{\beta}[T]_{\beta'}^{\beta'}=[\mathrm{I}T]_{\beta'}^{\beta}=[T\mathrm{I}]_{\beta'}^{\beta}=[T]_{\beta}^{\beta}[\mathrm{I}]_{\beta'}^{\beta}=[T]_{\beta}\textbf{Q}$$ 
+    
+    $\therefore [T]_{\beta'}={\textbf{Q}}^{-1}[T]_{\beta}\textbf{Q}$.
+\end{proof}
+
+\begin{corollary}
+    Sea $\textbf{A} \in M_{m \times n}(\K)$, y sea $\gamma$ una base ordenada de $\K^n \Rightarrow [L_{\textbf{A}}]_{\gamma}={\textbf{Q}}^{-1}AQ$, donde $\textbf{Q} \in M_n(\K)$ y la $j$-ésima columna de $\textbf{Q}$ es el $j$-ésimo vector de $\gamma$.
+\end{corollary}
+
+\begin{definition} [Matriz Similar]
+    Sean $\textbf{A},\textbf{B} \in M_n(\K)$. Decimos que $\textbf{B}$ es similar a $\textbf{A}$ si $\exists \: \textbf{Q} \in M_n(\K)$ tal que $\textbf{B}={\textbf{Q}}^{-1}AQ$. 
+\end{definition}

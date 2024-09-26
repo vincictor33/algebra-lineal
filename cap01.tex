@@ -1,0 +1,1321 @@
+\chapter{Espacios Vectoriales}
+
+\section{Preámbulo}
+
+Las siguientes son notas de clase sobre el tema de Algebra lineal, combinando recursos del curso de Cálculo Diferencial e Integral III del M. en C. Francisco Giovanni López Sánchez, y del curso de Algebra Lineal I del Dr. Leobardo Fernandez Román, ambos impartidos en la Facultad de Ciencias de la UNAM, en el semestre 2024-1 y 2024-2 respectivamente. 
+
+\section{Definición y Ejemplos}
+
+\begin{definition}[Campo]
+    Un campo es un conjunto $\K$ con dos operaciones binarias en $\K$, llamadas suma y multiplicación
+   \begin{align*}
+         + : \K \times \K \to \K  &&& \cdot : \K \times \K \to \K  \\
+          (a,b) \to a + b &&&  \:\:\:\: (a,b) \to a\cdot b
+    \end{align*}
+
+    que cumple las siguientes propiedades
+
+    \begin{enumerate}[label=(\subscript{$\K$}{{\arabic*}})]
+    \item $\forall \: a,b \in \K \Rightarrow a+b \in \K$ \hfill \textcolor{blue}{Cerradura de la Suma}
+    \item $\forall \: a,b \in \K \Rightarrow a+b = b + a$ \hfill \textcolor{blue}{Conmutatividad}
+    \item $\forall \: a,b,c \in \K \Rightarrow a+(b+c) = (a+b)+c$ \hfill \textcolor{blue}{Asociatividad}
+    \item $\exists  \: 0 \in \K  \backepsilon \forall \: a \in \K \Rightarrow a+0 = 0 +a = a$ \hfill \textcolor{blue}{Neutro Aditivo}
+    \item $\forall \: a \in \K \: \exists \: (-a) \in \K \backepsilon a + (-a) = (-a)+a = 0$ \hfill \textcolor{blue}{Inverso Aditivo}
+    \item $\forall \: a,b \in \K \Rightarrow  a \cdot b \in \K$ \hfill \textcolor{blue}{Cerradura del Producto}
+    \item $\forall \: a,b \in \K \Rightarrow a\cdot b = b \cdot a$ \hfill \textcolor{blue}{Conmutatividad}
+    \item $\forall \: a,b,c \in \K \Rightarrow a\cdot (b\cdot c) = (a\cdot b) \cdot c$ \hfill \textcolor{blue}{Asociatividad}
+    \item $\exists  \: 1 \in \K  \backepsilon \forall \: a \in \K \Rightarrow a \cdot 1 = 1 \cdot a = a$ \hfill \textcolor{blue}{Neutro Multiplicativo}
+    \item $\forall \: a \in \K \setminus \{ 0 \} \: \exists \: {a}^{-1} \in \K \backepsilon a  \cdot {a}^{-1}  = {a}^{-1} \cdot a = 1$ \hfill \textcolor{blue}{Inverso Multiplicativo}
+    \item $\forall \: a,b,c \in \K \Rightarrow a \cdot (b + c) = ab + ac $ \hfill \textcolor{blue}{Distributivo I}
+    \item $\forall \: a,b,c \in \K \Rightarrow (a+b) \cdot c = ac + ac $ \hfill \textcolor{blue}{Distributivo II}
+    \end{enumerate}    
+\end{definition}
+
+\begin{remark}
+    Un ejemplo de un campo es $\R$, $\C$, $\mathbb{I}$, $\Q$, etc.
+\end{remark}
+
+\begin{notation}
+    Una variable $x$ se denota como vector de esta forma $\vec{x}$
+\end{notation}
+
+\begin{definition}[Espacio Vectorial]
+    Un espacio vectorial $V$ sobre un campo $\K$ es un
+conjunto de elementos donde están bien definidas las operaciones de \textbf{suma vectorial} y
+\textbf{multiplicación escalar}. Denotamos a todos los elementos de $V$ como vectores y a todos
+los elementos de $\K$ escalares $\backepsilon$
+    \begin{align*}
+         + : V \times V \to V  &&& \cdot : V \times \K \to V 
+         \end{align*}
+
+    que cumple las siguientes propiedades
+    \begin{enumerate}[label=(\subscript{\oplus}{{\arabic*}})]
+    \item $\forall \: \vec{v}, \vec{w} \in V \Rightarrow \vec{v} + \vec{w}\in V$ \hfill \textcolor{blue}{Cerradura de la Suma}
+    \item $\forall \: \vec{v}, \vec{w} \in V \Rightarrow \vec{v} + \vec{w} = \vec{w} + \vec{v}$ \hfill \textcolor{blue}{Conmutatividad}
+    \item $\forall \: \vec{v}, \vec{w}, \vec{z} \in V \Rightarrow (\vec{v} + \vec{w}) + \vec{z} =\vec{v} + (\vec{w} + \vec{z})$ \hfill \textcolor{blue}{Asociatividad}
+    \item  $\exists  \: \vec{0} \in V  \backepsilon \forall \: \vec{v} \in \K \Rightarrow \vec{v}+\vec{0} = \vec{0}+\vec{v} = \vec{v}$ \hfill \textcolor{blue}{Neutro Aditivo}
+    \item $\forall \: \vec{v}  \in V \: \exists \: \vec{x} \in V \backepsilon \vec{v}+\vec{x}  = \vec{x}+\vec{v} = \vec{0}$ \hfill \textcolor{blue}{Inverso Aditivo}
+    \end{enumerate}
+    \begin{enumerate}[label=(\subscript{\odot}{{\arabic*}})]
+    \item $\forall \: \vec{v} \in V$ y $\forall \: \lambda \in \K \Rightarrow \lambda \cdot \vec{v} \in V$ \hfill \textcolor{blue}{Cerradura del Producto}
+    \item $\forall \: \vec{v} \in V$ y $\forall \: \lambda, \gamma \in \K \Rightarrow (\lambda \cdot \gamma) \cdot \vec{v} = \lambda \cdot (\gamma \cdot \vec{v})$ \hfill \textcolor{blue}{Asociatividad}
+    \item $\exists \: 1 \in \K \backepsilon \forall \: \vec{v} \in V \Rightarrow 1 \cdot \vec{v} = \vec{v}$ \hfill \textcolor{blue}{Neutro Multiplicativo}
+    \end{enumerate}
+    \begin{enumerate}[label=(\subscript{D}{{\arabic*}})]
+    \item $\forall \: \vec{v}, \vec{w} \in V$ y $\forall \: \lambda \in \K \Rightarrow \lambda \cdot  (\vec{v} + \vec{w}) = \lambda \cdot \vec{v} + \lambda \cdot \vec{w} $ \hfill \textcolor{blue}{Distributivo I}
+    \item $\forall \: \vec{v}\in V$ y $\forall \: \lambda, \gamma \in \K \Rightarrow \vec{v} \cdot  (\lambda + \gamma) = \vec{v}  \cdot \lambda+ \vec{v}  \cdot \gamma $ \hfill \textcolor{blue}{Distributivo I}    \end{enumerate}
+\end{definition}
+
+\begin{theorem}[Ley de la Cancelación] \label{teo1}
+    $\forall \: \vec{v},\vec{w},\vec{z} \in V$, con $V$ sobre un campo $\K$ , si $\vec{v}+\vec{z} = \vec{w}+\vec{z} \Rightarrow \vec{v} = \vec{w}$
+\end{theorem}
+
+\begin{proof}
+    Sean $\vec{v},\vec{w},\vec{z} \in V$ P.D. \Cref{teo1}. Como $\vec{z} \in V \Rightarrow$
+
+    \begin{equation*}
+        \exists \: \vec{x} \in V \backepsilon \vec{z}+\vec{x}  = \vec{x}+\vec{z} = \vec{0}
+    \end{equation*}
+
+    Utilizando esto mismo, tenemos que
+    \begin{equation*}
+        \vec{v} = \vec{v} + \vec{0} = \vec{v} + (\vec{x}+\vec{z}) = (\vec{v}+\vec{x})+\vec{z} = (\vec{w}+\vec{x})+\vec{z} = \vec{w} + (\vec{x}+\vec{z}) = \vec{w} + \vec{0} = \vec{w}
+    \end{equation*}
+
+    $\therefore$ \Cref{teo1} es verdadero.
+\end{proof}
+
+\begin{corollary}
+El vector aditivo mencionado en (${\oplus}_{4}$) es único.
+\end{corollary}
+
+\begin{orangeproof}
+    Sean ${\vec{0}}_{1}$ y ${\vec{0}}_{2} \in V$ y $\vec{v} \in V$ arbitrario $\backepsilon$
+
+    \begin{align*}
+    \vec{v}+{\vec{0}}_{1}= \vec{v}& & \text{y} & & \vec{v}+{\vec{0}}_{2}= \vec{v}
+    \end{align*}
+
+    \begin{equation*}
+        \implies \vec{v}+{\vec{0}}_{1} = \vec{v}+{\vec{0}}_{2} \implies {\vec{0}}_{1} = {\vec{0}}_{2}
+    \end{equation*}
+\end{orangeproof}
+
+\begin{corollary}
+    El inverso aditivo mencionado en (${\oplus}_{4}$) es único
+\end{corollary}
+
+\begin{orangeproof}
+    Sea $\vec{v} \in V$ arbitrario. Supongamos que $\exists \: {\vec{w}}_{1},{\vec{w}}_{2} \in V \backepsilon$
+
+    \begin{equation*}
+        \vec{v}+{\vec{w}}_{1} = {\vec{0}}_{V} = \vec{v}+{\vec{w}}_{2}
+    \end{equation*}
+
+    Por el \Cref{teo1} $ \implies {\vec{w}}_{1}={\vec{w}}_{2}$
+\end{orangeproof}
+
+\begin{theorem}\label{teo2}
+    En cualquier espacio vectorial $V$, los siguientes enunciados se cumplen
+
+    \begin{enumerate}[label=\alph*)]
+        \item $\forall \: \vec{v} \in V \implies 0 \cdot \vec{v} = 0 $
+        \item $\forall \: \vec{v} \in V$ y $\forall \: \lambda \in \K  \implies (-\lambda)\vec{v} = -(\lambda \vec{v})$
+        \item $\forall \: \lambda \in \K \implies 0 \cdot \lambda \cdot \vec{0} = \vec{0} $
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}[label=\alph*)]
+        \item Sea $\vec{v} \in V$ P.D. \Cref{teo2}
+
+        \begin{equation*}
+            0 \cdot \vec{v}+0 \cdot \vec{v} = (0+0)\vec{v}= 0 \cdot \vec{v}+0
+        \end{equation*}
+
+        Por \Cref{teo1} $\implies 0 \cdot \vec{v} = 0$
+
+        \item Sabemos por (${\oplus}_{5}$) que cada vector $\in V$ tiene inverso $\implies \exists \: $ un único elemento $-(\lambda \cdot \vec{v}) \backepsilon$
+
+        \begin{equation}
+            \lambda \cdot \vec{v} + (-( \lambda \cdot \vec{v})) = \vec{0} \label{eq1}
+        \end{equation}
+
+        Por otro lado, s.t.q.
+
+        \begin{equation*}
+            \lambda \cdot \vec{v} + (-\lambda) \vec{v} = (\lambda+ (-\lambda))\vec{v}
+        \end{equation*}
+
+        Como $(\lambda+ (-\lambda)) \in \K$, sabemos que
+
+        \begin{equation}
+            (\lambda-\lambda)\vec{v} = 0 \cdot \vec{v} = 0 \implies \lambda \vec{v} + (-\lambda)\vec{v} = \vec{0} \label{eq2}
+        \end{equation}
+
+        Por (\ref{eq1}) y (\ref{eq2}) s.t.q.
+
+        \begin{equation*}
+            \lambda \vec{v} + (-(\lambda \vec{v} )) = \lambda \vec{v}  + (-\lambda)\vec{v} \implies -(\lambda \vec{v}) = (-\lambda)\vec{v}
+        \end{equation*}
+
+        \item Sea $\lambda \in \K$
+        \begin{equation*}
+            \lambda \cdot \vec{0} + \lambda \cdot \vec{0}  = \lambda(\vec{0} +\vec{0} ) = \lambda(\vec{0}) = \lambda \cdot \vec{0} + \vec{0} \implies \lambda \cdot  \vec{0} = \vec{0} 
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}[Subespacio Vectorial]
+    Sea $(V,+,\cdot)$ un $\K$-espacio vectorial y $W \subseteq V$. Se dice que $W$ es subespacio vectorial de $V$ si $(W,+ \restriction_W,\cdot  {\restriction}_{W})$ es un $\K$-espacio vectorial.
+\end{definition}
+
+\begin{notation}
+    Si $W$ es subespacio de $V$, lo denotamos como $W \leq V$
+\end{notation}
+
+\begin{notation}
+    ($+ {\restriction}_{W}$) es la operación de la suma en $V$ restringida a $W$. ($\cdot {\restriction}_{W}$) es el producto.
+\end{notation}
+
+\begin{eg}
+    Sea ${M}_{n \times n}(\K)$ el espacio vectorial de todas las matrices cuadradas.
+
+    \begin{align*}
+    {\textbf{A}}_{ij}+{\textbf{B}}_{ij}= {(\textbf{A}+\textbf{B})}_{ij}& & \text{y} & & \lambda {\textbf{A}}_{ij}= {(\lambda \textbf{A})}_{ij}
+    \end{align*}
+
+    Sea 
+    \begin{equation*}
+        W = \{ \textbf{A} \in  {M}_{n \times n}(\K) \mid \textbf{A} = {\textbf{A}}^{T}\}
+    \end{equation*}
+
+    Demostremos que $W \leq V$
+\end{eg}
+
+\begin{proofexplanation}
+    Sean $\textbf{A},\textbf{B} \in W \implies \textbf{A}={\textbf{A}}^{T} $ y $\textbf{B} = {\textbf{B}}^{T} \implies {\textbf{A}}^{T} + {\textbf{B}}^{T} = {(\textbf{A}+\textbf{B})}^{T}$ la $ij$-ésima entrada de ${\textbf{A}}^{T} + {\textbf{B}}^{T} $. Sea $\textbf{C}={\textbf{A}}^{T} + {\textbf{B}}^{T}$ la $ji$-ésima entrada.
+
+    \begin{equation*}
+        {\textbf{C}}_{ij} = {(a+b)}_{ij} = ({a}_{ij}+{b}_{ij}) = {(a+b)}_{ji} = {\textbf{C}}_{ji}
+    \end{equation*}
+\end{proofexplanation}
+
+\begin{theorem} \label{teo3}
+    Sea ($V, \oplus, \odot$) un $\K$-ésimo espacio vectorial y $W \subseteq V \implies$  ($W,+ \restriction_W,\cdot  {\restriction}_{W}$) es un subespacio vectorial de $V \iff$ se cumplen
+
+    \begin{enumerate}[label={\roman*})]
+        \item ${\vec{0}}_{V} \in W$ \hfill \textcolor{red!70!black}{Cero en Subespacio}
+        \item $\forall \: \vec{v}, \vec{u} \in W \implies \vec{v} + \vec{u} \in W $ \hfill \textcolor{red!70!black}{Cerrado Bajo Suma}
+        \item $\forall \: \vec{v} \in W $ y $\forall \: \lambda \in \K \implies \lambda \cdot \vec{v} \in W$ \hfill \textcolor{red!70!black}{Cerrado Bajo Producto}
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    $\implies$
+
+    Supongamos que $W$ es subespacio de $V \implies (W,+ \restriction_W,\cdot  {\restriction}_{W})$ es un $\K$-espacio vectorial. En particular, $(W,+ \restriction_W,\cdot  {\restriction}_{W})$ satisface ($\oplus_1$), (${\odot}_{1}$), y ($\oplus_4$). $\implies$, se satisfacen i), y ii) y $\exists \: {0}^{*} \in W \backepsilon$
+    
+    $$ {0}^{*} + \vec{w} =\vec{w}  +  {0}^{*} = \vec{w} \: \: \forall \: \vec{w}  \in W$$
+    
+    Como 
+    
+    $$ {\vec{0}}_{V} + \vec{w} =\vec{w}  +  {\vec{0}}_{V}  = \vec{w} \: \: \forall \: \vec{w}  \in W \implies {0}^{*}={\vec{0}}_{V} \in W $$
+
+    $\impliedby$
+
+    Supongamos que $W$ satisface i), ii), y iii)
+    
+    \begin{enumerate}[label=(\subscript{\oplus}{{\arabic*}})]
+    \item Por ii)
+    \item Se hereda de $V$
+    \item Se hereda de $V$
+    \item Por i)
+    \item Sea $\vec{w} \in W \implies (-1)\vec{w} \in W 
+    \implies (-\vec{w}) \in W$
+    \end{enumerate}
+    \begin{enumerate}[label=(\subscript{\odot}{{\arabic*}})]
+    \item Por iii)
+    \item Se hereda de $V$
+    \item Se hereda de $V$
+    \end{enumerate}
+    \begin{enumerate}[label=(\subscript{D}{{\arabic*}})]
+    \item Se hereda de $V$
+    \item Se hereda de $V$
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem} \label{teo4}
+    Sea ($V, \oplus, \odot$) un $\K$-ésimo espacio vectorial y $W \subseteq V \implies$  ($W,+ \restriction_W,\cdot  {\restriction}_{W}$) es un subespacio vectorial de $V \iff$ se cumplen
+
+    \begin{enumerate}[label={\roman*})]
+        \item $W \neq \varnothing$ \hfill \textcolor{red!70!black}{Diferente del Vacío}
+        \item $\forall \: \vec{v}, \vec{u} \in W \implies \vec{v} + \vec{u} \in W $ \hfill \textcolor{red!70!black}{Cerrado Bajo Suma}
+        \item $\forall \: \vec{v} \in W $ y $\forall \: \lambda \in \K \implies \lambda \cdot \vec{v} \in W$ \hfill \textcolor{red!70!black}{Cerrado Bajo Producto}
+    \end{enumerate}
+\end{theorem}
+
+\section{Combinaciones Lineales}
+
+\begin{definition}[Combinación Lineal]
+    Sean ($V, \oplus, \odot$)  un $\K$-espacio vectorial y $S \subseteq V$ un conjunto no vacío de vectores de $V$. Una combinación lineal de elementos de $S$ es un vector de la forma
+
+    \begin{equation*}
+        \vec{v}= {\lambda}_{1}{\vec{v}}_{1}+{\lambda}_{2}{\vec{v}}_{1}+...+...+{\lambda}_{n}{\vec{v}}_{1}
+    \end{equation*}
+
+    donde ${\vec{v}}_{i} \in S, {\lambda}_{i} \in \K, n \in \N$
+\end{definition}
+
+\begin{remark}
+    Las combinaciones lineales son finitas
+\end{remark}
+
+\begin{theorem} \label{teo5}
+    Sea ($V, \oplus, \odot$)  un $\K$-espacio vectorial y $S \subseteq V$ un conjunto no vacío de vectores de $V \implies $ el conjunto
+
+    \begin{equation*}
+        \langle S \rangle = \left\{ \sum_{i=1}^{n} {\lambda}_{1}{\vec{v}}_{i} \mid {\vec{v}}_{i} \in S, {\lambda}_{i} \in \K, i \in \{1,...n\},n \in \N \right\}
+    \end{equation*}
+
+      de todas las combinaciones lineales de vectores de $S$ es un subespacio de $V$
+\end{theorem}
+
+\begin{lemma}
+     Sea ($V, \oplus, \odot$)  un $\K$-espacio vectorial y sean $W_1$ y $W_2$ subespacios de $V \implies W_1 \cap W_2$ es un subespacio de $V$
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}[label={\roman*})]
+    \item Veamos que ${\vec{0}}_{V} \in W_1 \cap W_2$
+
+    Como $W_1 \leq V$ y $W_2 \leq V \implies {\vec{0}}_{V} \in W_1 $ y ${\vec{0}}_{V} \in W_2 $
+
+    $$ \Rightarrow {\vec{0}}_{V} \in W_1 \cap W_2$$
+
+    \item y iii) Sea $\lambda \in \K$ y ${\vec{w}}_{1}$ y ${\vec{w}}_{2} \in  W_1 \cap W_2$
+
+    Notemos que la combinación lineal $(\lambda {\vec{w}}_{1} +{\vec{w}}_{2} ) \in W_1 \cap W_2$
+
+    Notemos que 
+    \begin{align*}
+    {\vec{w}}_{1} +{\vec{w}}_{2} \in W_1  & & \text{y} & &  {\vec{w}}_{1} +{\vec{w}}_{2} \in W_2 
+    \end{align*}
+    \begin{equation*}
+        \Rightarrow {\vec{w}}_{1} +{\vec{w}}_{2} \in W_1 \cap W_2
+    \end{equation*}
+
+    Además
+    \begin{align*}
+    \lambda {\vec{w}}_{1} \in W_1  & & \text{y} & & \lambda {\vec{w}}_{1} \in W_2 
+    \end{align*}
+    \begin{equation*}
+        \lambda {\vec{w}}_{1} \in W_1 \cap W_2
+    \end{equation*}
+
+    $\therefore W_1 \cap W_2$ es un subespacio de $V$
+    
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+    Ahora podemos probar el  \Cref{teo5}
+\end{remark}
+
+\begin{proof}
+    \begin{enumerate}[label={\roman*})]
+        \item Sea $\vec{u} \in S$ arbitrario y $\lambda = \vec{0}$
+
+        \begin{equation*}
+            \lambda \vec{u} = 0 \cdot \vec{u} = \vec{0} \in \langle S \rangle
+        \end{equation*}
+        \item Sea, $\vec{u},\vec{w} \in S$ arbitrarios
+        \begin{equation*}
+            \implies \: \exists \: {\vec{v}}_{1},...,{\vec{v}}_{n} \in \langle S \rangle
+        \end{equation*}
+        \begin{align*}
+          \exists \: {\lambda}_{1},...,{\lambda}_{n} \in \K \backepsilon  \vec{u} = {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{n}{\vec{v}}_{n} & & \text{y} & &  \exists \: {\mu}_{1},...,{\mu}_{n} \in \K \backepsilon  \vec{w} = {\mu}_{1}{\vec{v}}_{1} + ... + {\mu}_{n}{\vec{v}}_{n}
+        \end{align*}
+        \begin{equation*}
+            \implies \vec{u} +\vec{w} = ({\lambda}_{1}+{\mu}_{1}){\vec{v}}_{1}+...+({\lambda}_{n}+{\mu}_{1}){\vec{v}}_{n} \in \langle S \rangle
+        \end{equation*}
+
+        \item Sean $\vec{u} \in \langle S \rangle $ y $\eta \in \K$
+
+        \begin{align*}
+          \exists \: {\vec{v}}_{1}, ... ,{\vec{v}}_{n} & & \text{y} & &  \exists \: {\lambda}_{1},...,{\lambda}_{n} \in \K \backepsilon  \vec{u} = {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{n}{\vec{v}}_{n}
+        \end{align*}
+        \begin{equation*}
+            \eta \cdot \vec{u} = \eta ({\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{n}{\vec{v}}_{n}) = (\eta \cdot {\lambda}_{1}) {\vec{v}}_{1} + ... + (\eta \cdot {\lambda}_{n}) {\vec{v}}_{n} \in \langle S \rangle
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\section{Conjunto Generado}
+
+\begin{definition}[Conjunto generado]
+    El conjunto $\langle S \rangle$ es el subespacio generado por $S$
+\end{definition}
+
+\begin{definition}
+    Si $\langle S \rangle = V$ se dice que $S$ genera a $V$
+\end{definition}
+
+\begin{theorem}
+    Sean ($V, \oplus, \odot$)  un $\K$-espacio vectorial y $W \subseteq V \implies$
+
+    \begin{equation*}
+        \sum_{i=1}^{n}  {\lambda}_{i}{\vec{v}}_{i} =  {\lambda}_{1}{\vec{v}}_{1}+...+ {\lambda}_{n}{\vec{v}}_{n} \in W
+    \end{equation*}
+
+    $\forall \: {\vec{v}}_{1},...,{\vec{v}}_{n} \in W$ y $\forall \: {\lambda}_{1},...,{\lambda}_{n} \in \K$
+\end{theorem}
+
+\begin{proof}
+    La prueba se hace por inducción sobre $n$
+
+    \begin{enumerate}
+        \item $n=1$ Sea ${\lambda}_{1} \in\K$ y ${\vec{v}}_{1} \in W$
+
+        Por el \Cref{teo3}, en particular el inciso iii) $\implies {\lambda}_{1}{\vec{v}}_{1} \in W $
+
+        \item $n=2$ Sean ${\lambda}_{1},{\lambda}_{2} \in\K$ y ${\vec{v}}_{1},{\vec{v}}_{2} \in W$
+
+        Por el \Cref{teo3}, en particular el inciso iii) $\implies {\lambda}_{1}{\vec{v}}_{1} \in W$ y ${\lambda}_{2}{\vec{v}}_{2} \in W$
+
+        Por el inciso ii) $\implies {\lambda}_{1}{\vec{v}}_{1} + {\lambda}_{2}{\vec{v}}_{2} \in W$
+
+        \item Supongamos cierto el resultado para $n=k$
+
+        \item Sean ${\vec{v}}_{1},...,{\vec{v}}_{k},{\vec{v}}_{k+1} \in W$ y ${\lambda}_{1},...,{\lambda}_{k},{\lambda}_{k+1} \in \K$
+
+        Veamos que 
+
+        \begin{equation*}
+            {\lambda}_{1}{\vec{v}}_{1}+...+{\lambda}_{k}{\vec{v}}_{k}+{\lambda}_{k+1}{\vec{v}}_{k+1} = ({\lambda}_{1}{\vec{v}}_{1}+...+{\lambda}_{k}{\vec{v}}_{k})+{\lambda}_{k+1}{\vec{v}}_{k+1}
+        \end{equation*}
+
+        Por el supuesto que el resultado es cierto en $n=k$, la combinación lineal dentro del paréntesis $\in W$. El término restante también $\in W$, por el inciso ii) del \Cref{teo3}
+
+        \begin{equation*}
+            {\lambda}_{1}{\vec{v}}_{1}+...+{\lambda}_{k}{\vec{v}}_{k}+{\lambda}_{k+1}{\vec{v}}_{k+1} \in W
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem} \label{teo17}
+    Sea ($V, \oplus, \odot$)  un $\K$-espacio vectorial y $S \subseteq V$ un conjunto no vacío de vectores de $V$. Si $W$ es un subespacio de $V \backepsilon S \subseteq W \implies \langle S \rangle \subseteq W$
+\end{theorem}
+
+\begin{proof}
+    Sea $\vec{u} \in \langle S \rangle \implies$
+        \begin{align*}
+          \exists \: {\vec{u}}_{1}, ... ,{\vec{u}}_{n} & & \text{y} & &  \exists \: {\lambda}_{1},...,{\lambda}_{n} \in \K \backepsilon  \vec{u} = {\lambda}_{1}{\vec{u}}_{1} + ... + {\lambda}_{n}{\vec{u}}_{n}
+        \end{align*}
+        \begin{equation*}
+            \implies {\vec{u}}_{1}, ... ,{\vec{u}}_{n} \in W \implies \vec{u} \in W
+        \end{equation*}
+\end{proof}
+
+\begin{corollary}
+    $\langle S \rangle$ es el subespacio más chico que contiene al conjunto $S$
+\end{corollary}
+
+\begin{orangeproof}
+    Para ver esta nota, supongamos que $W \leq V$ y $S \subseteq W$ P.D. $\langle S \rangle \subseteq W$
+
+    Sea $\vec{z} \in \langle S \rangle \implies \: \exists \: {\vec{v}}_{1},...,{\vec{v}}_{n} \in S$ y $\lambda_1,...,\lambda_n \in \K \backepsilon$
+
+    \begin{equation*}
+        \vec{z} = \sum_{i=1}^{n} \lambda_i \vec{v_i}
+    \end{equation*}
+
+    Como $S \subseteq W \implies {\vec{v}}_{1},...,{\vec{v}}_{n} \in W$
+\end{orangeproof}
+
+\begin{definition}[Dependencia Lineal]
+    Sea $(V,+,\cdot)$ un $\K$-espacio vectorial y $S \subseteq V$ un conjunto no vacío de vectores en $V$. Se dice que $S$ es linealmente dependiente (l.d.) si $\: \exists \: {\vec{v}}_{1},...,{\vec{v}}_{n} \in S$ y escalares no todos cero $\lambda_1,...,\lambda_n \in \K \backepsilon$
+
+    \begin{equation*}
+        {\vec{0}}_{V} = \lambda_1 {\vec{v}}_{1} + ... +\lambda_n {\vec{v}}_{n}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Independencia Lineal]
+    Sea $(V,+,\cdot)$ un $\K$-espacio vectorial y $S \subseteq V$ un conjunto no vacío de vectores en $V$. Se dice que $S$ es linealmente independiente (l.i.) si $\forall \: {\vec{v}}_{1},...,{\vec{v}}_{n} \in S \Rightarrow$
+
+    \begin{equation*}
+        {\vec{0}}_{V} = \lambda_1 {\vec{v}}_{1} + ... +\lambda_n {\vec{v}}_{n} \Rightarrow \lambda_1 = \lambda_2 = ... = \lambda_n = 0 \in \K
+    \end{equation*}
+\end{definition}
+
+\begin{definition}[Clase lateral]
+    Sea $W$ un subespacio de un $\K$-espacio vectorial $V$. $\Rightarrow \: \forall \: \vec{v} \in V$ el conjunto
+
+    \begin{equation*}
+        \vec{v} + W := \{ \vec{v} + \vec{w} \mid \vec{w} \in w \}
+    \end{equation*}
+
+    Se llama la clase lateral de $W$ que contiene a $\vec{v}$, donde este último es el representante del espacio vectorial.
+\end{definition}
+
+\begin{theorem}
+    Sea $V$ un $\K$-espacio vectorial. y $W \leq V \Rightarrow$
+
+    \begin{equation*}
+        \vec{v}+W \leq V \iff  \vec{v} \in W
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    $\Leftarrow$ Spongamos que $\vec{v} \in W$
+
+    Nos referimos al \Cref{teo4}
+
+    i) Como  $\vec{v} \in W \Rightarrow -\vec{v} \in W \Rightarrow  \vec{v}+ (-\vec{v}) \in W \Rightarrow {\vec{0}}_{V}  \in W$
+
+    ii) Sea $\lambda \in \K$ y $\vec{v} + {\vec{w}}_{1} \in \vec{v}+W $ y ${\vec{w}}_{2} \in \vec{v}+W$
+
+    Notemos que 
+
+    \begin{equation*}
+        {\vec{w}}_{1} + {\vec{w}}_{2} +  \vec{v} \in W \Rightarrow \vec{v} + ({\vec{w}}_{1} + {\vec{w}}_{2} +  \vec{v}) \in \vec{v} + W 
+    \end{equation*}
+
+    iii) Notemos que
+
+    \begin{equation*}
+        \lambda \vec{v} + \lambda {\vec{w}}_{1} +  {\vec{0}}_{V} = \lambda \vec{v} + \lambda {\vec{w}}_{1} + \vec{v} - \vec{v}
+    \end{equation*}
+    \begin{equation*}
+        = \vec{v} + ( \lambda \vec{v} + \lambda {\vec{w}}_{1} - \vec{v}) \in \vec{v} + W
+    \end{equation*}
+        
+    $\Rightarrow$ Supongamos que $\vec{v}+W \leq V$
+
+    Como $\vec{v}+W$ es un subespacio contiene a $\vec{0}$ $\Rightarrow \exists  \: \vec{w} \in \vec{v}+W   \backepsilon \vec{v} + \vec{w} = 0$
+
+    $\Rightarrow - \vec{v} \in W$ Como $\vec{v}+W$ es un subespacio $\Rightarrow \forall \: \vec{w} \in \vec{v}+W$ y $\forall \: \lambda \in \K \Rightarrow \lambda \cdot \vec{w} \in \vec{v}+W$
+
+    $\Rightarrow$ con $\lambda = -1 \Rightarrow (-1) \cdot -\vec{v} \in \vec{v} + W$
+
+    $\therefore \vec{v} \in W$
+\end{proof}
+
+\begin{theorem}
+    Sea $V$ un $\K$-espacio vectorial. y $W \leq V$. Sean ${\vec{v}}_{1}, {\vec{v}}_{2} \in V \Rightarrow$
+
+    \begin{equation*}
+        {\vec{v}}_{1}+W = {\vec{v}}_{2} + W \iff   {\vec{v}}_{1} -  {\vec{v}}_{2} \in W
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ 
+    
+    Supongamos que ${\vec{v}}_{1}+W = {\vec{v}}_{2} + W$
+
+    \begin{equation*}
+        \Rightarrow {\vec{0}}_{V} \in W \Rightarrow {\vec{v}}_{1} + {\vec{0}}_{V} \in {\vec{v}}_{1}+W = {\vec{v}}_{2} + W
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow {\vec{v}}_{1} + {\vec{0}}_{V} \in {\vec{v}}_{2} + W \Rightarrow {\vec{v}}_{1}  \in {\vec{v}}_{2} + W 
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow \: \exists \: \vec{w} \in W \backepsilon {\vec{v}}_{1} = {\vec{v}}_{2} + \vec{w} \in {\vec{v}}_{2} + W
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow {\vec{v}}_{1} -  {\vec{v}}_{2} = \vec{w} \in W
+    \end{equation*}
+
+    $\Leftarrow$ Supongamos que ${\vec{v}}_{1} -  {\vec{v}}_{2} \in W$
+
+    Sea ${\vec{w}}_{*} = {\vec{v}}_{1} -  {\vec{v}}_{2}$
+
+    $\subseteq$ Sea $\vec{x} \in {\vec{v}}_{1} + W \Rightarrow \vec{x} = {\vec{v}}_{1}+{\vec{w}}_{1}$ para algún ${\vec{w}}_{1} \in W \Rightarrow {\vec{v}}_{1} = {\vec{w}}_{*} + {\vec{v}}_{2}$
+    \begin{equation*}
+        \Rightarrow  \vec{x} = {\vec{w}}_{*} + {\vec{v}}_{2}+{\vec{w}}_{1} \Rightarrow {\vec{v}}_{2} + ({\vec{w}}_{*}+{\vec{w}}_{1}) \in W \Rightarrow \vec{x} \in {\vec{v}}_{2} + W 
+    \end{equation*}
+
+    $\supseteq$ Análogamente sea $\vec{y} \in {\vec{v}}_{2} + W \Rightarrow \vec{y} = {\vec{v}}_{2} + {\vec{w}}_{**} \in W$
+    \begin{equation*}
+        \vec{y} = {\vec{v}}_{1} - {\vec{w}}_{*}  + {\vec{w}}_{**} = {\vec{v}}_{1} + ({\vec{w}}_{**}  - {\vec{w}}_{*})  \Rightarrow  \vec{y} \in {\vec{v}}_{1} + W  \end{equation*}
+\end{proof}
+
+\begin{definition}
+    Si $\langle  S \rangle = V$, se dice que $S$ genera a $V$ o que $S$ es un conjunto generador de $V$
+\end{definition}
+
+\begin{eg}
+    En el espacio vectorial de $V= \R^2$, defina a un subconjunto de $V$ como
+
+    \begin{equation*}
+        S= \{ (1,0), (0,1) \}
+    \end{equation*}
+
+    Es claro ver que $S$ genera a $V=\R^2$
+\end{eg}
+
+\begin{theorem} \label{theom111}
+    Sean ($V, \oplus, \odot$) un $\K$-espacio vectorial y $S_1, S_2 \subseteq V$ subconjuntos $\backepsilon S_1 \subseteq S_2 \Rightarrow$
+
+    \begin{enumerate}
+        \item $\langle  S_1 \rangle \subseteq \langle  S_2 \rangle$. Así, si $S_1$ genera a $V \Rightarrow S_2$ genera a $V$
+        \item Si $S_1$ es linealmente dependiente $\Rightarrow S_2$ es l.d.
+        \item Si $S_2$ es linealmente independiente $\Rightarrow S_1$ es l.i.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+    \item Sea $\vec{v} \in \langle  S_1 \rangle \Rightarrow \: \exists \: {\vec{v}}_{1}, ..., {\vec{v}}_{n} \in S_1$ y escalares $\lambda_1,...,\lambda_n \in \K $ $\backepsilon \vec{v} = {\lambda}_{1}{\vec{v}}_{1} + ...+ {\lambda}_{1} {\vec{v}}_{n}$
+
+    Pero $S_1 \subseteq S_2$, así $\vec{v} = {\lambda}_{1}{\vec{v}}_{1} + ...+ {\lambda}_{1} {\vec{v}}_{n}$ es una combinación lineal de elementos de $S_2 \Rightarrow \vec{v} \in  \langle  S_2 \rangle$
+
+    \item Se sigue de la siguiente demostración, ya que $A \Rightarrow B \iff \neg B \Rightarrow \neg A$
+
+    \item Supongamos que $S_2$ es l.i. Veamos que $S_1$ también es l.i.
+
+    Sea ${\vec{0}}_{V} =  {\lambda}_{1}{\vec{v}}_{1} + ...+ {\lambda}_{1} {\vec{v}}_{n}$ con ${\vec{v}}_{1}, ..., {\vec{v}}_{n} \in S_1$ y $\lambda_1 , ..., \lambda_n \in \K$
+
+    Como $S_1 \subseteq S_1 \Rightarrow {\vec{v}}_{1}, ..., {\vec{v}}_{n} \in S_2$
+
+    Nótese que se tiene una combinación lineal de elementos en $S_2$. Por hipótesis, $S_2$ es l.i. Esto implica $\lambda_1 = ...= \lambda_n = 0 \Rightarrow S_1$ es l.i. porque de ahí es que se tomó la combinación lineal.
+
+    
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem} \label{fakelema}
+     Sean ($V, \oplus, \odot$) un $\K$-espacio vectorial y $S \subseteq V$ un conjunto l.i. de vectores de $V$ y $ \vec{v} \in V \setminus S = V_2 \Rightarrow$
+
+     \begin{equation*}
+         \vec{v} \in \langle S \rangle \iff S \cup \{ \vec{v} \} \: \text{ es l.d.}
+     \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ Supongamos que $\vec{v} \in \langle S \rangle \Rightarrow \:  \exists \: {\vec{v}}_{1}, ..., {\vec{v}}_{n} \in S$ y escalares $\lambda_1,...,\lambda_n \in \K $ $\backepsilon \vec{v} = {\lambda}_{1}{\vec{v}}_{1} + ...+ {\lambda}_{n} {\vec{v}}_{n}$
+    \begin{equation*}
+         \vec{v} = {\lambda}_{1}{\vec{v}}_{1} + ...+ {\lambda}_{n} {\vec{v}}_{n} \Rightarrow {\vec{0}}_{V} =  {\lambda}_{1}{\vec{v}}_{1} + ...+ {\lambda}_{n} {\vec{v}}_{n} + (-1)\vec{v} 
+    \end{equation*}
+
+    Como lo anterior es una combinación lineal de elementos de $S \cup \{ \vec{v} \}$ que fue iguala a $ {\vec{0}}_{V}$ donde no todos los escalares son 0. $S \cup \{ \vec{v} \}$ es l.d.
+
+    $\Leftarrow$ Supongamos que $S \cup \{ \vec{v} \}$ es l.d. $\Rightarrow \exists \: {\vec{w}}_{1}, ..., {\vec{w}}_{n} \in S \cup \{ \vec{v} \}$ y escalares $\eta,...,\eta_n \in \K $ no todos cero $\backepsilon {\vec{0}}_{V}  = {\eta}_{1}{\vec{w}}_{1} + ...+ {\eta}_{n} {\vec{w}}_{n}$
+
+    Algún $ {\vec{w}}_{i}$ es $\vec{v}$, porque de lo contrario, sería un conjunto l.i. si $\forall \: i = 1, ... , n \Rightarrow {\vec{w}}_{i} \neq \vec{v}$, ya que es una combinación lineal de elementos de $S$ que es igual a cero, y por hipótesis este conjunto es l.i.  Sin pérdida de generalidad, supongamos que es ${\vec{w}}_{1}$
+
+    \begin{equation*}
+        {\vec{0}}_{V}  = {\eta}_{1} \vec{v} + ...+ {\eta}_{n} {\vec{w}}_{n} \Rightarrow - {\eta}_{1} \vec{v} = {\eta}_{2}{\vec{w}}_{2} + ...+ {\eta}_{n} {\vec{w}}_{n} \Rightarrow \vec{v} = - \frac{{\eta}_{2}}{{\eta}_{1}}{\vec{w}}_{2} - ...- \frac{{\eta}_{n}}{{\eta}_{1}}{\vec{w}}_{n}
+    \end{equation*}
+
+    Pero esta es una combinación lineal de elementos en $S \Rightarrow \vec{v} \in \langle S \rangle$
+\end{proof}
+
+\begin{theorem} \label{teo11}
+      Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y sean $\vec{x}, \vec{y} \in V$ no nulos $\Rightarrow \{ \vec{x}, \vec{y} \}$ son l.d. $\Leftrightarrow \vec{x}$ o $\vec{y}$ es múltiplo del otro
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ Supongamos que $\{ \vec{x}, \vec{y} \}$ son l.d. Esto sucede para cada combinación lineal del vector ${\vec{0}}_{V}$ con $\vec{x}$ y $\vec{y}$, por lo que algún escalar es distinto de cero. Sean $\lambda, \mu \in \K$
+    \begin{equation*}
+        \lambda \vec{x} + \mu \vec{y} = {\vec{0}}_{V} \Rightarrow \lambda \neq 0 \text{ o } \mu \neq 0
+    \end{equation*}
+
+    Sin pérdida de generalidad supongamos que $\lambda \neq 0$
+
+    \begin{equation*}
+         \frac{\lambda}{\lambda} \vec{x} + \frac{\mu}{\lambda} \vec{y} = {\vec{0}}_{V} \Rightarrow \vec{x} + \frac{\mu}{\lambda} \vec{y} = {\vec{0}}_{V} \Rightarrow  \vec{x} = - \frac{\mu}{\lambda} \vec{y}
+    \end{equation*}
+
+    $\Leftarrow$ Suponga que $\vec{x}$ o $\vec{y}$ es múltiplo del otro. Es decir, $\vec{x} = \lambda \vec{y}$ para algún $\lambda \in \K$. 
+    \begin{equation*}
+        \vec{x}-\vec{x} = \lambda \vec{y} -\vec{x} \Rightarrow {\vec{0}}_{V} =  \lambda \vec{y} -\vec{x} =  \lambda \vec{y} + (-1)\vec{x}
+    \end{equation*}
+    Pero este es una combinación lineal igual a 0 con no todos los ecalares cero, $\{ \vec{x}. \vec{y} \}$ es l.d.. $\therefore$ \Cref{teo11} es verdadero.
+\end{proof}
+
+\begin{theorem}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y sean $\vec{x}, \vec{y} \in V$. $\Rightarrow \{ \vec{x}. \vec{y} \}$ son l.i. $\Leftrightarrow \: \forall \: \lambda, \mu \in \K \neq 0 \Rightarrow \{ \lambda \vec{x}, \mu \vec{y} \}$ es l.i.
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ Suponga que $\{ \vec{x}. \vec{y} \}$ es l.i. 
+    \begin{equation*}
+        \Rightarrow \: \forall \: \alpha_1, ... , \alpha_2 \in  \K \backepsilon {\alpha}_{1}\vec{x}+{\alpha}_{2}\vec{y} = {\vec{0}}_{V} \Rightarrow {\alpha}_{1}= {\alpha}_{2} = 0
+    \end{equation*}
+
+    Sean ${\beta}_{1}, {\beta}_{2} \in \K$ y sea 
+
+    \begin{equation*}
+       {\beta}_{1}(\lambda \vec{x}) + {\beta}_{2}( \mu \vec{y}) = {\vec{0}}_{V} \Rightarrow ({\beta}_{1}\lambda) \vec{x} + ({\beta}_{2}\mu )\vec{y} = {\vec{0}}_{V} 
+    \end{equation*}
+    \begin{align*}
+     {\beta}_{1} \cdot \lambda = 0  && \text{ y } &&  {\beta}_{2} \cdot \mu = 0
+    \end{align*}
+
+    Por hipótesis supusimos $\lambda, \mu \in \K \neq 0 \Rightarrow {\beta}_{1} = {\beta}_{2} = 0$
+
+    $\Leftarrow$ Suponga que $\forall \: \lambda, \mu \in \K \neq 0 \Rightarrow \{ \lambda \vec{x}, \mu \vec{y} \}$ es l.i.
+
+    \begin{equation*}
+        \forall \: {\eta}_{1}, {\eta}_{2} \in  \K \Rightarrow  {\eta}_{1}(\lambda \vec{x}) + {\eta}_{2}(\mu \vec{y}) = {\vec{0}}_{V} \Rightarrow {\eta}_{1}= {\eta}_{2} = 0
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow  ({\eta}_{1}\lambda) \vec{x} + ({\eta}_{2}\mu )\vec{y} = {\vec{0}}_{V} \Rightarrow  (0 \cdot \lambda) \vec{x} + (0 \cdot \mu )\vec{y} = {\vec{0}}_{V}
+    \end{equation*}
+    Pero esta combinación lineal solo se puede si $\{ \vec{x}. \vec{y} \}$ es l.i.
+\end{proof}
+
+\begin{theorem}
+    
+ Sea $V$ un $\K$-espacio vectorial y $W_1 \leq V$ y $W_2 \leq V$ subespacios de $V$. Demuestre que $W_1 \cup W_2 \leq V \Leftrightarrow W_1 \subseteq W_2$ o $W_2 \subseteq W_1$
+\end{theorem}
+
+\begin{proof}
+
+    $\Leftarrow$ 
+    
+    Supongamos que $W_1 \subseteq W_2$ o $W_2 \subseteq W_1$ P.D. $W_1 \cup W_2 \leq V$
+    \begin{align*}
+          \Rightarrow  W_1 = W_1 \cup W_2   & & \text{o} & &  W_2 = W_1 \cup W_2 
+    \end{align*}
+
+    Como $W_1 \leq V$ y $W_2 \leq V \Rightarrow W_1 \cup W_2 \leq V$
+
+    $\Rightarrow$ 
+    
+    Supongamos que $W_1 \cup W_2 \leq V$ P.D.  $W_1 \subseteq W_2$ o $W_2 \subseteq W_1$. Ahora, supongamos que $W_2 \nsubseteq W_1$ P.D. $W_1 \subseteq W_2$ 
+    
+    Sea $\vec{v} \in W_1$. Como  $W_2 \nsubseteq W_1 \Rightarrow \exists \: \vec{w} \in W_2 \backepsilon \vec{w} \notin W_1 $. Por definición de $\cup$ s.t.q.
+    \begin{align*}
+          \Rightarrow  \vec{v} \in W_1 \subseteq  W_1 \cup W_2  & & \text{y} & &  \vec{w} \in W_2 \subseteq  W_1 \cup W_2 
+    \end{align*}
+
+    Como $W_1 \cup W_2  \leq V$ subespacio s.t.q.
+
+
+    \begin{equation*}
+        \vec{v} + \vec{w} \in W_1 \cup W_2
+    \end{equation*}
+    \begin{align*}
+          \Rightarrow  \vec{v} + \vec{w} \in W_1  & & \text{o} & &  \vec{v} + \vec{w} \in W_2
+    \end{align*}
+
+    Note que, como $W_1$ es un subespacio s.t.q.
+
+    \begin{equation*}
+        (\vec{v} + \vec{w}) + (-\vec{v} ) \in W_1
+    \end{equation*}
+
+    Pero esto, por hipótesis, es imposible, por lo tanto s.t.q. $\vec{v} + \vec{w} \in W_2$
+
+    \begin{equation*}
+        \Rightarrow (\vec{v} + \vec{w}) + (-\vec{w} )  \in W_2
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow \vec{v} \in W_2
+    \end{equation*}
+
+    $\therefore $ como $\vec{v}$ arbitrario $W_1 \subseteq W_2$
+
+    Sin perdida de generalidad, la prueba para $W_2 \subseteq W_1$ es análoga. Cuando $W_2 = W_1$  la demostración es trivial.
+\end{proof}
+
+\begin{theorem}
+    
+Sea ($V, \oplus, \odot$)  un $\K$-espacio vectorial y $S \subseteq V$ un conjunto no vacío de vectores de $V$. Demuestre que
+
+\begin{equation*}
+    \langle S \rangle = \cap \: \{ W \mid W \leq V \backepsilon S \subseteq W \}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+
+    $\subseteq$ Por el corolario del \Cref{teo17}, sabemos que  $\langle S \rangle$ es el subespacio más chico quecontiene al conjunto, por lo que es uno de los conjuntos $W$
+
+    $\supseteq$ Sea $\vec{v} \in \cap \: \{ W \mid W \leq V \backepsilon S \subseteq W \}$ Por lo que $\vec{v} $ pertenece a cada subespacio de $V$ que contiene a $S$. Pero $\langle S \rangle$ es uno de estos subespacios. $\Rightarrow \vec{v} \in  \langle S \rangle $
+
+    $$\Rightarrow \cap \: \{ W \mid W \leq V \backepsilon S \subseteq W \} \subseteq \langle S \rangle$$
+
+    $\therefore \langle S \rangle = \cap \: \{ W \mid W \leq V \backepsilon S \subseteq W \}$ 
+
+\end{proof}
+
+
+\section{Bases y Dimensión}
+
+\begin{definition}[Bases]
+        Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial. Un conjunto $\beta$ es base de $V$ si $\beta$ es l.i. y $\langle \beta \rangle = V$
+\end{definition}
+
+\begin{theorem} \label{teo14}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y $\beta \subseteq V$ un conjunto vectores de $V \Rightarrow \beta$ es base de $V$  $\Leftrightarrow \: \forall \: \vec{u} \in V$ se tiene que, se escribe de forma única como combinación lineal de elementos de $\beta$
+\end{theorem}
+
+\begin{proof} 
+    $\Rightarrow$ 
+    
+    Supongamos que $\beta$ es base de $V$. $\Rightarrow \langle \beta \rangle = V $ y $ \: \forall \: \vec{u} \in V$ se tiene que es combinación lineal de elementos de $\beta$. Sea $\vec{u} \in V$
+    \begin{align*}
+        \vec{u} = {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{n}{\vec{v}}_{n} && \text{ y } && \vec{u} = {\eta}_{1}{\vec{v}}_{1} + ... + {\eta}_{n}{\vec{v}}_{n}
+    \end{align*}
+    \begin{equation*}
+        \Rightarrow {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{n}{\vec{v}}_{n} = {\eta}_{1}{\vec{v}}_{1} + ... + {\eta}_{n}{\vec{v}}_{n}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{n}{\vec{v}}_{n} - {\eta}_{1}{\vec{v}}_{1} - ... - {\eta}_{n}{\vec{v}}_{n} = {\vec{0}}_{V}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow ({\lambda}_{1} - {\eta}_{1}){\vec{v}}_{1} + ... + ({\lambda}_{n} - {\eta}_{n}){\vec{v}}_{n} = {\vec{0}}_{V}
+    \end{equation*}
+    Como $\beta$ es l.i. $\Rightarrow$
+    \begin{equation*}
+        {\lambda}_{1} - {\eta}_{1} = ... = {\lambda}_{n} - {\eta}_{n} = 0 \Rightarrow {\lambda}_{1} = {\eta}_{1} = ... = {\lambda}_{n} = {\eta}_{n}
+    \end{equation*}
+    Así, $\vec{u}$ se escribe de forma única 
+
+
+    $\Leftarrow$ 
+    
+    Supongamos que cada vector $\vec{u} \in V$ se escribe de forma única como combinación lineal de elementos de $\beta \Rightarrow$ como cada vector $\vec{u} \in V$ se escribe de forma única como combinación lineal de elementos de $\beta \Rightarrow \beta$ genera a $V$. Ahora, como es única $\Rightarrow$
+
+    \begin{equation*}
+        {\vec{0}}_{V} = 0{\vec{v}}_{1} + ... + 0{\vec{v}}_{n}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow  {\vec{0}}_{V} = {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{n}{\vec{v}}_{n} \Rightarrow {\lambda}_{1} = ... = {\lambda}_{n} = 0
+    \end{equation*}
+    $\therefore$ el \Cref{teo14} es verdadero
+\end{proof}
+
+\begin{theorem} \label{teo117}
+     Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y $S \subseteq V$ un conjunto de vectores de $V$. Donde $S = \{{\vec{v}}_{1},...,{\vec{v}}_{n}\} \Rightarrow S$ es l.d. $\iff {\vec{v}}_{1} = 0$ o ${\vec{v}}_{k} \in \langle \{{\vec{v}}_{1},...,{\vec{v}}_{k-1}\} \rangle$ para algún $k \in \{ 2, ..., n \}$.
+\end{theorem}
+
+\begin{proof}
+    $\Leftarrow$ 
+
+    Tenemos los siguientes casos
+
+    \begin{enumerate}
+        \item ${\vec{v}}_{1} = 0$
+
+        $\Rightarrow S$ es l.d.
+
+        \item ${\vec{v}}_{1} \neq 0$
+
+        $\Rightarrow$ para algún $k \in \{ 2, ..., n \} \Rightarrow {\vec{v}}_{k} \in \langle \{{\vec{v}}_{1},...,{\vec{v}}_{k-1}\}$
+
+        \begin{equation*}
+            \Rightarrow {\vec{v}}_{k} = {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{k-1}{\vec{v}}_{k-1}
+        \end{equation*}
+        \begin{equation*}
+            \Rightarrow {\vec{0}}_{V} = {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{k-1}{\vec{v}}_{k-1} + (-1) {\vec{v}}_{k}
+        \end{equation*}
+
+        Pero esta es una combinación lineal con escalares no todos cero que generan al cero del espacio vectorial, por lo que $S$ es l.d.
+
+        $\Rightarrow$
+
+        Ahora, supongamos que $S$ es l.d. Tenemos los siguientes casos
+
+        \begin{enumerate}
+            \item ${\vec{v}}_{1} = 0$
+
+        $\Rightarrow $ ya estufas.
+
+        \item ${\vec{v}}_{1} \neq 0$
+
+        Como $S$ es l.d. $\Rightarrow \: \exists \:  {\lambda}_{1}, ..., {\lambda}_{n} \in \K$ no todos cero tal que
+
+        \begin{equation*}
+            {\vec{0}}_{V} = {\lambda}_{1}{\vec{v}}_{1} + ... + {\lambda}_{k}{\vec{v}}_{k} + {\lambda}_{k+1}{\vec{v}}_{k+1}+ ... + {\lambda}_{n}{\vec{v}}_{n}
+        \end{equation*}
+
+        Sea $k$ el máximo índice para el cual ${\lambda}_{n} \neq 0$. Al despejar  ${\vec{v}}_{k}$ se escribe como combinación lineal de $ \langle \{{\vec{v}}_{1},...,{\vec{v}}_{k-1}\} \rangle$
+
+        \begin{equation*}
+            {\vec{v}}_{k} = -\frac{{\lambda}_{1}}{{\lambda}_{k}}{\vec{v}}_{1} - ... -\frac{{\lambda}_{k-1}}{{\lambda}_{k}}{\vec{v}}_{k-1}
+        \end{equation*}
+        \end{enumerate}
+        
+    \end{enumerate}
+    $\therefore$ el \Cref{teo117} es verdadero
+\end{proof}
+
+\begin{theorem} \label{teo118}
+     Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial generado por un conjunto finito $S = \{{\vec{v}}_{1},...,{\vec{v}}_{n} \} \subseteq V \Rightarrow \: \exists$ algún subconjunto $\beta \subseteq S$ que es base de $V$
+\end{theorem}
+
+\begin{proof}
+    Se tienen los siguientes casos
+
+    \begin{enumerate}
+        \item Si $S=\varnothing$ o $S = \{ {\vec{0}}_{V}\}$
+
+        \begin{equation*}
+            \Rightarrow V = \langle S \rangle =  \{ {\vec{0}}_{V}\} \Rightarrow \beta = \varnothing \subseteq S \text{ es base de } V
+        \end{equation*}
+        \item Si $\exists \: {\vec{v}}_{1} \neq {\vec{0}}_{V}$ y ${\vec{v}}_{1} \in S$
+
+        Bajo estas condiciones $\{{\vec{v}}_{1}\}$ es un conjunto l.i. Agreguemos vectores a $\{{\vec{v}}_{1}\}$ hasta que $\beta = \{ {\vec{v}}_{1}, ..., {\vec{v}}_{k} \} $ siga siendo l.i. y que al agregar cualquier otro vector de $S$ a $\beta$ el conjunto se vuelva l.d. Es decir, paramos de agregar justo antes de que se vuelva l.d.
+        
+        Afirmamos que $\beta$ es base de $V$. Por construcción $\beta$ es l.i. Por \Cref{fakelema}, basta probar que $S \subseteq \langle \beta \rangle$
+
+        Sea $\vec{v} \in S$
+
+        \begin{enumerate}
+            \item Si $\vec{v} \in \beta \Rightarrow \vec{v} \in \langle \beta \rangle$
+            \item Si $\vec{v} \in S \setminus \beta \Rightarrow \beta \cup \{ \vec{v} \}$ es l.d. Por el \Cref{fakelema} $\Rightarrow \vec{v} \in \langle \beta \rangle$
+        \end{enumerate}
+        \begin{equation*}
+            \Rightarrow S \subseteq  \langle \beta \rangle \Rightarrow \langle S \rangle \subseteq V \subseteq \langle \langle \beta \rangle \rangle = \langle \beta \rangle
+        \end{equation*}
+    \end{enumerate}
+    $\therefore$ es cierto el \Cref{teo118}
+\end{proof}
+
+\begin{eg}
+    $V / W$ es un espacio vectorial, llamado $V$ módulo $W$. Definido con las siguientes operaciones.
+\begin{align*}
+    \oplus : ( \vec{v} + W ) + ( \vec{u} + W ) = ( \vec{v} + \vec{u} ) + W  && \text{ y } && \odot : \lambda(\vec{v}+W)= (\lambda \cdot \vec{v}) +W
+\end{align*}
+
+Veamos que estas operaciones están bien definidas y que se trata, en efecto, de un espacio vectorial. 
+\end{eg}
+
+\begin{proofexplanation}
+    No es difícil ver que la suma está bien definida. Sola falta especificar que \(\vec{v}_1-\vec{v}_1^\prime \in W\), se sigue que \(\lambda(\vec{v}_1-\vec{v}_1^\prime)\in W\), o bien, que \(\lambda\vec{v}_1-\lambda\vec{v}_1^\prime \in W\). Por lo tanto \(\lambda(\vec{v}_1+W)=\lambda(\vec{v}_1^\prime+W)\). 
+
+    Notemos que de $V$ son sumamente triviales las leyes asociativas, conmutativas y distributivas. Debemos únicamente demostrar la existencia del neutra aditivo y el inverso aditivo.
+
+    Sea $\vec{v} + W \in V / W$. Veamos que $W = 0 +W$ es el neutro aditivo
+
+    \begin{equation*}
+        (\vec{v} + W) + W = (\vec{v} + 0) + W = \vec{v} + W \Rightarrow W + (\vec{v} + W) = (0 + \vec{v}) + W = \vec{v} + W
+    \end{equation*}
+
+    Sea $\vec{v} + W \in V / W$. Veamos que $-\vec{v} + W$ es el inverso aditivo. 
+        
+    \begin{equation*}
+        (\vec{v} + W) + (-\vec{v} + W) = (\vec{v} - \vec{v}) + W = 0 + W = W
+    \end{equation*}
+
+    Lo que nos da el 0 del espacio, que es $W$, como ya vimos en la primera parte. 
+
+    $\therefore V / W$ es un espacio vectorial sobre el campo $\K$. 
+
+    Para evidenciar que son triviales las demás propiedades, note lo fácil que es demostrar la asociatividad de la suma
+
+    \begin{equation*}
+        (\vec{u} + \vec{v}) + W + \vec{w} + W = (\vec{u} + \vec{v}) + \vec{w} + W = \vec{u} (\vec{v} + \vec{w}) + W
+    \end{equation*}
+
+    Demostremos también la distribución de multiplicación escalar
+    $$
+        (\lambda  + \gamma ) \cdot \vec{v} + W = (\lambda  + \gamma )\cdot \vec{v} + W = (\lambda \cdot \vec{v} + \gamma \cdot \vec{v}) + W  
+    $$
+    $$=(\lambda \cdot \vec{v} + W) + (\gamma \cdot \vec{v} + W) = \lambda \cdot (\vec{v} + W) + \gamma \cdot (\vec{v} + W)$$
+
+    Es por ello que decimos que las propiedades son triviales.
+\end{proofexplanation}
+
+\begin{remark}
+    El espacio $V / W$ es el espacio de todas las clases laterales. Se le conoce como espacio cociente. 
+\end{remark}
+
+\begin{theorem}
+     Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y dos vectores $\vec{u} \neq \vec{v} \in V$ y $\lambda \neq 0 \in \K$. Si $\{ \vec{v}, \vec{u} \}$ es base de $V \Rightarrow \{ \vec{u} + \vec{v}, \lambda \vec{u} \}$
+\end{theorem}
+
+\begin{proof}
+Separemos la prueba en dos partes
+\begin{enumerate}
+    \item P.D. $\{ \vec{u} + \vec{v}, \lambda \vec{u} \}$ es l.i.
+
+    Sean ${\alpha}_{1}, {\alpha}_{2} \in \K \backepsilon$ 
+
+    \begin{equation*}
+        {\vec{0}}_{V} = {\alpha}_{1}(\vec{u} + \vec{v})+ {\alpha}_{2}(\lambda \vec{u})
+    \end{equation*}
+        \begin{equation*}
+        {\vec{0}}_{V} = {\alpha}_{1}\vec{u} + {\alpha}_{1}\vec{v}+ {\alpha}_{2}\lambda \vec{u}
+    \end{equation*}
+    \begin{equation*}
+        ({\alpha}_{1}+ {\alpha}_{2} \lambda) \vec{u} + {\alpha}_{1}\vec{v}
+    \end{equation*}
+    \begin{align*}
+        {\alpha}_{1}+ {\alpha}_{2} \lambda \Rightarrow {\alpha}_{2} = 0 &&&& {\alpha}_{1} = 0
+    \end{align*}
+    $\Rightarrow \{ \vec{u} + \vec{v}, \lambda \vec{u} \}$ es l.i.
+
+    \item P.D. $\langle \{ \vec{u} + \vec{v}, \lambda \vec{u} \} \rangle = V$
+
+    Siempre se cumple que $\langle \{ \vec{u} + \vec{v}, \lambda \vec{u} \} \rangle \subseteq V$. Veamos que $\langle \{ \vec{u} + \vec{v}, \lambda \vec{u} \} \rangle \supseteq V$
+
+    Sea $\vec{z} \in V$. Por un lado, sabemos que existen escalares únicos ${\mu}_{1}, {\mu}_{2} \in \K $ tales que $\vec{z} = {\mu}_{1}\vec{u} {\mu}_{2}\vec{v}$
+
+    Ahora, queremos encontrar escalares ${\gamma}_{1}, {\gamma}_{2} \in \K $ tales que $\vec{z} = {\gamma}_{1}(\vec{u} + \vec{v}) + {\gamma}_{2}(\lambda \vec{u})$
+
+    \begin{equation*}
+        \vec{z} = {\gamma}_{1}(\vec{u} + \vec{v}) + {\gamma}_{2}(\lambda \vec{u}) = ({\gamma}_{1}+{\gamma}_{2}\lambda) \vec{u} + {\gamma}_{1}\vec{v}
+    \end{equation*}
+    \begin{align*}
+        \Rightarrow ({\gamma}_{1}+{\gamma}_{2}\lambda) = {\mu}_{1} && \text{ y } && {\gamma}_{1} = {\mu}_{2}
+    \end{align*}
+    \begin{equation*}
+        \Rightarrow {\mu}_{2}+{\gamma}_{2}\lambda = {\mu}_{1} \Rightarrow {\gamma}_{2}\lambda = {\mu}_{1} - {\mu}_{2} \Rightarrow  {\gamma}_{2} = \frac{{\mu}_{1} - {\mu}_{2}}{\lambda}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow \vec{z} = {\mu}_{1}(\vec{u} + \vec{v}) + \frac{{\mu}_{1} - {\mu}_{2}}{\lambda}(\lambda \vec{u})
+    \end{equation*}
+    $\therefore \vec{z} \in \{ \vec{u} + \vec{v}, \lambda \vec{u} \}$
+    $\therefore \{ \vec{u} + \vec{v}, \lambda \vec{u} \} = V$ y es base
+\end{enumerate}
+\end{proof}
+
+
+
+\begin{theorem}[Teorema de Reemplazmiento] \label{reemplazamiento}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial generado por un conjunto $G$ con exactamente $n$ vectores y $L$ un conjunto l.i. con exactamente $m$ vectores. $\Rightarrow m \leqslant n$. Más aún $\exists \: H \subseteq G$ con exactamente $n-m$ vectores tal que
+    \begin{equation*}
+        \langle L \cup H \rangle = V
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Por inducción sobre $m$
+
+    \begin{enumerate}
+        \item $m=0, L \neq \varnothing$ y $m \leqslant n$
+
+        Más aún, $H=G$
+
+        $$\Rightarrow H \cup L = G \cup \varnothing = G$$
+        $$\Rightarrow \langle H \cup L \rangle = \langle G \rangle = V$$
+
+        Esto porque $H \subseteq G$ y si $\abs{H} = \abs{G} \Rightarrow H = G$
+
+        \item Supóngamos el resultado cierto para $m$
+
+        \item Veamos que el resultado es cierto para $m+1$
+
+        Sea $L = \{ \vec{v}_{1},...,\vec{v}_{m},\vec{v}_{m+1} \}$ un conjunto l.i. Por 3. del \Cref{theom111} $L^\prime = \{ \vec{v}_{1},...,\vec{v}_{m}\} \subseteq L$ es l.i. Además $L^\prime$ tiene $m $ vectores. Por hipótesis de inducción $m \leqslant n$ y existe $H^\prime \subseteq G$. Esto es cierto por 2. de esta misma demostración. 
+
+        $$H^\prime = \{ \vec{u}_{1},...,\vec{u}_{n-m}\}$$
+
+        tal que $\langle L^\prime \cup H^\prime \rangle = V =  \{ \vec{v}_{1},...,\vec{v}_{m}\} \cup \{ \vec{u}_{1},...,\vec{u}_{n-m}\}$
+
+        Como $L^\prime \cup H^\prime$ genera a $V$, en particular, genera a $\vec{v}_{m+1} \Rightarrow \: \exists \: \lambda_1,...,\lambda_m$ y $\mu_1,...,{\mu}_{n-m} \in \K$ tales que
+
+        $$\vec{v}_{m+1} = \lambda_1\vec{v}_{1} + ... + \lambda_m\vec{v}_{m} + \mu_1\vec{u}_{1}+ ... +{\mu}_{n-m\vec{u}_{n-m}}$$
+
+        Notemos que $n-m \geqslant 1$, ya que, de lo contrario, ocurre que si $n-m = 0$
+
+        $$\vec{v}_{m+1} = \lambda_1\vec{v}_{1} + ... + \lambda_m\vec{v}_{m}$$
+
+        se volvería l.d. Pero esto es imposible. Por lo tanto $n \geqslant m+1$
+
+        S.P.G. supongamos que $\mu_1 \neq 0$
+
+        $$ \vec{u}_{1} = \frac{{\lambda}_{1}}{{\mu}_{1}}\vec{v}_{1} - \frac{{\lambda}_{2}}{{\mu}_{1}}\vec{v}_{2} - ... - \frac{{\lambda}_{m}}{{\mu}_{1}}\vec{v}_{m} + \frac{1}{{\mu}_{1}}\vec{v}_{m+1} -  \frac{{\mu}_{2}}{{\mu}_{1}}\vec{u}_{2} - ... - \frac{{\mu}_{n-m}}{{\mu}_{1}}\vec{u}_{n-m}$$
+
+        Sea $H = \{ \vec{u}_{2},...,\vec{u}_{n-m}\} \Rightarrow \vec{u}_{1} \in \langle L \cup H \rangle$
+
+        Todo vector de $L^\prime$ está en $ \langle L \cup H \rangle$. Todo vector de $H^\prime$ está en $ \langle L \cup H \rangle$
+
+        $$\Rightarrow L^\prime \cup H^\prime \subseteq  \langle L \cup H \rangle \Rightarrow \langle L^\prime \cup H^\prime \rangle  \subseteq  \langle L \cup H \rangle \subseteq V$$
+    \end{enumerate}
+
+    $\therefore \langle L \cup H \rangle$ genera a $V$
+\end{proof}
+
+\begin{corollary}
+     Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial finitamente generado. Entonces, todas las bases de $V$ tienen el mismo número de elementos.
+\end{corollary}
+
+\begin{orangeproof}
+    Sean $\beta$ y $\gamma$ bases de $V$, y supongamos que $\abs{\beta} = p$ y $\abs{\gamma} = q$
+
+    $\Rightarrow$ Como $\beta$ genera a $V$ y $\gamma$ es l.i. $\Rightarrow p \geqslant q$
+    
+    $\Rightarrow$ Como $\gamma$ genera a $V$ y $\beta$ es l.i. $\Rightarrow p \leqslant q$
+\end{orangeproof}
+
+\begin{definition}[Finitamente Generado]
+     Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial. Se dice que $V$ es finitamente generado si existe $G \subseteq V$ finito tal que $\langle G \rangle = V$
+\end{definition}
+
+\begin{definition}[Dimensión]
+     Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y $\beta = \{ \vec{v}_{1} , ... , \vec{v}_{n} \}$ una base de $V$. La dimensión de $V$ sobre $\K$ es $\abs{\beta} = n = {\dimmenn}_{\K}(V)$
+\end{definition}
+
+\begin{corollary}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con ${\dim}_{\K}(V) = n$. Si $G$ es generador de $V \Rightarrow G$ tiene al menos $n$ elementos. Más aún, si $G$ genera a $V$ y $\abs{G}=n \Rightarrow G$ es base.
+\end{corollary}
+
+\begin{orangeproof}
+    Sea $\beta$ una base de $V \Rightarrow \beta = \{ \vec{v}_{1} , ... , \vec{v}_{n} \}$ y es evidente que $\abs{\beta} = n$. Sea $G$ un conjunto generador. Por \Cref{teo118} $\exists \: \gamma \subseteq G$ que es base
+
+    $$\Rightarrow \abs{\gamma} = n \leqslant \abs{G}$$
+
+    Además, si $\abs{G} = n$, sabemos que genera. Por el mismo \Cref{teo118} $\exists \: \gamma \subseteq G$ que es base.
+
+    $$\Rightarrow \abs{\gamma} = n \leqslant \abs{G} = n \Rightarrow G = \gamma$$
+
+    $\therefore G$ es base
+\end{orangeproof}
+
+\begin{corollary}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con ${\dim}_{\K}(V) = n$. Si $L$ es un conjunto l.i. y tiene $\abs{L} = n \Rightarrow L$ es base.
+\end{corollary}
+
+\begin{orangeproof}
+    Sea $\beta$ una base de $V \Rightarrow \beta = \{ \vec{v}_{1} , ... , \vec{v}_{n} \}$ y es evidente que $\abs{\beta} = n$. Supongamos que $L$ es un conjunto l.i. con $\abs{L} = n$.
+
+    Por \Cref{reemplazamiento}, coomo $\beta$ genera a $V \: \exists \: H \subseteq \beta$ con exactamante $n-n = 0$ elementos tal que $\langle L \cup H \rangle = V$
+
+    $$ H = \varnothing \Rightarrow \langle L \cup \varnothing \rangle = \langle L \rangle = V $$
+\end{orangeproof}
+
+\begin{corollary}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con ${\dim}_{\K}(V) = n$. Todo conjunto l.i. se puede extender a una base de $V$.
+\end{corollary}
+
+\begin{orangeproof}
+    Sea $\beta$ una base de $V \Rightarrow \beta = \{ \vec{v}_{1} , ... , \vec{v}_{n} \}$ y es evidente que $\abs{\beta} = n$. Sea $L$ un conjunto l.i. con $\abs{L} = m$. Por \Cref{reemplazamiento} $\exists \: H \subseteq \beta$ con exactamente $n-m$ vectores tal que $\langle L \cup H \rangle = V$
+
+    Como $\abs{L \cup H} = m + (n-m) = n$, por el primer cololario del \Cref{reemplazamiento}, $L \cup H$ es base.
+\end{orangeproof}
+
+\begin{remark}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con ${\dim}_{\K}(V) = n$. Si un conjunto $G \subseteq V$ es tal que $\abs{G} > n \Rightarrow G$ es l.d. y nada garantiza que genere.
+\end{remark}
+
+\begin{theorem}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con ${\dim}_{\K}(V) < \infty$, de dimensión finita y $ W \leq V \Rightarrow V / W$ es de dimensión finita tal que
+
+    $$\dim V / W = \dim V - \dim W$$
+\end{theorem}
+
+\begin{proof}
+    Sea $\gamma = \{ \vec{w}_{1} , ... , \vec{w}_{n} \}$ una base para $W$, así ${\dim}_{\K}(W) = n$. Ahora, extendamos a $\gamma$ a una base para $V$ llamada $\delta = \{ \vec{w}_{1} , ... , \vec{w}_{n},\vec{v}_{1} , ... , \vec{v}_{k} \} $, así ${\dim}_{\K}(V) = n+k$
+
+    Veamos que $ \Omega = \{\vec{v}_{1} + W , ... , \vec{v}_{k} + W\}$ es base de $V / W$
+
+    En primer lugar, veamos que es l.i. Sean $\lambda_1, ..., \lambda_n \in \K$ tales que
+    
+    $$W = \lambda_1(\vec{v}_{1} + W) + ...+ \lambda_k(\vec{v}_{k} + W)$$
+    $$\Rightarrow W = (\lambda_1\vec{v}_{1} + ... + \lambda_k\vec{v}_{k}) + W $$
+    $$\Rightarrow \vec{v}^{\prime} = \lambda_1\vec{v}_{1} + ... + \lambda_k\vec{v}_{k} \in W$$
+
+    Ahora, $\exists \: \alpha_1,..,\alpha_n \in \K$ tales que $ \vec{v}^{\prime} = \alpha_1\vec{w}_{1} + ... + \alpha_n\vec{w}_{n}$
+
+    $$\Rightarrow \lambda_1\vec{v}_{1} + ... + \lambda_k\vec{v}_{k} = \alpha_1\vec{w}_{1} + ... + \alpha_n\vec{w}_{n}$$
+    $$ \Rightarrow  \lambda_1\vec{v}_{1} + ... + \lambda_k\vec{v}_{k} - \alpha_1\vec{w}_{1} - ... - \alpha_n\vec{w}_{n} = \vec{0}_{V}$$
+
+    Donde la ecuación pasada es una combinación lineal de los elementos de $\delta$ igualadsos al vector 0. $\Rightarrow \lambda_1 = ... = \lambda_k = \alpha_1 = ... = \alpha_n$
+
+    $\therefore \Omega$ es l.i.
+
+    Ahora, veamos que $\langle \Omega \rangle = V / W$. Sea $\vec{v} + W \in V / W \Rightarrow $ como $\vec{v} \in V \: \exists \: \mu_1,...,\mu_n$ y $\pi_1,...,\pi_k \in \K$ tales que
+
+    $$\vec{v} =  {\mu}_{1}\vec{w}_{1} + ... + {\mu}_{n}\vec{w}_{n}+ {\pi}_{1}\vec{v}_{1} + ... + {\pi}_{n}\vec{v}_{k}$$
+    $$\Rightarrow \vec{v} + W = ({\mu}_{1}\vec{w}_{1} + ... + {\mu}_{n}\vec{w}_{n}+ {\pi}_{1}\vec{v}_{1} + ... + {\pi}_{n}\vec{v}_{k}) + W$$
+    $$\Rightarrow \vec{v} + W = ({\mu}_{1}\vec{w}_{1} + ... + {\mu}_{n}\vec{w}_{n} )+ ({\pi}_{1}\vec{v}_{1} + ... + {\pi}_{n}\vec{v}_{k}) + W $$
+
+    Como $\vec{w}^{\prime} = ({\mu}_{1}\vec{w}_{1} + ... + {\mu}_{n}\vec{w}_{n} ) \in W$
+
+    $$\Rightarrow \vec{v} + W = \vec{w}^{\prime}  + ({\pi}_{1}\vec{v}_{1} + ... + {\pi}_{n}\vec{v}_{k}) + W  = ({\pi}_{1}\vec{v}_{1} + ... + {\pi}_{n}\vec{v}_{k}) + W$$
+    $$ \vec{v} + W = {\pi}_{1}(\vec{v}_{1}+W) + ... + {\pi}_{k}(\vec{v}_{k}+W)$$
+
+    $\therefore \Omega$ genera a $V / W$
+
+    $\therefore \dim V / W = k = (n+k) - n = \dim V - \dim W$
+\end{proof}
+
+\begin{theorem} \label{tarea5og}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con ${\dim}_{\K}(V) <  \infty = n$, y $W \leq V$ subespacio de $V \Rightarrow W$ es de dimensión finita y ${\dim}_{\K}(W) \leqslant {\dim}_{\K}(V)$
+\end{theorem}
+
+\begin{proof}
+    Tenemos los siguientes casos
+
+    \begin{enumerate}
+        \item Si $W = \{ \vec{0}_{V} \}$
+
+        $\varnothing$ es base de $W \Rightarrow {\dim}_{\K}(W)  = 0 \leqslant n$
+
+        \item  Si $\exists \: \vec{w}_{1} \neq \vec{0}_{V} \in W$
+
+        Note que el siguiente conjunto $S$ es l.i.
+
+        $$S = \{ \vec{w}_{1} \}$$
+
+        Agregamos vectores de $W$ a $S$ tal que $\gamma = \{ \vec{w}_{1},..., \vec{w}_{n}\}$ sea l.i., aunque esto implique no agregar alguno, y que al agregar cualquier otro vector de $W$ a $\gamma$, este se volviere l.d.
+        
+        Por construcción, $\gamma$ es l.i. Veamos que $\gamma$ es base $\Rightarrow \langle \gamma \rangle = W$. Sea $\vec{w} \in W$
+
+        \begin{enumerate}
+            \item Si $\vec{w} \in \gamma \Rightarrow \vec{w} \in \langle \gamma \rangle$
+            \item Si $\vec{w} \notin \gamma \Rightarrow \gamma \cup \{ \vec{w} \}$ es l.d. $\Rightarrow \vec{w} \in \langle \gamma \rangle$, por el \Cref{fakelema}
+        \end{enumerate}
+    \end{enumerate}
+
+    $\therefore \gamma $ genera a $W$. Por el \Cref{reemplazamiento} $\Rightarrow k \leqslant n$
+\end{proof}
+
+\begin{theorem} \label{theomtarea5}
+    Si ${\dim}_{\K}(V) = {\dim}_{\K}(W) \Rightarrow W = V$
+\end{theorem}
+
+\begin{proof}
+    Siguiendo la prueba anterior, sea el conjunto $\gamma = \{ \vec{w}_{1},..., \vec{w}_{n}\}$. Como $\gamma$ es l.i. y tiene $\abs{\gamma} = n$ elementos $\Rightarrow \langle \gamma \rangle = V$, esto por el tercer corolario del \Cref{teo118}.
+\end{proof}
+
+\begin{corollary}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial, $W \leq V \Rightarrow $ cualquier base de $W$ se puede extender a una base de $V$
+\end{corollary}
+
+\begin{theorem}
+    Sean $W_1$ y$ W_2$ subespacios de un $\K$-espacio vectorial ($V, \oplus, \odot$) de dimensión finita $n$.
+
+    $$\Rightarrow {\dim}_{\K}(W_1+W_2) = {\dim}_{\K}(W_1) + {\dim}_{\K}(W_2) - {\dim}_{\K}(W_1 \cap W_2)$$
+\end{theorem}
+
+\begin{proof}
+    Como $W_1 \cap W_2 \leq W_1 \Rightarrow W_1 \cap W_2 $ tiene una base finita $\beta = \{ \vec{w}_1, ..., \vec{w}_n \}$. Usando el corolario del \Cref{theomtarea5}, encontramos $\gamma = \{ \vec{u}_1, ..., \vec{u}_k \}$ y $\xi = \{ \vec{z}_1, ..., \vec{z}_r \}$ tales que $\left\langle \beta \cup \gamma \right\rangle = W_1$ y  $\left\langle \beta \cup \xi \right\rangle = W_2$. 
+
+    Es suficiente probar que $\beta \cup \gamma \cup \xi = \{\vec{w}_1, ..., \vec{w}_n, \vec{u}_1, ..., \vec{u}_k, \vec{z}_1, ..., \vec{z}_r  \}$ es base de $W_1+W_2$. De ahí se seguirá que 
+
+    $${\dim}_{\K}(W_1+W_2) = (n+k+r) = (n+k) + (n+r) - n $$
+
+    $$=  {\dim}_{\K}(W_1) + {\dim}_{\K}(W_2) - {\dim}_{\K}(W_1 \cap W_2)$$
+
+    Primero, veamos que  $\beta \cup \gamma \cup \xi $ es l.i. Sean $\mu_1, ... \mu_n$, $\alpha_1, ..., \alpha_k$, y $\lambda_1, ..., \lambda_r \in \K$ 
+
+    $$ \vec{0}_V = \mu_1 \vec{w}_1 +  ... + \mu_n \vec{w}_n +  \alpha_1\vec{u}_1 + ... + \alpha_k\vec{u}_k + \lambda_1\vec{z}_1 + ...+ \lambda_r\vec{z}_r$$
+
+    Sea
+
+    $$\vec{v}_1 = \mu_1 \vec{w}_1 +  ... + \mu_n \vec{w}_n$$
+    $$\vec{v}_2 = \alpha_1\vec{u}_1 + ... + \alpha_k\vec{u}_k$$
+    $$\vec{v}_3 = \lambda_1\vec{z}_1 + ...+ \lambda_r\vec{z}_r$$
+
+    Notemos que $\vec{v}_1 \in W_1 \cap W_2$, mientras que $\vec{v}_2 \in W_1 $ y $\vec{v}_3 \in W_2$
+
+    $$\Rightarrow \vec{0}_V = \vec{v}_1 + \vec{v}_2 + \vec{v}_3 \Rightarrow -\vec{v}_3 = \vec{v}_1 + \vec{v}_2$$
+
+    Notemos que $\vec{v}_1 + \vec{v}_2 \in W_1$, mientras que $-\vec{v}_3 \in W_2 \Rightarrow  -\vec{v}_3 \in W_1 \cap W_2$. Como $\beta$ es base de $ W_1 \cap W_2$, $\exists \: \nu_1, ..., \nu_n \in \K$ tales que
+
+    $$-\vec{v}_3  = \nu_1\vec{w}_1 + ... + \nu_n\vec{w}_n $$
+    $$\Rightarrow -\vec{v}_3 = \vec{v}_1 + \vec{v}_2 \Rightarrow  \vec{0}_V =  (\mu_1 \vec{w}_1 +  ... + \mu_n \vec{w}_n)+ (\alpha_1\vec{u}_1 + ... + \alpha_k\vec{u}_k) + (-\nu_1\vec{w}_1 - ... - \nu_n\vec{w}_n)$$
+    $$= (\mu_1-\nu_1)\vec{w}_1  + ... + (\mu_n-\nu_n)\vec{w}_n  (\alpha_1\vec{u}_1 + ... + \alpha_k\vec{u}_k)$$
+
+    Por lo que tenemos una combinación lineal de elementos de $\beta \cup \gamma$, pero al ser base de $W_1$, es l.i., por lo que $\mu_1-\nu_1 = ... = \mu_n-\nu_n = \alpha_1 = ... = \alpha_k = 0$. Esto implica que $\vec{v}_2 = 0$
+
+    $$\Rightarrow \vec{0}_V = \vec{v}_1 + \vec{v}_2 + \vec{v}_3 = \vec{v}_1 + \vec{v}_3 = (\mu_1 \vec{w}_1 +  ... + \mu_n \vec{w}_n) + (\lambda \vec{z}_1 +  ... + \lambda_r \vec{z}_r)$$
+
+    Pero esta es una combinación lineal de elementos de $\beta \cup \xi$, pero al ser base de $W_2 $, es l.i., por lo que $\mu_1 = ... = \mu_n = \lambda_1 = ... = \lambda_r = 0$. Esto prueba que $\beta \cup \gamma \cup \xi$ es l.i.
+
+    Veamos que $\langle \beta \cup \gamma \cup \xi \rangle = W_1 + W_2$. Como $\left\langle \beta \cup \gamma \right\rangle = W_1$ y  $\left\langle \beta \cup \xi \right\rangle = W_2$ s.t.q.
+
+    $$ \langle \beta \cup \gamma \cup \xi \rangle = \langle (\beta \cup \gamma) \cup (\beta \cup \xi )\rangle$$
+    $$\left\langle \beta \cup \gamma \right\rangle + \left\langle \beta \cup \xi \right\rangle = W_1 + W_2$$
+    
+    $\therefore {\dim}_{\K}(W_1) + {\dim}_{\K}(W_2) - {\dim}_{\K}(W_1 \cap W_2)$
+
+\end{proof}
+
+
+\begin{definition}[Máximo Linealmente Independiente]
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y $L \subseteq V$ un conjunto de vectores de $V$. Se dice que $L$ es máximo l.i. si $L$ es l.i. y al agregar cualquier otro vector $\vec{u} \in V \setminus L$ el conjunto $L \cup \{ \vec{u} \}$ es l.d.
+\end{definition}
+
+\begin{theorem} \label{theom124}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y $L \subseteq V$ un conjunto de vectores de $V$. Se dice que $L$ es base de $V \iff L$ es máximo l.i.
+\end{theorem}
+
+\begin{proof}
+    $\Rightarrow$ Supongamos que $L$ es una base. Entonces $L$ es l.i. Sea $\vec{w} \in V \setminus L$. Como $L$ es bae, genera al espacio $V \Rightarrow \vec{w} \in \langle L \rangle$. Por \Cref{fakelema}. $L \cup \{ \vec{w} \}$ es l.d. Así, $L$ es máximo l.i.
+
+    $\Leftarrow$ Supongamos ahora $L$ es máximo l.i. 
+
+    $\Rightarrow$ por definición de máximo l.i. $L$ es l.i. Para ver que $L$ es base de $V$ veamos que $\langle L \rangle = V$
+
+    Sea $\vec{u} \in V$
+
+    \begin{enumerate}
+        \item Si $\vec{u} \in L \Rightarrow \vec{u} \in \langle L \rangle$
+        \item Si $\vec{u} \notin L \Rightarrow \vec{u} \in V \setminus L$
+    \end{enumerate}
+
+    Como $L$ es máximo l.i. $\Rightarrow L \cup \{ \vec{u} \}$ es l.d. Por \Cref{fakelema} esto ocurre $\iff \vec{u} \in \langle L \rangle$ COmo $\vec{u}$ es un elemento cualquiera de $V \Rightarrow L$ genera a $V$.
+\end{proof}
+
+\begin{definition}[Maximal]
+    Sea $\mathcal{F}$ una familia de conjuntos. Un elemento de $M$ de $\mathcal{F}$ es maximal (respecto a la inclusión $\subset$ ) si $M$ no está contenido en ningún otro elemento de $\mathcal{F}$.
+\end{definition}
+
+\begin{remark}
+    Máximo no es maximal. Coloquialmente, un elemento es máximo si \textit{todo esta por debajo} de él. Solo hay uno, mientras que pueden haber varios maximales. Un maximal, \textit{no tiene nada por arriba}.
+\end{remark}
+
+\begin{notation}
+    Utilizamos al símbolo $A \subset B$ para indicar que $A$ es subconjunto propio de $B$. Es decir, no puede haber igualdad.
+\end{notation}
+
+\begin{definition}
+    Una coloección de conjuntos $\mathscr{C}$ es una cadena si $A$ y $B$ son comparables, es decir, $A \subset B$ o $B \subset A$, esto $\forall \: A,B \in \mathscr{C}$
+\end{definition}
+
+\begin{lemma}[Principio de Maximalidad]
+    Sea $\mathcal{F}$ una familia de conjuntos. So para cada cadena $\mathscr{C} \subseteq \mathcal{F}$ hay un elemento de $\mathcal{F}$ que contiene a cada elemento de $\mathscr{C} \Rightarrow$ hay elementos maximales de $\mathcal{F}$. 
+\end{lemma}
+
+\begin{theorem} \label{theom125}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial y $S$ un conjunto l.i. $\Rightarrow \: \exists$ un conjunto máximo l.i. que contiene a $S$
+\end{theorem}
+
+\begin{proof}
+    Sea
+
+    $$\mathcal{F} = \{ L \subseteq V \mid L \text{ es l.i. y} S \subseteq L \}$$
+
+    Note que $\mathcal{F} \neq \varnothing$ ya que $S \in \mathcal{F}$ ya que $S \subseteq S$
+
+    Ahora, sea $\mathscr{C} \subseteq \mathcal{F}$ una cadena de $\mathcal{F}$. Hay que ver que $\exists \: \mathcal{U}$ en $\mathcal{F}$ que contiene a a $C \: \forall \: C \in \mathscr{C}$
+
+    Sea 
+
+    $$\mathcal{U} = \bigcup_{C \in \mathscr{C}} C$$
+
+    Claramente $C \subseteq \mathscr{C}$ y $S \subseteq \mathcal{U}$. Falta ver que $\mathcal{U}$ es l.i. 
+
+    Sean $\vec{u}_{1},...,\vec{u}_{k} \in \U$ y $\lambda_1,...,\lambda_k \in \K$ tales que
+
+    $$\vec{0}_{V} = \lambda_1 \vec{u}_{1} + ... + \lambda_k \vec{u}_{k}$$
+
+    Como $\mathscr{C}$ es una cadena $\exists \: C-0 \in \mathscr{C}$ tales que $\vec{u}_{1},...,\vec{u}_{k}  \in C_0$
+
+    Como $C_0$ es l.i. $\Rightarrow \lambda_1 = ... = \lambda_k = 0$
+
+    Como $S \subseteq C_0 \Rightarrow \U$ es l.i. y $\U \in \mathcal{F}$ 
+\end{proof}
+
+\begin{corollary}
+    Todo espacio vectorial tiene base.
+\end{corollary}
+
+\begin{orangeproof}
+
+Tenemos los siguientes casos
+
+    \begin{enumerate}
+        \item Si $V$ es finitamente generado, por el \Cref{reemplazamiento} y sus corolarios, todo conjunto l.i. en $V$ se puede extender a una base.
+        \item Si $V$ no es finitamente generado. Sea $s = \{ \vec{u}_{1} \}$ con $\vec{u}_{1} \neq 0$. Por el \Cref{theom125} $\exists$ un conjunto máximo l.i. que contiene a $S$. Por \Cref{theom124} un conjunto l.i. es base. 
+    \end{enumerate}
+\end{orangeproof}
+

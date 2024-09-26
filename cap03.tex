@@ -1,0 +1,365 @@
+\chapter{Productos Interiores}
+
+\section{Definición y Ejemplos}
+
+\begin{definition} [Producto Interior]
+    Sean ($V, \oplus, \odot$) un $\K$-espacio vectorial. Un producto interior en $V$ es una función $\langle \: , \: \rangle : V \times V \to \K$ que satisface lo siguiente
+
+    \begin{enumerate} 
+        \item $\forall \: \vec{v}, \vec{u}, \vec{w} \in V \Rightarrow \langle \vec{u}+ \vec{v}, \vec{w} \rangle = \langle \vec{u}, \vec{w} \rangle + \langle \vec{v}, \vec{w} \rangle$
+        \item $\forall \: \vec{v}, \vec{u} \in V$ y $\forall \: \lambda \in \K \Rightarrow \langle \lambda \vec{u}, \vec{v} \rangle = \lambda  \langle \vec{u}, \vec{v} \rangle$
+        \item $\forall \: \vec{v}, \vec{u} \in V \Rightarrow  \langle \vec{v}, \vec{u} \rangle =  \langle \overline{\vec{v}, \vec{u}} \rangle$ donde $\overline{\cdot}$ es el conjugado complejo
+        \item $\forall \: \vec{u} \in V \Rightarrow  \langle \vec{u}, \vec{u} \rangle > 0$ si $\vec{u} \neq \vec{0}$
+    \end{enumerate}
+\end{definition}
+
+\begin{notation}
+    En este capítulo, el campo $\K$ solo puede ser $\R$ o $\C$
+\end{notation}
+
+\begin{corollary}
+    Un producto interior es lineal en la primer entrada
+    $$\left\langle \sum_{i=1}^{n} \lambda_i {\vec{v}}_{i}, \vec{w} \right\rangle = \sum_{i=1}^{n}\lambda_i  \left\langle {\vec{v}}_{i}, \vec{w} \right\rangle$$
+\end{corollary}
+
+\begin{remark}
+    Sea $z, w \in \C$ y $a, b \in \R$ donde $z = a + ib$ y $z = a - ib \Rightarrow$
+
+    \begin{enumerate}
+        \item $\overline{z+w} = \overline{z} + \overline{w}$
+        \item $\overline{z \cdot w} = \overline{z} \cdot \overline{w}$
+        \item $\left( \overline{\frac{z}{w}} \right) = \frac{\overline{z}}{\overline{w}}$
+        \item $z \cdot \overline{z} = \abs{z}^2 = a^2 + b^2$
+    \end{enumerate}
+\end{remark}
+
+\begin{eg}
+    Sea $V = \C^n$ y $\vec{u}, \vec{v} \in \C^n$
+
+    En este caso $\vec{u} = (u_1, u_2, ..., u_n), \vec{v} = (v_1, v_2, ..., v_n)$ con $u_i, v_i \in \C \: \forall \: i \in \{ 1, ..., n \}$
+
+    $$\langle \vec{u}, \vec{v} \rangle = \langle  (u_1, u_2, ..., u_n) , (v_1, v_2, ..., v_n) \rangle = \sum_{i=1}^{n} u_i {\overline{v}}_{i}$$
+\end{eg}
+
+
+\begin{eg}
+    Sen $a,b \in \R$ con $a < b$. Definimos 
+    \begin{equation*}
+        C([a,b]) := \{ f: [a,b] \to \R \mid \text{ $f$ es continua }\}
+    \end{equation*}
+
+    Es conocido que $ C([a,b])$ es un $\R$-espacio vectorial. Más aún, si $f,g \in C([a,b]) \Rightarrow fg : [a,b] \to \R$ definida por
+
+    \begin{equation*}
+        (fg)(x) = f(x)g(x)
+    \end{equation*}
+
+    con $x \in X$ es también una función continua. También es bien conocido que $ C([a,b]) \subseteq  R([a,b])$, es decir, toda función continua $f:[a,b] \to \R$ es Riemann integrable
+
+    Bajo estas condiciones, veamos que la función
+
+    \begin{equation*}
+        \langle \: , \: \rangle : C([a,b]) \times C([a,b]) \to \R
+    \end{equation*}
+
+    definida por
+    \begin{equation*}
+         \langle f , g \rangle = \int_{a}^{b} f(x)g(x) \, dx
+    \end{equation*}
+
+    es un producto interior 
+\end{eg}
+
+\begin{proofexplanation}
+    \begin{enumerate}
+        \item Sea $f,g \in C([a,b]) $ arbitrarios
+        \begin{equation*}
+            \Rightarrow \langle f , g \rangle = \int_{a}^{b} f(x)g(x) \, dx =  \int_{a}^{b} g(x)f(x) \, dx = \langle g , f \rangle
+        \end{equation*}
+        \item Sean $f,g,h \in C([a,b]) $ cualesquiera funciones
+        \begin{equation*}
+            \Rightarrow \langle f + g, h \rangle = \int_{a}^{b} (f(x)+g(x))h(x) \, dx = \int_{a}^{b} f(x)h(x)+g(x)h(x) \, dx 
+        \end{equation*}
+        \begin{equation*}
+            = \int_{a}^{b} f(x)h(x)\, dx + \int_{a}^{b} g(x)h(x)\, dx =  \langle f , h \rangle +  \langle  g, h \rangle
+        \end{equation*}
+        \item Sean $f,g \in  C([a,b])$ y $\lambda \in \R$ arbitrarios
+        \begin{equation*}
+            \Rightarrow \langle \lambda f, g  \rangle  = \int_{a}^{b} (\lambda f)(x)h(x)\, dx = \int_{a}^{b} \lambda( f(x)h(x))\, dx =  \lambda \int_{a}^{b}  f(x)h(x)\, dx = \lambda \langle  f, g  \rangle 
+        \end{equation*}
+        \item Sea $f \in  C([a,b])$ arbitrario. Debido a que $f^2 : [a,b] \to \R$ es continua y $\: \forall \: x \in [a,b] \Rightarrow f^2 (x) \geqslant 0$. Así, como la función es una funcional lineal no negativa 
+
+        \begin{equation*}
+            \langle f, f \rangle = \int_{a}^{b} f^2(x)\, dx \geqslant \int_{a}^{b} 0 \, dx = 0
+        \end{equation*}
+
+        Ahora, notemos que
+        \begin{equation*}
+            \langle f, f \rangle=0 \iff \int_a^b \abs{f(x)}^2\,dx=0\stackrel{\text{por continuidad}}\Longleftrightarrow \abs{f(x)}^2=0\,\,\text{en}\,\,[a,b]\iff f(x)=0
+        \end{equation*}
+    \end{enumerate}
+    $\therefore \langle \: , \: \rangle$ es un producto interior en $C([a,b])$
+\end{proofexplanation}
+
+\begin{theorem}
+    \label{teo_6.1_FD}
+    Sea  ($V, \oplus, \odot$) un $\K$-espacio vectorial $\Rightarrow \: \forall \: \vec{u}, \vec{v}, \vec{w} \in V$ y $\forall \: \lambda \in \K$ s.t.q. \begin{enumerate}
+        \item $\langle \vec{u}, \vec{v}+\vec{w} \rangle=\langle \vec{u},\vec{v}\rangle + \langle \vec{u},\vec{w} \rangle
+        $.
+        \item $\langle \vec{u}, \lambda \vec{v} \rangle=\overline{\lambda}\langle \vec{u}, \vec{v} \rangle$.
+        \item $\langle\vec{u}, 0 \rangle=\langle 0 , \vec{u} \rangle = 0 $.
+        \item $\langle \vec{u}, \vec{u} \rangle=0 \iff \vec{u}=0$.
+        \item Si $\langle \vec{u}, \vec{v} \rangle = \langle \vec{u}, \vec{w} \rangle \: \forall \: \vec{u} \in V \Rightarrow \vec{v}=\vec{w}$, 
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item  Tenemos que
+
+        $$\langle \vec{u}, \vec{v}+\vec{w} \rangle =\overline{\langle \vec{v}+ \vec{w}, \vec{u} \rangle}=\overline{ \langle \vec{v}, \vec{u} \rangle + \langle \vec{w}, \vec{u} \rangle} $$
+        $$= \overline{\langle \vec{v}, \vec{u} \rangle} + \overline{\langle \vec{w}, \vec{u} \rangle}=\langle \vec{u}, \vec{v} \rangle+ \langle \vec{u}, \vec{w} \rangle$$
+
+        \item Note que
+        $$\langle \vec{u}, \lambda \vec{v} \rangle=\overline{\langle \lambda \vec{v}, \vec{u} \rangle}=\lambda \overline{ \langle \vec{v}, \vec{u} \rangle}=\overline{\lambda} \langle \vec{u}, \vec{v} \rangle$$
+
+        \item Por el segundo inciso, se tiene que
+
+        $$\langle \vec{u}, 0 \rangle=\overline{0} \langle \vec{u}, 0 \rangle=0$$
+
+        Y, de manera análoga
+        $$\langle 0, \vec{u} \rangle=\overline{\langle \vec{u}, 0 \rangle}=0$$
+
+        \item $\Leftarrow$ Por el tercer inciso, note que  si $\vec{u}=0 \Rightarrow \langle 0,0 \rangle=0$
+
+        $\Rightarrow$ Suponga que $\vec{u}\neq 0 \Rightarrow \langle \vec{u}, \vec{u} \rangle > 0$.
+
+        \item Note que
+
+        $$\langle \vec{u}, \vec{v} \rangle = \langle \vec{u}, \vec{w} \rangle \: \forall \: \vec{u} \in V \Rightarrow \langle \vec{u}, \vec{v}- \vec{w} \rangle = 0 \: \forall \: \vec{u} \in V$$
+
+        Y, también
+
+        $\langle \vec{v}-\vec{w}, \vec{v}- \vec{w} \rangle =0 \Rightarrow \vec{v}-\vec{w}=0 \Rightarrow \vec{v}=\vec{w}$. 
+    \end{enumerate}
+    $\therefore$ se cumple el \Cref{teo_6.1_FD}
+\end{proof}
+
+
+\begin{definition}[Norma]
+    Sea  ($V, \oplus, \odot$) un $\K$-espacio vectorial. Una norma en $V$ es una función $\norm{\cdot} : V \to \R$ que tiene las siguientes propiedades
+    \begin{enumerate}[label=(\subscript{N}{{\arabic*}})]
+    \item $\forall \: x \in V \Rightarrow \norm{x} \geqslant 0$
+    \item $\norm{x} = 0 \Leftrightarrow x = \vec{0}$, donde $\vec{0}$ es el neutro aditivo de $V$
+    \item $\forall \: x \in V$ y $\forall \: \lambda \in \K \Rightarrow \norm{\lambda x} = \abs{\lambda} \norm{x}$
+    \item $\forall \: x,y \in V \Rightarrow \norm{x+y} \leqslant \norm{x} + \norm{y}$
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}[Desigualdad de Cauchy - Schwarz] \label{theom3}
+    Sea ($V, \langle \: , \: \rangle$) un espacio con producto interior, $ \implies  \forall \: x,y \in V$ s.t.q.
+
+    \begin{equation*}
+        \abs{\langle x,y \rangle} \leqslant \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle y,y \rangle}
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Sean $x,y \in V$ Para $y$ tomamos los siguientes casos
+
+    \begin{enumerate}
+        \item $y=\vec{0}$
+
+        \begin{equation*}
+            \Rightarrow \langle x,y \rangle = \langle y,x \rangle = \langle 0 \cdot \vec{0} \rangle = 0 \langle y,z \rangle = \vec{0}
+        \end{equation*}
+        \begin{equation*}
+            \Rightarrow \abs{\langle x,y \rangle} = 0 \implies \abs{\langle x,y \rangle} = 0 \leqslant \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle y,y \rangle} = \sqrt{\langle x,x \rangle} \cdot \sqrt{0} = 0
+        \end{equation*}
+
+        En este caso, se cumple la desigualdad.
+        \item $y \neq \vec{0}$
+
+        Resolvamos para $\lambda$ la siguiente ecuación 
+
+        \begin{equation*}
+            \langle x - \lambda y , \lambda y \rangle = 0
+        \end{equation*}
+        
+        Note que 
+
+        \begin{equation*}
+            \langle x - \lambda y , \lambda y \rangle = 0 \iff \langle x , \lambda y \rangle - \langle \lambda y , \lambda y \rangle = 0
+        \end{equation*}
+        \begin{equation*}
+            \Leftrightarrow \lambda \langle x,y \rangle - \lambda^2 \langle y,y \rangle = 0 \iff \lambda [ \langle x,y \rangle - \lambda \langle y ,y \rangle ] = 0
+        \end{equation*}
+        \begin{align*}
+            \iff \lambda = 0& & \text{o} & & \langle x,y \rangle - \lambda \langle y ,y \rangle = 0
+        \end{align*}
+
+        Debido a que $\lambda \neq 0$ s.t.q
+
+        $\lambda_0 = \frac{\langle x,y \rangle}{\langle y,y \rangle}$ es una solución no cero de lo anterior.
+
+        Observe que la función $f : \R \to \R$ dada por 
+
+        \begin{equation*}
+            f(\lambda) = \langle x - \lambda y , x - \lambda y \rangle \geqslant 0
+        \end{equation*}
+
+        Sustituyendo a $\lambda_0$ en $f(\lambda) $ s.t.q. $f(\lambda_0) \geqslant 0 $
+
+        Note ahora que
+        \begin{equation*}
+            0 \leqslant f(\lambda_0) = \langle x - \lambda_0 y , x - \lambda_0 y \rangle = \langle x , x \rangle + \langle x , - \lambda_0 y \rangle  + \langle - \lambda_0 y , x \rangle + \langle  - \lambda_0 y , - \lambda_0 y \rangle 
+        \end{equation*}
+        \begin{equation*}
+            = \langle x , x \rangle -2 \lambda_0 \langle x , y \rangle +{\lambda}_{0}^{2} \langle y , y \rangle
+            = \langle x , x \rangle -2 \frac{\langle x,y \rangle}{\langle y,y \rangle} \langle x , y \rangle +\frac{{\langle x,y \rangle}^{2}}{{\langle y,y \rangle}^{2}} \langle y , y \rangle 
+        \end{equation*}
+        \begin{equation*}
+            = \langle x , x \rangle -2 \frac{{\langle x,y \rangle}^{2}}{\langle y,y \rangle} +\frac{{\langle x,y \rangle}^{2}}{\langle y,y \rangle} = \langle x , x \rangle - \frac{{\langle x,y \rangle}^{2}}{\langle y,y \rangle} 
+        \end{equation*}
+        \begin{equation*}
+            \Rightarrow \frac{{\langle x,y \rangle}^{2}}{\langle y,y \rangle}  \leqslant \langle x , x \rangle \Rightarrow {\langle x,y \rangle}^{2} \leqslant \langle y,y \rangle \langle x , x \rangle 
+        \end{equation*}
+        \begin{equation*}
+        \Rightarrow \abs{\langle x,y \rangle} \leqslant \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle y,y \rangle}
+    \end{equation*}
+        
+    \end{enumerate}
+
+    $\therefore$ el \Cref{theom3} es cierto.
+\end{proof}
+
+\begin{theorem}[Desigualdad de Minkowski] \label{theom4}
+    Sea ($V, \langle \: , \: \rangle$) un espacio con producto interior, $ \implies  \forall \: x,y \in V$ s.t.q.
+
+    \begin{equation*}
+        \sqrt{\langle x + y, x + y \rangle} \leqslant \sqrt{\langle x,x \rangle} + \sqrt{\langle y,y \rangle}
+    \end{equation*}
+\end{theorem}
+
+\begin{proof}
+    Sean $x, y \in V$ cualesquiera elementos. Note que
+
+    \begin{equation*}
+         \sqrt{\langle x + y, x + y \rangle} \leqslant \sqrt{\langle x,x \rangle} + \sqrt{\langle y,y \rangle} \Leftrightarrow \langle x + y, x + y \rangle \leqslant {(\sqrt{\langle x,x \rangle} + \sqrt{\langle y,y \rangle})}^{2}
+    \end{equation*}
+    \begin{equation*}
+        \Leftrightarrow \langle x , x \rangle + 2 \langle x ,y \rangle + \langle y , y \rangle \leqslant \langle x , x \rangle + 2 \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle y,y \rangle} + \langle y , y \rangle 
+    \end{equation*}
+    \begin{equation*}
+        \langle x,y \rangle \leqslant \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle y,y \rangle}
+    \end{equation*}
+
+    $\implies$ para probar \Cref{theom4} basta probar $\langle x,y \rangle \leqslant \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle y,y \rangle}$
+
+    Notemos que
+    \begin{equation*}
+        \langle x,y \rangle \leqslant \abs{\langle x,y \rangle}
+    \end{equation*}
+
+    Por el \Cref{theom3} s.t.q.
+    \begin{equation*}
+        \abs{\langle x,y \rangle} \leqslant \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle y,y \rangle} \Rightarrow \langle x,y \rangle \leqslant \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle y,y \rangle}
+    \end{equation*}
+\end{proof}
+
+\begin{definition} \label{def14}
+    Sea ($V, \langle \: , \: \rangle$) un espacio con producto interior. Definimos a la norma de $x \in V$ como el número $\in \R$ tal que
+
+    \begin{equation*}
+        \norm{x} := \sqrt{\langle x,x \rangle}
+    \end{equation*}
+
+    Note que $\norm{\cdot} : V \to \R$ es una función.
+\end{definition}
+
+\begin{theorem}
+     Sea ($V, \langle \: , \: \rangle$) es un espacio vectorial real con producto interior $\Rightarrow$ la norma definida en la \Cref{def14} es una norma en $V$.
+    
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}[label=(\subscript{N}{{\arabic*}})]
+    \item Si $x \in V$ es un elemento arbitrario $\Rightarrow \langle x, x \rangle \geqslant 0$. Así que $\norm{x} = \sqrt{\langle x,x \rangle} \geqslant 0$
+    \item Debido a que $\forall \: x \in V \Rightarrow \langle x, x \rangle = 0 \iff x = 0$, podemos concluir que $\forall \: x \in V \Rightarrow \norm{x} = 0 \iff x = 0$ puesto que 
+    \begin{equation*}
+        \sqrt{\langle x,x \rangle} = 0 \iff \langle x,x \rangle = 0 \implies \norm{x} = 0 \iff x = 0
+    \end{equation*}
+    \item Supongamos que $x \in V$ y $\lambda \in \R$ arbitrarios $\implies$ usando propiedades de $\langle \: , \: \rangle$ s.t.q.
+    \begin{equation*}
+        \norm{\lambda x} = \sqrt{\langle \lambda x,\lambda x \rangle} = \sqrt{\lambda  \langle x, \lambda  x \rangle} = \sqrt{\lambda  \langle \lambda x,   x \rangle} = \sqrt{\lambda^2} \sqrt{\langle x,x \rangle} = \abs{\lambda} \sqrt{\langle x,x \rangle} = \abs{\lambda} \norm{x}
+    \end{equation*}
+    \item Sean $x,y \in V$ arbitrarios. Por el \Cref{theom4} s.t.q.
+    \begin{equation*}
+        \sqrt{\langle x + y, x + y \rangle} \leqslant \sqrt{\langle x,x \rangle} + \sqrt{\langle y,y \rangle}
+    \end{equation*}
+    Es decir
+    \begin{equation*}
+        \norm{x+y} \leqslant \norm{x} + \norm{y}
+    \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+    Sea  ($V, \oplus, \odot$) un $\K$-espacio vectorial. con producto interior. Se dice que $\vec{u}, \vec{v} \in V$ son ortogonales (o perpendiculares)  si $\langle \vec{u}, \vec{v} \rangle=0 \Rightarrow \vec{u} \bot \vec{v}$. 
+    
+    Se dice que $S \subseteq V$ es un conjunto ortogonal si $\forall  \: \vec{u}, \vec{v} \in S \Rightarrow \vec{u} \bot \vec{v}$. 
+    
+    Se dice que $\vec{u} \in V$ es un vector unitario si $\norm{\vec{u}}=1$. 
+    
+    Se dice que $S \subseteq V$ es un ortonormal si $S$ es ortogonal y $\forall \: \vec{u} \in V \Rightarrow \norm{\vec{u}}=1 $. 
+\end{definition}
+
+\section{Proceso de Gram-Schmidt}
+
+\begin{definition} [Base Ortonormal]
+     Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con productor interior. Se dice que $\beta \subseteq V$ es una base ortonormal de $V$ si es una base ordenada y es ortonormal. 
+\end{definition}
+
+\begin{theorem}
+     Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con productor interior, $S=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_k\}$ un conjunto ortogonal donde $\vec{v}_i\neq \vec{0}$ y $\vec{u}\in V$. Si $\vec{u} \in \langle S \rangle \Rightarrow$ $$\vec{u}=\sum_{i=1}^k \frac{\langle \vec{u},\vec{v}_i \rangle}{\norm{\vec{v}_i}^2} \vec{v}_i $$
+\end{theorem}
+
+\begin{proof}
+    Como $\vec{u} \in \langle S \rangle \: \exists \: \lambda_1, \lambda_2,...,\lambda_k \in \K$ tales que $\vec{u}=\sum_{i=1}^k\lambda_i \vec{v}_i$. Sea $j \in \{1,2,...,k\}$
+        $$\Rightarrow \langle \vec{u}, \vec{v}_j \rangle = \left\langle \sum_{i=1}^k \lambda_i \vec{v}_i, \vec{v}_j \right\rangle = \sum_{i=1}^k \lambda_i\langle\vec{v}_i, \vec{v}_j \rangle  \\
+        = \lambda_j \langle \vec{v}_j, \vec{v}_j \rangle \ \text{dado que} \ S \ \text{es ortogonal.}$$ $$\Rightarrow \lambda_j=\frac{\langle  \vec{u}, \vec{v}_j \rangle }{\norm{\vec{v}_j}^2} \Rightarrow \vec{u}=\sum_{i=1}^k\lambda_i \vec{v}_i=\sum_{i=1}^k \frac{\langle \vec{u},\vec{v}_i \rangle}{\norm{\vec{v}_i}^2} \vec{v}_i$$
+\end{proof}
+
+\begin{corollary}
+    Si $S=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_k\}$ es un conjunto ortonormal $\Rightarrow \vec{u}=\sum\limits_{i=1}^n\langle \vec{u}, \vec{v}_i \rangle \vec{v}_i$.
+\end{corollary}
+
+\begin{corollary}
+    Sea  ($V, \oplus, \odot$) un $\K$-espacio vectorial con producto interior, y sea $S \subseteq V$ un cojunto ortogonal donde todos los vectores son distintos de cero $\Rightarrow S$ es un cojunto l.i.
+\end{corollary}
+
+\begin{theorem} [Gram-Schmidt]
+    \label{gram_schmidt}
+   Sea  ($V, \oplus, \odot$) un $\K$-espacio vectorial con producto interior, y sea $S \subseteq V=\{\vec{w}_1,\vec{w}_2,...,\vec{w}_n\}$ un conjunto l.i. Definimos ${S}^{\prime}=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_n\}$ donde $\vec{v}_1=\vec{w}_1$ y 
+   $$\vec{v}_n=\vec{w}_n-\sum_{i=1}^{n-1}\frac{\langle \vec{w}_n,\vec{v}_i \rangle}{\norm{\vec{v}_i}^2}\vec{v}_i $$ 
+   
+   $\forall \: n \in \{2,3,...,n\}  \Rightarrow {S}^{\prime}$ es un conjunto ortogonal de vectores distintos al cero tales que $\langle {S}^{\prime} \rangle= \langle S \rangle$. 
+\end{theorem}
+
+\begin{proof}
+ Por inducción sobre $n$
+\begin{enumerate}
+    \item Si $n=1 \Rightarrow S=\{\vec{w}_1\}={S}^{\prime}$.
+    \item Supongamos el resultado cierto para $n-1$.
+    \item Veamos que ${S}^{\prime}_n$ no contiene al cero, ${S}^{\prime}_n$ es ortogonal y $\langle {S}^{\prime}_n \rangle=\langle S_n \rangle$. 
+    
+    Sea $S_n=\{\vec{w}_1,\vec{w}_2,...,\vec{w}_n\}$ un conjunto l.i. y sea ${S}^{\prime}_n=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_n\}$ como en el Teorema \ref{gram_schmidt}. Suponga que $\vec{0} \in {S}^{\prime}_n$. Como $S_{n-1}=\{\vec{w}_1,\vec{w}_2,...,\vec{w}_{n-1}\}$ es l.i. y tiene $n-1$ vectores $\Rightarrow {S}^{\prime}_{n-1}=\{\vec{v}_1,\vec{v}_2,...,\vec{v}_{n-1}\}$ es un conjunto ortogonal que no contiene al cero, y además, $\langle {S}^{\prime}_{n-1} \rangle= \langle S_{n-1} \rangle$. Sabemos que $\vec{0} \in {S}^{\prime}_n $ y $ \vec{0} \notin {S}^{\prime}_{n-1} \Rightarrow \vec{v}_n=\vec{0}$ $$\Rightarrow \vec{0}=\vec{w}_n-\sum_{j=1}^{n-1}\frac{\langle \vec{w}_n,\vec{v}_j \rangle}{\norm{\vec{v}_j}^2}\vec{v}_j \\
+   \Rightarrow \vec{w}_n=\sum_{j=1}^{n-1}\frac{\langle \vec{w}_n,\vec{v}_j \rangle}{\norm{\vec{v}_j}^2}\vec{v}_j\in \langle {S}^{\prime}_{n-1}\rangle=\langle S_{n-1} \rangle$$ Lo que es una contradicción, porque $S_n$ ya no sería un conjunto l.i $\Rightarrow \vec{0} \notin S_n'$.
+
+   Ahora, Sea $i\in\{1,2,...,n-1\}$ $$\Rightarrow \langle \vec{v}_n, \vec{v}_i \rangle= \left\langle \vec{w}_n-\sum_{j=1}^{n-1}\frac{\langle \vec{w}_n,\vec{v}_j \rangle}{\norm{\vec{v}_j}^2}\vec{v}_j, \vec{v}_i \right\rangle=\langle \vec{w}_n, \vec{v}_i \rangle -\sum_{j=1}^{n-1}\frac{\langle \vec{w}_n,\vec{v}_j \rangle}{\norm{\vec{v}_j}^2} \langle \vec{v}_j, \vec{v}_i \rangle$$ Como ${S}^{\prime}{n-1}$ es ortogonal se tiene que $\langle \vec{v}_j, \vec{v}_i \rangle \neq 0 \iff j=i$
+   $$ \Rightarrow \langle \vec{v}_n, \vec{v}_i \rangle=\langle \vec{w}_n, \vec{v}_i \rangle -\frac{\langle \vec{w}_n,\vec{v}_i \rangle}{\norm{\vec{v}_i}^2} \langle \vec{v}_i, \vec{v}_i \rangle=\langle \vec{w}_n, \vec{v}_i \rangle -\frac{\langle \vec{w}_n,\vec{v}_i \rangle}{\norm{\vec{v}_i}^2}\norm{\vec{v}_i}^2=0$$ Esto implica que ${S}^{\prime}_n$ es ortogonal.
+
+   Finalmente, Sabemos que $$\vec{v}_n=\vec{w}_n+\vec{z} \ \text{donde} \ \vec{z} \in \langle S_{n-1} \rangle=\langle {S}^{\prime}_{n-1} \rangle$$ $$\Rightarrow \vec{v}_n \in \langle S_n \rangle \Rightarrow {S}^{\prime}_n \subseteq \langle S_n \rangle \Rightarrow \langle {S}^{\prime}_n \rangle \subseteq \langle S_n \rangle$$ También, note usted que $$\vec{w}_n=\vec{v}_n-\vec{z}$$ $$\Rightarrow \vec{w}_n \in \langle {S}^{\prime}_n \rangle \Rightarrow S_n \subseteq \langle {S}^{\prime}_n \rangle \Rightarrow \langle S_n \rangle \subseteq \langle {S}^{\prime}_n \rangle$$ Por la doble contención $\langle {S}^{\prime}_n \rangle \subseteq \langle S_n \rangle $ y $ \langle S_n \rangle \subseteq \langle {S}^{\prime}_n \rangle \Rightarrow \langle {S}^{\prime}_n \rangle=\langle S_n \rangle$
+\end{enumerate}
+   $\therefore$ se cumple el \Cref{gram_schmidt} 
+\end{proof}
