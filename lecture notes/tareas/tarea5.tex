@@ -1,0 +1,157 @@
+\documentclass[12pt]{article}
+
+\addtolength{\hoffset}{-2.25cm}
+\addtolength{\textwidth}{4.5cm}
+\addtolength{\voffset}{-2.5cm}
+\addtolength{\textheight}{5cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{15pt}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[colorlinks = true, linkcolor = blue, citecolor = blue, final]{hyperref}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{ marvosym }
+\usepackage{wasysym}
+\usepackage{tikz}
+\usepackage{xcolor} 
+\usepackage{CJKutf8}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{amsmath}
+\usetikzlibrary{patterns}
+
+\newcommand{\subscript}[2]{$#1 _ #2$}
+\newcommand{\ds}{\displaystyle}
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\K{\ensuremath{\mathbb{K}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+\DeclareMathOperator{\spn}{span}
+
+\pgfplotsset{compat=1.18} 
+\setlength{\parindent}{0in}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{\scshape Algebra Lineal} \hfill {\scshape \large Tarea V} \hfill {\scshape Victor Ortega}
+ 
+\smallskip
+
+\hrule
+
+\bigskip
+
+\bigskip
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definición}
+
+\theoremstyle{definition}
+\newtheorem*{remark}{Observación}
+
+\theoremstyle{definition}
+\newtheorem*{dem}{Demostración}
+
+\theoremstyle{definition}
+\newtheorem*{notation}{Notación}
+
+\theoremstyle{definition}
+\newtheorem*{theorem}{Teorema}
+
+\theoremstyle{definition}
+\newtheorem*{lema}{Lema}
+
+\theoremstyle{definition}
+\newtheorem*{corollary}{Corollary}
+
+\theoremstyle{remark}
+\newtheorem*{observation}{Observación}
+
+\theoremstyle{remark}
+\newtheorem*{example}{Ejemplo}
+
+
+\begin{theorem} \label{tarea5og}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial con ${\dim}_{\K}(V) <  \infty = n$, y $W \leq V$ subespacio de $V \Rightarrow W$ es de dimensión finita y ${\dim}_{\K}(W) \leqslant {\dim}_{\K}(V)$
+\end{theorem}
+
+\begin{theorem} \label{theomtarea5}
+    Si ${\dim}_{\K}(V) = {\dim}_{\K}(W) \Rightarrow W = V$
+\end{theorem}
+
+\begin{corollary}
+    Sea ($V, \oplus, \odot$) un $\K$-espacio vectorial, $W \leq V \Rightarrow $ cualquier base de $W$ se puede extender a una base de $V$
+\end{corollary}
+
+\begin{theorem}
+    Sean $W_1$ y$ W_2$ subespacios de un $\K$-espacio vectorial ($V, \oplus, \odot$) de dimensión finita $n$.
+
+    $$\Rightarrow {\dim}_{\K}(W_1+W_2) = {\dim}_{\K}(W_1) + {\dim}_{\K}(W_2) - {\dim}_{\K}(W_1 \cap W_2)$$
+\end{theorem}
+
+\begin{proof}
+    Como $W_1 \cap W_2 \leq W_1 \Rightarrow W_1 \cap W_2 $ tiene una base finita $\beta = \{ \vec{w}_1, ..., \vec{w}_n \}$. Usando el corolario del segundo teorema, encontramos $\gamma = \{ \vec{u}_1, ..., \vec{u}_k \}$ y $\xi = \{ \vec{z}_1, ..., \vec{z}_r \}$ tales que $\left\langle \beta \cup \gamma \right\rangle = W_1$ y  $\left\langle \beta \cup \xi \right\rangle = W_2$. 
+
+    \bigskip
+
+    Es suficiente probar que $\beta \cup \gamma \cup \xi = \{\vec{w}_1, ..., \vec{w}_n, \vec{u}_1, ..., \vec{u}_k, \vec{z}_1, ..., \vec{z}_r  \}$ es base de $W_1+W_2$. De ahí se seguirá que 
+
+    $${\dim}_{\K}(W_1+W_2) = (n+k+r) = (n+k) + (n+r) - n $$
+
+    $$=  {\dim}_{\K}(W_1) + {\dim}_{\K}(W_2) - {\dim}_{\K}(W_1 \cap W_2)$$
+
+    Primero, veamos que  $\beta \cup \gamma \cup \xi $ es l.i. Sean $\mu_1, ... \mu_n$, $\alpha_1, ..., \alpha_k$, y $\lambda_1, ..., \lambda_r \in \K$ 
+
+    $$ \vec{0}_V = \mu_1 \vec{w}_1 +  ... + \mu_n \vec{w}_n +  \alpha_1\vec{u}_1 + ... + \alpha_k\vec{u}_k + \lambda_1\vec{z}_1 + ...+ \lambda_r\vec{z}_r$$
+
+    Sea
+
+    $$\vec{v}_1 = \mu_1 \vec{w}_1 +  ... + \mu_n \vec{w}_n$$
+    $$\vec{v}_2 = \alpha_1\vec{u}_1 + ... + \alpha_k\vec{u}_k$$
+    $$\vec{v}_3 = \lambda_1\vec{z}_1 + ...+ \lambda_r\vec{z}_r$$
+
+    Notemos que $\vec{v}_1 \in W_1 \cap W_2$, mientras que $\vec{v}_2 \in W_1 $ y $\vec{v}_3 \in W_2$
+
+    $$\Rightarrow \vec{0}_V = \vec{v}_1 + \vec{v}_2 + \vec{v}_3 \Rightarrow -\vec{v}_3 = \vec{v}_1 + \vec{v}_2$$
+
+    Notemos que $\vec{v}_1 + \vec{v}_2 \in W_1$, mientras que $-\vec{v}_3 \in W_2 \Rightarrow  -\vec{v}_3 \in W_1 \cap W_2$. Como $\beta$ es base de $ W_1 \cap W_2$, $\exists \: \nu_1, ..., \nu_n \in \K$ tales que
+
+    $$-\vec{v}_3  = \nu_1\vec{w}_1 + ... + \nu_n\vec{w}_n $$
+    $$\Rightarrow -\vec{v}_3 = \vec{v}_1 + \vec{v}_2 \Rightarrow  \vec{0}_V =  (\mu_1 \vec{w}_1 +  ... + \mu_n \vec{w}_n)+ (\alpha_1\vec{u}_1 + ... + \alpha_k\vec{u}_k) + (-\nu_1\vec{w}_1 - ... - \nu_n\vec{w}_n)$$
+    $$= (\mu_1-\nu_1)\vec{w}_1  + ... + (\mu_n-\nu_n)\vec{w}_n  (\alpha_1\vec{u}_1 + ... + \alpha_k\vec{u}_k)$$
+
+    Por lo que tenemos una combinación lineal de elementos de $\beta \cup \gamma$, pero al ser base de $W_1$, es l.i., por lo que $\mu_1-\nu_1 = ... = \mu_n-\nu_n = \alpha_1 = ... = \alpha_k = 0$. Esto implica que $\vec{v}_2 = 0$
+
+    $$\Rightarrow \vec{0}_V = \vec{v}_1 + \vec{v}_2 + \vec{v}_3 = \vec{v}_1 + \vec{v}_3 = (\mu_1 \vec{w}_1 +  ... + \mu_n \vec{w}_n) + (\lambda \vec{z}_1 +  ... + \lambda_r \vec{z}_r)$$
+
+    Pero esta es una combinación lineal de elementos de $\beta \cup \xi$, pero al ser base de $W_2 $, es l.i., por lo que $\mu_1 = ... = \mu_n = \lambda_1 = ... = \lambda_r = 0$. Esto prueba que $\beta \cup \gamma \cup \xi$ es l.i.
+    
+    \bigskip
+    
+    Veamos que $\langle \beta \cup \gamma \cup \xi \rangle = W_1 + W_2$. Como $\left\langle \beta \cup \gamma \right\rangle = W_1$ y  $\left\langle \beta \cup \xi \right\rangle = W_2$ s.t.q.
+
+    $$ \langle \beta \cup \gamma \cup \xi \rangle = \langle (\beta \cup \gamma) \cup (\beta \cup \xi )\rangle$$
+    $$\left\langle \beta \cup \gamma \right\rangle + \left\langle \beta \cup \xi \right\rangle = W_1 + W_2$$
+    
+    $\therefore {\dim}_{\K}(W_1) + {\dim}_{\K}(W_2) - {\dim}_{\K}(W_1 \cap W_2)$
+
+\end{proof}
+
+
+\end{document}

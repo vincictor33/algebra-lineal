@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+
+\addtolength{\hoffset}{-2.25cm}
+\addtolength{\textwidth}{4.5cm}
+\addtolength{\voffset}{-2.5cm}
+\addtolength{\textheight}{5cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{15pt}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[colorlinks = true, linkcolor = blue, citecolor = blue, final]{hyperref}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{ marvosym }
+\usepackage{wasysym}
+\usepackage{tikz}
+\usepackage{xcolor} 
+\usepackage{CJKutf8}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{amsmath}
+\usetikzlibrary{patterns}
+
+\newcommand{\subscript}[2]{$#1 _ #2$}
+\newcommand{\ds}{\displaystyle}
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\K{\ensuremath{\mathbb{K}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+\DeclareMathOperator{\spn}{span}
+
+\pgfplotsset{compat=1.18} 
+\setlength{\parindent}{0in}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{\scshape Algebra Lineal} \hfill {\scshape \large Tarea I} \hfill {\scshape Victor Ortega}
+ 
+\smallskip
+
+\hrule
+
+\bigskip
+
+\bigskip
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definición}
+
+\theoremstyle{definition}
+\newtheorem*{dem}{Demostración}
+
+\theoremstyle{definition}
+\newtheorem*{notation}{Notación}
+
+\theoremstyle{definition}
+\newtheorem*{theorem}{Teorema}
+
+\theoremstyle{definition}
+\newtheorem*{lema}{Lema}
+
+\theoremstyle{remark}
+\newtheorem*{observation}{Observación}
+
+\theoremstyle{remark}
+\newtheorem*{example}{Ejemplo}
+
+
+\begin{enumerate} 
+
+\item Sea $V$ un $\K$-espacio vectorial y $W_1 \leq V$ y $W_2 \leq V$ subespacios de $V$. Demuestre que $W_1 \cup W_2 \leq V \Leftrightarrow W_1 \subseteq W_2$ o $W_2 \subseteq W_1$
+
+\begin{proof}
+
+    $\Leftarrow$
+
+    Supongamos que $W_1 \subseteq W_2$ o $W_2 \subseteq W_1$ P.D. $W_1 \cup W_2 \leq V$
+    \begin{align*}
+          \Rightarrow  W_1 = W_1 \cup W_2   & & \text{o} & &  W_2 = W_1 \cup W_2 
+    \end{align*}
+
+    Como $W_1 \leq V$ y $W_2 \leq V \Rightarrow W_1 \cup W_2 \leq V$
+
+    $\Rightarrow$
+
+    Supongamos que $W_1 \cup W_2 \leq V$ P.D.  $W_1 \subseteq W_2$ o $W_2 \subseteq W_1$
+
+    Supongamos que $W_2 \nsubseteq W_1$ P.D. $W_1 \subseteq W_2$ 
+    
+    Sea $\vec{v} \in W_1$. Como  $W_2 \nsubseteq W_1 \Rightarrow \exists \: \vec{w} \in W_2 \backepsilon \vec{w} \notin W_1 $. Por definición de $\cup$ s.t.q.
+    \begin{align*}
+          \Rightarrow  \vec{v} \in W_1 \subseteq  W_1 \cup W_2  & & \text{y} & &  \vec{w} \in W_2 \subseteq  W_1 \cup W_2 
+    \end{align*}
+
+    Como $W_1 \cup W_2  \leq V$ subespacio s.t.q.
+
+
+    \begin{equation*}
+        \vec{v} + \vec{w} \in W_1 \cup W_2
+    \end{equation*}
+    \begin{align*}
+          \Rightarrow  \vec{v} + \vec{w} \in W_1  & & \text{o} & &  \vec{v} + \vec{w} \in W_2
+    \end{align*}
+
+    Note que, como $W_1$ es un subespacio s.t.q.
+
+    \begin{equation*}
+        (\vec{v} + \vec{w}) + (-\vec{v} ) \in W_1
+    \end{equation*}
+
+    Pero esto, por hipótesis, es imposible, por lo tanto s.t.q. $\vec{v} + \vec{w} \in W_2$
+
+    \begin{equation*}
+        \Rightarrow (\vec{v} + \vec{w}) + (-\vec{w} )  \in W_2
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow \vec{v} \in W_2
+    \end{equation*}
+
+    $\therefore $ como $\vec{v}$ arbitrario $W_1 \subseteq W_2$
+
+    Sin perdida de generalidad, la prueba para $W_2 \subseteq W_1$ es análoga. Cuando $W_2 = W_1$  la demostración es trivial.
+\end{proof}
+
+\item Demostrar que $\vec{v}+W \leq V \Rightarrow \vec{v} \in W$
+
+\begin{proof}
+    Supongamos que $\vec{v}+W \leq V$
+
+    Como $\vec{v}+W$ es un subespacio contiene a $\vec{0}$ $\Rightarrow \exists  \: \vec{w} \in \vec{v}+W   \backepsilon \vec{v} + \vec{w} = 0$
+
+    $\Rightarrow - \vec{v} \in W$ Como $\vec{v}+W$ es un subespacio $\Rightarrow \forall \: \vec{w} \in \vec{v}+W$ y $\forall \: \lambda \in \K \Rightarrow \lambda \cdot \vec{w} \in \vec{v}+W$
+
+    $\Rightarrow$ con $\lambda = -1 \Rightarrow (-1) \cdot -\vec{v} \in \vec{v} + W$
+
+    $\therefore \vec{v} \in W$
+\end{proof}
+
+\item Sea ($V,+,\cdot$) un $\K$-espacio vectorial y $S \subseteq V$ un conjunto no vacío de vectores de $V$. Demuestre que
+
+\begin{equation*}
+    \langle S \rangle = \cap \: \{ W \mid W \leq V \backepsilon S \subseteq W \}
+\end{equation*}
+
+\begin{proof}
+
+    $\subseteq$
+
+    Demostramos en clase que  $\langle S \rangle$ es el subespacio más chico quecontiene al conjunto, por lo que es uno de los conjuntos $W$
+
+    $\supseteq$
+    
+    Sea $\vec{v} \in \cap \: \{ W \mid W \leq V \backepsilon S \subseteq W \}$
+
+    Por lo que $\vec{v} $ pertenece a cada subespacio de $V$ que contiene a $S$. Pero $\langle S \rangle$ es uno de estos subespacios. $\Rightarrow \vec{v} \in  \langle S \rangle $
+
+    $$\Rightarrow \cap \: \{ W \mid W \leq V \backepsilon S \subseteq W \} \subseteq \langle S \rangle$$
+
+    $\therefore \langle S \rangle = \cap \: \{ W \mid W \leq V \backepsilon S \subseteq W \}$ 
+
+\end{proof}
+
+
+\end{enumerate}
+
+\end{document}
