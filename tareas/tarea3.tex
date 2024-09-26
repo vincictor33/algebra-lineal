@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+
+\addtolength{\hoffset}{-2.25cm}
+\addtolength{\textwidth}{4.5cm}
+\addtolength{\voffset}{-2.5cm}
+\addtolength{\textheight}{5cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{15pt}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[colorlinks = true, linkcolor = blue, citecolor = blue, final]{hyperref}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{ marvosym }
+\usepackage{wasysym}
+\usepackage{tikz}
+\usepackage{xcolor} 
+\usepackage{CJKutf8}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{physics}
+\usepackage{amsmath}
+\usetikzlibrary{patterns}
+
+\newcommand{\subscript}[2]{$#1 _ #2$}
+\newcommand{\ds}{\displaystyle}
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\K{\ensuremath{\mathbb{K}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+\DeclareMathOperator{\spn}{span}
+
+\pgfplotsset{compat=1.18} 
+\setlength{\parindent}{0in}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{\scshape Algebra Lineal} \hfill {\scshape \large Tarea III} \hfill {\scshape Victor Ortega}
+ 
+\smallskip
+
+\hrule
+
+\bigskip
+
+\bigskip
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definición}
+
+\theoremstyle{definition}
+\newtheorem*{remark}{Observación}
+
+\theoremstyle{definition}
+\newtheorem*{dem}{Demostración}
+
+\theoremstyle{definition}
+\newtheorem*{notation}{Notación}
+
+\theoremstyle{definition}
+\newtheorem*{theorem}{Teorema}
+
+\theoremstyle{definition}
+\newtheorem*{lema}{Lema}
+
+\theoremstyle{remark}
+\newtheorem*{observation}{Observación}
+
+\theoremstyle{remark}
+\newtheorem*{example}{Ejemplo}
+
+
+\begin{enumerate} 
+
+\item $V / W$ es un espacio vectorial, llamado $V$ módulo $W$. Definido con las siguientes operaciones.
+
+\begin{align*}
+    \oplus : ( \vec{v} + W ) + ( \vec{u} + W ) = ( \vec{v} + \vec{u} ) + W  && \text{ y } && \odot : \lambda(\vec{v}+W)= (\lambda \cdot \vec{v}) +W
+\end{align*}
+
+\begin{remark}
+    En la clase se demostró que eran operaciones bien definidas, el primer inciso de la tarea. Es por ello que no se va a realizar en este entregable, ya que ya se hizo en clase. Sola falta especificar que \(\vec{v}_1-\vec{v}_1^\prime \in W\), se sigue que \(\lambda(\vec{v}_1-\vec{v}_1^\prime)\in W\), o bien, que \(\lambda\vec{v}_1-\lambda\vec{v}_1^\prime \in W\). Por lo tanto \(\lambda(\vec{v}_1+W)=\lambda(\vec{v}_1^\prime+W)\). 
+\end{remark}
+
+\begin{proof}
+    Notemos que de $V$ son sumamente triviales las leyes asociativas, conmutativas y distributivas. Debemos únicamente demostrar la existencia del neutra aditivo y el inverso aditivo.
+
+    Sea $\vec{v} + W \in V / W$. Veamos que $W = 0 +W$ es el neutro aditivo
+
+    \begin{equation*}
+        (\vec{v} + W) + W = (\vec{v} + 0) + W = \vec{v} + W \Rightarrow W + (\vec{v} + W) = (0 + \vec{v}) + W = \vec{v} + W
+    \end{equation*}
+
+    Sea $\vec{v} + W \in V / W$. Veamos que $-\vec{v} + W$ es el inverso aditivo. 
+        
+    \begin{equation*}
+        (\vec{v} + W) + (-\vec{v} + W) = (\vec{v} - \vec{v}) + W = 0 + W = W
+    \end{equation*}
+
+    Lo que nos da el 0 del espacio, que es $W$, como ya vimos en la primera parte. 
+
+    $\therefore V / W$ es un espacio vectorial sobre el campo $\K$. 
+\end{proof}
+
+\begin{remark}
+    Para evidenciar que son triviales las demás propiedades, note lo fácil que es demostrar la asociatividad de la suma
+
+    \begin{equation*}
+        (\vec{u} + \vec{v}) + W + \vec{w} + W = (\vec{u} + \vec{v}) + \vec{w} + W = \vec{u} (\vec{v} + \vec{w}) + W
+    \end{equation*}
+
+    Demostremos también la distribución de multiplicación escalar
+    \begin{equation*}
+        (\lambda  + \gamma ) \cdot \vec{v} + W = (\lambda  + \gamma )\cdot \vec{v} + W = (\lambda \cdot \vec{v} + \gamma \cdot \vec{v}) + W = (\lambda \cdot \vec{v} + W) + (\gamma \cdot \vec{v} + W) = \lambda \cdot (\vec{v} + W) + \gamma \cdot (\vec{v} + W)
+    \end{equation*}
+
+    Es por ello que decimos que las propiedades son triviales.  
+\end{remark}
+\end{enumerate}
+
+\end{document}
